@@ -1,0 +1,395 @@
+/* ============================================================
+   cadastro.css – Página de Cadastro
+   Estilo Liquid Glass (Apple)
+   ============================================================ */
+
+:root {
+  --primary: #0A2540;
+  --primary-light: #24314C;
+  --accent: #16E28A;
+  --accent-light: #29f0a0;
+  --white: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-blur: 30px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --radius-sm: 12px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+  --shadow-accent: 0 15px 30px rgba(22, 226, 138, 0.35);
+  --shadow-accent-hover: 0 20px 45px rgba(22, 226, 138, 0.45);
+  --font-family: 'Inter', sans-serif;
+  --transition-base: 0.3s ease;
+  --transition-fast: 0.2s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--primary) 100%);
+  position: relative;
+}
+
+/* BACKGROUND SHAPES */
+.background_shapes {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+}
+
+.shape1 {
+  width: 450px;
+  height: 450px;
+  background: rgba(22, 226, 138, 0.15);
+  top: -100px;
+  right: -100px;
+}
+
+.shape2 {
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  bottom: -200px;
+  left: -150px;
+}
+
+/* BOTÃO VOLTAR */
+.btn_voltar {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  z-index: 1000;
+  text-decoration: none;
+  color: var(--white);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  padding: 12px 22px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  transition: var(--transition-base);
+  box-shadow: var(--glass-shadow);
+}
+
+.btn_voltar:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+/* CONTAINER */
+.cadastro_container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* LADO ESQUERDO */
+.cadastro_left {
+  flex: 1;
+  color: var(--white);
+}
+
+.brand_logo {
+  width: 90px;
+  height: auto;
+  margin-bottom: 25px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  background: rgba(22, 226, 138, 0.12);
+  border: 1px solid rgba(22, 226, 138, 0.25);
+  color: var(--accent);
+  margin-bottom: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.cadastro_left h1 {
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1.1;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+
+.cadastro_left > p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.benefit_icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.benefit p {
+  color: var(--white);
+  font-size: 15px;
+}
+
+/* LADO DIREITO */
+.cadastro_right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* CARD CADASTRO */
+.cadastro_card {
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-base);
+}
+
+.cadastro_card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.card_header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card_header h2 {
+  color: var(--white);
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.card_header p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.cadastro_form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input_group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input_group label {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input_group input {
+  width: 100%;
+  height: 58px;
+  padding: 0 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  outline: none;
+  transition: var(--transition-base);
+  backdrop-filter: blur(10px);
+}
+
+.input_group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input_group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(22, 226, 138, 0.15);
+}
+
+.cadastro_btn {
+  height: 58px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--transition-base);
+  margin-top: 10px;
+  box-shadow: var(--shadow-accent);
+}
+
+.cadastro_btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-accent-hover);
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+.divider span {
+  position: relative;
+  padding: 0 15px;
+  background: rgba(36, 49, 76, 0.95);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.login_link {
+  text-align: center;
+}
+
+.login_link p {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 8px;
+}
+
+.login_link a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  transition: var(--transition-base);
+}
+
+.login_link a:hover {
+  text-decoration: underline;
+  color: var(--accent-light);
+}
+
+.google_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--white);
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3c4043;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.google_btn:hover {
+  background: #f7f8f8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.google_btn:active {
+  background: #f1f3f4;
+}
+
+.google_icon {
+  flex-shrink: 0;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1100px) {
+  .cadastro_container {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 25px 40px;
+  }
+
+  .benefit {
+    justify-content: center;
+  }
+
+  .cadastro_left {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cadastro_card {
+    padding: 30px 25px;
+  }
+
+  .cadastro_left h1 {
+    font-size: 2.5rem;
+  }
+
+  .btn_voltar {
+    top: 20px;
+    left: 20px;
+  }
+
+  .brand_logo {
+    width: 75px;
+  }
+}
+

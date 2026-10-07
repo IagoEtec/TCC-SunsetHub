@@ -1,0 +1,350 @@
+/* ============================================================
+   preferencias.css – Página de Preferências (dentro de Configurações)
+   Reaproveita as variáveis definidas em style-perfil.css
+   ============================================================ */
+
+/* =========================
+   CABEÇALHO DA PÁGINA
+========================= */
+
+.prefs_header {
+  margin-bottom: 6px;
+  padding: 0 4px;
+}
+
+.prefs_header h1 {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.prefs_header p {
+  color: var(--gray-600);
+  font-size: 0.95rem;
+}
+
+/* =========================
+   ALERTAS DE FEEDBACK
+========================= */
+
+.prefs_alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.prefs_alert .material-icons {
+  font-size: 20px;
+}
+
+.prefs_alert_success {
+  background: rgba(22, 226, 138, 0.12);
+  color: var(--accent-dark);
+  border: 1px solid rgba(22, 226, 138, 0.3);
+}
+
+.prefs_alert_error {
+  background: rgba(255, 71, 87, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+/* =========================
+   FORMULÁRIO / CARDS
+========================= */
+
+.prefs_form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.prefs_card {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.prefs_card_head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.prefs_card_head .material-icons {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(22, 226, 138, 0.12);
+  color: var(--accent-dark);
+  font-size: 22px;
+}
+
+.prefs_card_head h2 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.prefs_card_head p {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+/* =========================
+   CONTROLE SEGMENTADO (TEMA)
+========================= */
+
+.segmented_control {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: var(--gray-200);
+  border-radius: var(--radius-full);
+}
+
+.segmented_control input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.segmented_control label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border-radius: var(--radius-full);
+  color: var(--gray-600);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.segmented_control label .material-icons {
+  font-size: 18px;
+}
+
+.segmented_control label:hover {
+  color: var(--primary);
+}
+
+.segmented_control input:checked + label {
+  background: var(--white);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.segmented_control input:focus-visible + label {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =========================
+   CAMPOS (SELECTS)
+========================= */
+
+.prefs_field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prefs_field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.prefs_select_wrapper {
+  position: relative;
+}
+
+.prefs_select_wrapper select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  padding: 13px 44px 13px 16px;
+  font-size: 0.9rem;
+  font-family: var(--font-family);
+  color: var(--primary);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.prefs_select_wrapper select:hover {
+  border-color: var(--accent);
+}
+
+.prefs_select_wrapper select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(22, 226, 138, 0.18);
+}
+
+.prefs_select_icon {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  font-size: 20px !important;
+  color: var(--gray-400);
+  pointer-events: none;
+}
+
+/* =========================
+   TOGGLES (SWITCH)
+========================= */
+
+.prefs_toggle_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.prefs_toggle_row h3 {
+  font-size: 0.92rem;
+  color: var(--primary);
+  margin-bottom: 3px;
+}
+
+.prefs_toggle_row p {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch_slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background: var(--gray-300);
+  border-radius: var(--radius-full);
+  transition: var(--transition-base);
+}
+
+.switch_slider::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  top: 3px;
+  background: var(--white);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+}
+
+.switch input:checked + .switch_slider {
+  background: var(--accent);
+}
+
+.switch input:checked + .switch_slider::before {
+  transform: translateX(20px);
+}
+
+.switch input:focus-visible + .switch_slider {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =========================
+   AÇÕES / SALVAR
+========================= */
+
+.prefs_actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px;
+}
+
+.btn_salvar_prefs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 14px 28px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  background: var(--accent);
+  color: var(--primary-dark);
+  box-shadow: var(--shadow-accent);
+  transition: var(--transition-base);
+}
+
+.btn_salvar_prefs .material-icons {
+  font-size: 18px;
+}
+
+.btn_salvar_prefs:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-accent-hover);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 600px) {
+  .prefs_card {
+    padding: 22px;
+  }
+
+  .prefs_card_head {
+    flex-direction: column;
+  }
+
+  .segmented_control {
+    flex-direction: column;
+  }
+
+  .segmented_control label {
+    justify-content: flex-start;
+  }
+
+  .prefs_toggle_row {
+    align-items: flex-start;
+  }
+
+  .prefs_actions {
+    justify-content: stretch;
+  }
+
+  .btn_salvar_prefs {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

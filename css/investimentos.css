@@ -1,0 +1,2948 @@
+/* ============================================================
+   INVESTIMENTOS
+   TEMA DINÂMICO
+   Compatível com:
+   .claro
+   .escuro
+   .sistema
+============================================================ */
+
+
+/* ============================================================
+   VARIÁVEIS - TEMA CLARO
+============================================================ */
+
+:root,
+html.claro {
+
+    --inv-bg: #f8fafc;
+    --inv-bg-alt: #ffffff;
+    --inv-card: #ffffff;
+    --inv-card-soft: #f1f5f9;
+
+    --inv-text: #0A2540;
+    --inv-text-2: #405261;
+    --inv-text-3: #666f78;
+    --inv-text-muted: #888;
+
+    --inv-border: rgba(10, 37, 64, 0.08);
+    --inv-border-strong: rgba(10, 37, 64, 0.15);
+
+    --inv-shadow: rgba(0, 0, 0, 0.08);
+    --inv-shadow-strong: rgba(0, 0, 0, 0.12);
+
+    --verde: #16E28A;
+    --verde-2: #2ecc71;
+    --verde-3: #219653;
+
+    --vermelho: #FF4757;
+    --vermelho-2: #e74c3c;
+
+    --dark: #0A2540;
+    --dark-2: #1a2a45;
+
+    --hero-bg:
+        linear-gradient(
+            135deg,
+            #e8f8f0 0%,
+            #f5fbf8 45%,
+            #dff5eb 100%
+        );
+
+    --hero-text: #0A2540;
+    --hero-paragraph: #405261;
+
+    --glass: rgba(255, 255, 255, 0.82);
+    --glass-border: rgba(46, 204, 113, 0.18);
+
+    --dark-section:
+        linear-gradient(
+            135deg,
+            #0A2540,
+            #1a2a45
+        );
+
+    --danger-bg: rgba(255, 71, 87, 0.05);
+    --danger-border: rgba(255, 71, 87, 0.2);
+
+    color-scheme: light;
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+============================================================ */
+
+html.escuro {
+
+    --inv-bg: #080d12;
+    --inv-bg-alt: #0d141b;
+    --inv-card: #111a23;
+    --inv-card-soft: #17222c;
+
+    --inv-text: #f1f5f9;
+    --inv-text-2: #cbd5df;
+    --inv-text-3: #a8b3be;
+    --inv-text-muted: #8895a1;
+
+    --inv-border: rgba(255, 255, 255, 0.08);
+    --inv-border-strong: rgba(255, 255, 255, 0.14);
+
+    --inv-shadow: rgba(0, 0, 0, 0.30);
+    --inv-shadow-strong: rgba(0, 0, 0, 0.45);
+
+    --verde: #16E28A;
+    --verde-2: #2ecc71;
+    --verde-3: #55e99f;
+
+    --vermelho: #ff5969;
+    --vermelho-2: #ff4757;
+
+    --dark: #f1f5f9;
+    --dark-2: #cbd5df;
+
+    --hero-bg:
+        linear-gradient(
+            135deg,
+            #07140f 0%,
+            #0b1914 45%,
+            #0d241a 100%
+        );
+
+    --hero-text: #f5f7fa;
+    --hero-paragraph: #cbd5df;
+
+    --glass: rgba(17, 26, 35, 0.88);
+    --glass-border: rgba(46, 204, 113, 0.20);
+
+    --dark-section:
+        linear-gradient(
+            135deg,
+            #050a0e,
+            #0c151d
+        );
+
+    --danger-bg: rgba(255, 71, 87, 0.09);
+    --danger-border: rgba(255, 71, 87, 0.25);
+
+    color-scheme: dark;
+}
+
+
+/* ============================================================
+   TEMA SISTEMA
+============================================================ */
+
+@media (prefers-color-scheme: dark) {
+
+    html.sistema {
+
+        --inv-bg: #080d12;
+        --inv-bg-alt: #0d141b;
+        --inv-card: #111a23;
+        --inv-card-soft: #17222c;
+
+        --inv-text: #f1f5f9;
+        --inv-text-2: #cbd5df;
+        --inv-text-3: #a8b3be;
+        --inv-text-muted: #8895a1;
+
+        --inv-border: rgba(255, 255, 255, 0.08);
+        --inv-border-strong: rgba(255, 255, 255, 0.14);
+
+        --inv-shadow: rgba(0, 0, 0, 0.30);
+        --inv-shadow-strong: rgba(0, 0, 0, 0.45);
+
+        --verde: #16E28A;
+        --verde-2: #2ecc71;
+        --verde-3: #55e99f;
+
+        --vermelho: #ff5969;
+        --vermelho-2: #ff4757;
+
+        --dark: #f1f5f9;
+        --dark-2: #cbd5df;
+
+        --hero-bg:
+            linear-gradient(
+                135deg,
+                #07140f 0%,
+                #0b1914 45%,
+                #0d241a 100%
+            );
+
+        --hero-text: #f5f7fa;
+        --hero-paragraph: #cbd5df;
+
+        --glass: rgba(17, 26, 35, 0.88);
+        --glass-border: rgba(46, 204, 113, 0.20);
+
+        --dark-section:
+            linear-gradient(
+                135deg,
+                #050a0e,
+                #0c151d
+            );
+
+        --danger-bg: rgba(255, 71, 87, 0.09);
+        --danger-border: rgba(255, 71, 87, 0.25);
+
+        color-scheme: dark;
+    }
+}
+
+
+/* ============================================================
+   TEMA SISTEMA - CLARO
+============================================================ */
+
+@media (prefers-color-scheme: light) {
+
+    html.sistema {
+
+        --inv-bg: #f8fafc;
+        --inv-bg-alt: #ffffff;
+        --inv-card: #ffffff;
+        --inv-card-soft: #f1f5f9;
+
+        --inv-text: #0A2540;
+        --inv-text-2: #405261;
+        --inv-text-3: #666f78;
+        --inv-text-muted: #888;
+
+        --inv-border: rgba(10, 37, 64, 0.08);
+        --inv-border-strong: rgba(10, 37, 64, 0.15);
+
+        --inv-shadow: rgba(0, 0, 0, 0.08);
+        --inv-shadow-strong: rgba(0, 0, 0, 0.12);
+
+        --verde: #16E28A;
+        --verde-2: #2ecc71;
+        --verde-3: #219653;
+
+        --vermelho: #FF4757;
+        --vermelho-2: #e74c3c;
+
+        --dark: #0A2540;
+        --dark-2: #1a2a45;
+
+        --hero-bg:
+            linear-gradient(
+                135deg,
+                #e8f8f0 0%,
+                #f5fbf8 45%,
+                #dff5eb 100%
+            );
+
+        --hero-text: #0A2540;
+        --hero-paragraph: #405261;
+
+        --glass: rgba(255, 255, 255, 0.82);
+        --glass-border: rgba(46, 204, 113, 0.18);
+
+        --dark-section:
+            linear-gradient(
+                135deg,
+                #0A2540,
+                #1a2a45
+            );
+
+        --danger-bg: rgba(255, 71, 87, 0.05);
+        --danger-border: rgba(255, 71, 87, 0.2);
+
+        color-scheme: light;
+    }
+}
+
+
+/* ============================================================
+   BASE
+============================================================ */
+
+html,
+body {
+    background: var(--inv-bg);
+    color: var(--inv-text);
+}
+
+body {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+main {
+    background: var(--inv-bg);
+}
+
+section {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* ============================================================
+   HERO DIVERSIFICAÇÃO
+============================================================ */
+
+.hero_fixa {
+
+    padding-top: 80px;
+    min-height: 85vh;
+
+    display: flex;
+    align-items: center;
+
+    background: var(--hero-bg);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero_fixa::before {
+
+    content: '';
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    background: rgba(46, 204, 113, 0.12);
+
+    left: -200px;
+    bottom: -150px;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+.hero_fixa::after {
+
+    content: '';
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(46, 204, 113, 0.10);
+
+    right: -150px;
+    top: -100px;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+.hero_fixa_container {
+
+    width: 100%;
+    max-width: 1300px;
+
+    margin: auto;
+    padding: 60px 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 60px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.hero_fixa_content {
+    flex: 1;
+}
+
+.tag_fixa {
+
+    display: inline-block;
+
+    background: rgba(46, 204, 113, 0.12);
+    color: var(--verde-3);
+
+    border: 1px solid rgba(46, 204, 113, 0.35);
+
+    padding: 10px 18px;
+
+    border-radius: 50px;
+
+    margin-bottom: 25px;
+
+    font-weight: 700;
+}
+
+.hero_fixa_content h1 {
+
+    color: var(--hero-text);
+
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+
+    line-height: 1.2;
+
+    margin-bottom: 25px;
+
+    font-weight: 800;
+}
+
+.hero_fixa_content h1 .destaque {
+
+    color: var(--verde);
+
+    background:
+        linear-gradient(
+            135deg,
+            #2ecc71,
+            #219653
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero_fixa_content p {
+
+    color: var(--hero-paragraph);
+
+    font-size: 1.15rem;
+
+    line-height: 1.8;
+
+    max-width: 550px;
+
+    margin-bottom: 35px;
+}
+
+
+/* ============================================================
+   BOTÕES HERO
+============================================================ */
+
+.hero_fixa_buttons {
+
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn_fixa_primary,
+.btn_fixa_secondary {
+
+    border: none;
+
+    cursor: pointer;
+
+    border-radius: 50px;
+
+    padding: 15px 30px;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.btn_fixa_primary {
+
+    background: var(--verde-2);
+
+    color: #ffffff;
+}
+
+.btn_fixa_primary:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(46, 204, 113, 0.35);
+}
+
+.btn_fixa_secondary {
+
+    background: var(--inv-card);
+
+    color: var(--inv-text);
+
+    border: 1px solid var(--inv-border-strong);
+}
+
+.btn_fixa_secondary:hover {
+
+    transform: translateY(-3px);
+
+    background: var(--inv-card-soft);
+}
+
+
+/* ============================================================
+   CARD HERO
+============================================================ */
+
+.hero_fixa_card {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.card_fixa_info {
+
+    width: 320px;
+
+    background: var(--glass);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid var(--glass-border);
+
+    border-radius: 28px;
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+
+    box-shadow:
+        0 20px 50px var(--inv-shadow);
+}
+
+.taxa_info {
+
+    text-align: center;
+
+    padding: 15px;
+
+    background: var(--inv-card-soft);
+
+    border-radius: 20px;
+
+    transition: 0.3s;
+}
+
+.taxa_info:hover {
+
+    transform: translateY(-5px);
+
+    background: rgba(46, 204, 113, 0.10);
+}
+
+.taxa_info span {
+
+    color: var(--inv-text-3);
+
+    font-size: 14px;
+}
+
+.taxa_info h3 {
+
+    color: var(--verde-3);
+
+    font-size: 2rem;
+
+    margin: 8px 0;
+
+    font-weight: 800;
+}
+
+.taxa_info small {
+
+    color: var(--inv-text-muted);
+}
+
+
+/* ============================================================
+   TÍTULOS
+============================================================ */
+
+.section_title {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.section_title h2 {
+
+    font-size: 2.8rem;
+
+    margin-bottom: 15px;
+
+    color: var(--inv-text);
+}
+
+.section_title h2 .destaque {
+
+    color: var(--verde);
+}
+
+.section_title p {
+
+    color: var(--inv-text-3);
+
+    max-width: 650px;
+
+    margin: auto;
+
+    line-height: 1.8;
+}
+
+
+/* ============================================================
+   O QUE É
+============================================================ */
+
+.o_que_e {
+
+    padding: 80px 20px;
+
+    background: var(--inv-bg);
+}
+
+.explicacao_container {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 60px;
+
+    background: var(--inv-card);
+
+    border-radius: 28px;
+
+    padding: 50px;
+
+    box-shadow:
+        0 10px 40px var(--inv-shadow);
+}
+
+.explicacao_texto {
+    flex: 2;
+}
+
+.explicacao_texto p {
+
+    color: var(--inv-text-2);
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+
+    font-size: 1.05rem;
+}
+
+.explicacao_texto strong {
+
+    color: var(--inv-text);
+}
+
+.destaque_box {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22, 226, 138, 0.10),
+            rgba(22, 226, 138, 0.03)
+        );
+
+    border-left: 4px solid var(--verde);
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    margin-top: 25px;
+}
+
+.destaque_box span {
+
+    font-weight: 700;
+
+    color: var(--verde);
+
+    display: block;
+
+    margin-bottom: 8px;
+}
+
+.destaque_box p {
+
+    margin-bottom: 0;
+
+    color: var(--inv-text-2);
+}
+
+.explicacao_icon {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.icon_circle {
+
+    width: 180px;
+    height: 180px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22, 226, 138, 0.15),
+            rgba(22, 226, 138, 0.05)
+        );
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 5rem;
+
+    border:
+        2px solid rgba(22, 226, 138, 0.3);
+}
+
+
+/* ============================================================
+   COMO FUNCIONA
+============================================================ */
+
+.como_funciona_fixa {
+
+    padding: 80px 20px;
+
+    background: var(--inv-bg-alt);
+}
+
+.steps_fixa {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(240px, 1fr)
+        );
+
+    gap: 30px;
+}
+
+.step_fixa {
+
+    text-align: center;
+
+    padding: 35px 25px;
+
+    background: var(--inv-card);
+
+    border-radius: 24px;
+
+    transition: 0.35s;
+
+    border:
+        1px solid var(--inv-border);
+}
+
+.step_fixa:hover {
+
+    transform: translateY(-10px);
+
+    border-color: var(--verde);
+
+    box-shadow:
+        0 20px 40px var(--inv-shadow-strong);
+}
+
+.step_num {
+
+    width: 60px;
+    height: 60px;
+
+    background: var(--verde);
+
+    color: #06120c;
+
+    font-size: 1.8rem;
+
+    font-weight: 800;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 20px;
+}
+
+.step_fixa h3 {
+
+    color: var(--inv-text);
+
+    margin-bottom: 12px;
+
+    font-size: 1.3rem;
+}
+
+.step_fixa p {
+
+    color: var(--inv-text-3);
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   TIPOS DE DIVERSIFICAÇÃO
+============================================================ */
+
+.tipos_fixa {
+
+    padding: 80px 20px;
+
+    background: var(--inv-bg);
+}
+
+.tipos_grid_fixa {
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 30px;
+}
+
+.tipo_card_fixa {
+
+    background: var(--inv-card);
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    transition: 0.35s;
+
+    border:
+        1px solid var(--inv-border);
+}
+
+.tipo_card_fixa:hover {
+
+    transform: translateY(-8px);
+
+    border-color: var(--verde);
+
+    box-shadow:
+        0 20px 40px var(--inv-shadow-strong);
+}
+
+.tipo_icon_fixa {
+
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(22, 226, 138, 0.10);
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.tipo_card_fixa:hover .tipo_icon_fixa {
+
+    transform: scale(1.05);
+
+    background: rgba(22, 226, 138, 0.18);
+}
+
+.tipo_icon_fixa img {
+
+    width: 50px;
+    height: 50px;
+
+    object-fit: contain;
+}
+
+.tipo_card_fixa h3 {
+
+    color: var(--inv-text);
+
+    margin-bottom: 15px;
+}
+
+.tipo_desc_fixa {
+
+    color: var(--inv-text-3);
+
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+}
+
+.tipo_vantagens_fixa {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.tipo_vantagens_fixa span {
+
+    background:
+        rgba(22, 226, 138, 0.10);
+
+    padding: 5px 12px;
+
+    border-radius: 50px;
+
+    font-size: 0.8rem;
+
+    color: var(--inv-text);
+}
+
+.tipo_rentabilidade_fixa {
+
+    color: var(--inv-text);
+
+    font-size: 0.9rem;
+
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid var(--inv-border);
+}
+
+
+/* ============================================================
+   VANTAGENS / DESVANTAGENS
+============================================================ */
+
+.prós_contrass {
+
+    padding: 80px 20px;
+
+    background: var(--inv-bg-alt);
+}
+
+.comparativo_grid {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(300px, 1fr)
+        );
+
+    gap: 40px;
+}
+
+.vantagens_box,
+.desvantagens_box {
+
+    padding: 35px;
+
+    border-radius: 24px;
+
+    transition: 0.35s;
+}
+
+.vantagens_box {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22, 226, 138, 0.10),
+            rgba(22, 226, 138, 0.03)
+        );
+
+    border:
+        1px solid rgba(22, 226, 138, 0.22);
+}
+
+.desvantagens_box {
+
+    background: var(--danger-bg);
+
+    border:
+        1px solid var(--danger-border);
+}
+
+.vantagens_box h3,
+.desvantagens_box h3 {
+
+    font-size: 1.8rem;
+
+    margin-bottom: 25px;
+}
+
+.vantagens_box h3 {
+    color: var(--verde);
+}
+
+.desvantagens_box h3 {
+    color: var(--vermelho);
+}
+
+.vantagens_box ul,
+.desvantagens_box ul {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+}
+
+.vantagens_box li,
+.desvantagens_box li {
+
+    padding: 10px 0;
+
+    color: var(--inv-text-2);
+
+    line-height: 1.6;
+
+    border-bottom:
+        1px solid var(--inv-border);
+}
+
+.vantagens_box li:last-child,
+.desvantagens_box li:last-child {
+
+    border-bottom: none;
+}
+
+
+/* ============================================================
+   DICAS PRÁTICAS
+============================================================ */
+
+.dicas_praticas {
+
+    padding: 80px 20px;
+
+    background: var(--dark-section) !important;
+}
+
+.dicas_praticas .section_title h2 {
+    color: #ffffff;
+}
+
+.dicas_praticas .section_title p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.dicas_grid {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.dica_item {
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    display: flex;
+
+    gap: 25px;
+
+    align-items: flex-start;
+
+    transition: 0.3s;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+}
+
+.dica_item:hover {
+
+    transform: translateX(10px);
+
+    background:
+        rgba(22, 226, 138, 0.10);
+}
+
+.dica_num {
+
+    font-size: 2rem;
+
+    font-weight: 800;
+
+    color: var(--verde);
+
+    min-width: 60px;
+}
+
+.dica_content h3 {
+
+    color: #ffffff;
+
+    margin-bottom: 8px;
+}
+
+.dica_content p {
+
+    color: rgba(255, 255, 255, 0.78);
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   EXEMPLO PRÁTICO
+============================================================ */
+
+.exemplo_container {
+
+    padding: 80px 20px;
+
+    background: var(--inv-bg);
+}
+
+.exemplo_box {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    background: var(--inv-card);
+
+    border-radius: 32px;
+
+    padding: 50px;
+
+    box-shadow:
+        0 20px 50px var(--inv-shadow);
+}
+
+.exemplo_header {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.exemplo_header span {
+
+    display: inline-block;
+
+    background:
+        rgba(22, 226, 138, 0.10);
+
+    color: var(--verde);
+
+    padding: 6px 15px;
+
+    border-radius: 50px;
+
+    font-size: 0.85rem;
+
+    margin-bottom: 15px;
+}
+
+.exemplo_header h2 {
+
+    font-size: 2rem;
+
+    color: var(--inv-text);
+}
+
+.exemplo_calc {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+.exemplo_valor {
+
+    text-align: center;
+
+    padding: 20px;
+
+    background: var(--inv-card-soft);
+
+    border-radius: 20px;
+
+    min-width: 180px;
+}
+
+.exemplo_valor h4 {
+
+    color: var(--inv-text-3);
+
+    font-size: 0.9rem;
+
+    margin-bottom: 10px;
+}
+
+.valor_grande {
+
+    font-size: 1.8rem;
+
+    font-weight: 800;
+
+    color: var(--inv-text);
+}
+
+.valor_medio {
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+
+    color: var(--inv-text);
+}
+
+.valor_grande.destaque {
+
+    color: var(--verde);
+}
+
+.exemplo_seta {
+
+    font-size: 2rem;
+
+    color: var(--verde);
+
+    font-weight: 800;
+}
+
+.exemplo_nota {
+
+    text-align: center;
+
+    color: var(--inv-text-muted);
+
+    font-size: 0.85rem;
+
+    margin-top: 25px;
+}
+
+
+/* ============================================================
+   CTA FINAL
+============================================================ */
+
+.cta_fixa {
+
+    padding: 80px 20px;
+
+    background:
+        var(--dark-section) !important;
+
+    text-align: center;
+}
+
+.cta_fixa_content {
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+.cta_fixa_content h2 {
+
+    color: #ffffff;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 20px;
+}
+
+.cta_fixa_content p {
+
+    color: rgba(255, 255, 255, 0.82);
+
+    margin-bottom: 35px;
+
+    font-size: 1.1rem;
+}
+
+.cta_fixa_buttons {
+
+    display: flex;
+
+    gap: 20px;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+.btn_cta {
+
+    background: var(--verde);
+
+    color: #06120c;
+
+    border: none;
+
+    border-radius: 50px;
+
+    padding: 15px 35px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    font-size: 1rem;
+}
+
+.btn_cta:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(22, 226, 138, 0.35);
+}
+
+.btn_cta_sec {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: #ffffff;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 50px;
+
+    padding: 15px 35px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn_cta_sec:hover {
+
+    transform: translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* ============================================================
+   ============================================================
+   RENDA VARIÁVEL
+   ============================================================
+============================================================ */
+
+
+/* ============================================================
+   HERO VARIÁVEL
+============================================================ */
+
+.hero_variavel {
+
+    padding-top: 120px;
+
+    min-height: 85vh;
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1a1a2e 0%,
+            #16213e 50%,
+            #0f3460 100%
+        );
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.hero_variavel::before {
+
+    content: '';
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 71, 87, 0.06);
+
+    right: -200px;
+    bottom: -150px;
+
+    filter: blur(100px);
+}
+
+.hero_variavel_container {
+
+    width: 100%;
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    padding: 60px 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 60px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.hero_variavel_content {
+    flex: 1;
+}
+
+.tag_variavel {
+
+    display: inline-block;
+
+    background:
+        rgba(255, 71, 87, 0.12);
+
+    color: #ff6b79;
+
+    border:
+        1px solid rgba(255, 71, 87, 0.3);
+
+    padding: 10px 18px;
+
+    border-radius: 50px;
+
+    margin-bottom: 25px;
+
+    font-weight: 600;
+}
+
+.hero_variavel_content h1 {
+
+    color: #ffffff;
+
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+
+    line-height: 1.2;
+
+    margin-bottom: 25px;
+
+    font-weight: 800;
+}
+
+.hero_variavel_content h1 .destaque {
+
+    color: var(--vermelho);
+
+    background:
+        linear-gradient(
+            135deg,
+            #FF4757,
+            #ff6b81
+        );
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.hero_variavel_content p {
+
+    color:
+        rgba(255, 255, 255, 0.85);
+
+    font-size: 1.15rem;
+
+    line-height: 1.8;
+
+    max-width: 550px;
+
+    margin-bottom: 35px;
+}
+
+.hero_variavel_buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.btn_variavel_primary,
+.btn_variavel_secondary {
+
+    border: none;
+
+    cursor: pointer;
+
+    border-radius: 50px;
+
+    padding: 15px 30px;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.btn_variavel_primary {
+
+    background: var(--vermelho);
+
+    color: white;
+}
+
+.btn_variavel_primary:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(255, 71, 87, 0.35);
+}
+
+.btn_variavel_secondary {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn_variavel_secondary:hover {
+
+    transform: translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* ============================================================
+   CARD VARIÁVEL
+============================================================ */
+
+.hero_variavel_card {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.card_variavel_info {
+
+    width: 320px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(15px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: 28px;
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+.indice_info {
+
+    text-align: center;
+
+    padding: 15px;
+
+    background:
+        rgba(0, 0, 0, 0.20);
+
+    border-radius: 20px;
+
+    transition: 0.3s;
+}
+
+.indice_info:hover {
+
+    transform: translateY(-5px);
+
+    background:
+        rgba(255, 71, 87, 0.10);
+}
+
+.indice_info span {
+
+    color:
+        rgba(255, 255, 255, 0.70);
+
+    font-size: 14px;
+}
+
+.indice_info h3 {
+
+    font-size: 2rem;
+
+    margin: 8px 0;
+
+    font-weight: 800;
+
+    color: #ffffff;
+}
+
+.indice_info h3.positivo {
+    color: var(--verde);
+}
+
+.indice_info small {
+
+    color:
+        rgba(255, 255, 255, 0.60);
+}
+
+
+/* ============================================================
+   O QUE É VARIÁVEL
+============================================================ */
+
+.o_que_e_variavel {
+
+    padding: 80px 20px;
+
+    background: var(--inv-bg);
+}
+
+.explicacao_container_variavel {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 60px;
+
+    background: var(--inv-card);
+
+    border-radius: 28px;
+
+    padding: 50px;
+
+    box-shadow:
+        0 10px 40px var(--inv-shadow);
+}
+
+.explicacao_texto_variavel {
+    flex: 2;
+}
+
+.explicacao_texto_variavel p {
+
+    color: var(--inv-text-2);
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+
+    font-size: 1.05rem;
+}
+
+.explicacao_texto_variavel strong {
+    color: var(--inv-text);
+}
+
+.destaque_box_variavel {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 71, 87, 0.10),
+            rgba(255, 71, 87, 0.03)
+        );
+
+    border-left:
+        4px solid var(--vermelho);
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    margin-top: 25px;
+}
+
+.destaque_box_variavel span {
+
+    font-weight: 700;
+
+    color: var(--vermelho);
+
+    display: block;
+
+    margin-bottom: 8px;
+}
+
+.destaque_box_variavel p {
+
+    color: var(--inv-text-2);
+}
+
+.explicacao_icon_variavel {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.icon_circle_variavel {
+
+    width: 180px;
+    height: 180px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 71, 87, 0.15),
+            rgba(255, 71, 87, 0.05)
+        );
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 5rem;
+
+    border:
+        2px solid rgba(255, 71, 87, 0.3);
+}
+
+
+/* ============================================================
+   COMO FUNCIONA VARIÁVEL
+============================================================ */
+
+.como_funciona_variavel {
+
+    padding: 80px 20px;
+
+    background: var(--inv-bg-alt);
+}
+
+.steps_variavel {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(240px, 1fr)
+        );
+
+    gap: 30px;
+}
+
+.step_variavel {
+
+    text-align: center;
+
+    padding: 35px 25px;
+
+    background: var(--inv-card);
+
+    border-radius: 24px;
+
+    transition: 0.35s;
+
+    border:
+        1px solid var(--inv-border);
+}
+
+.step_variavel:hover {
+
+    transform: translateY(-10px);
+
+    border-color: var(--vermelho);
+
+    box-shadow:
+        0 20px 40px var(--inv-shadow-strong);
+}
+
+.step_num_variavel {
+
+    width: 60px;
+    height: 60px;
+
+    background: var(--vermelho);
+
+    color: white;
+
+    font-size: 1.8rem;
+
+    font-weight: 800;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 20px;
+}
+
+.step_variavel h3 {
+
+    color: var(--inv-text);
+
+    margin-bottom: 12px;
+}
+
+.step_variavel p {
+
+    color: var(--inv-text-3);
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   TIPOS VARIÁVEL
+============================================================ */
+
+.tipos_variavel {
+
+    padding: 80px 20px;
+
+    background: var(--inv-bg);
+}
+
+.tipos_grid_variavel {
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 30px;
+}
+
+.tipo_card_variavel {
+
+    background: var(--inv-card);
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    transition: 0.35s;
+
+    border:
+        1px solid var(--inv-border);
+}
+
+.tipo_card_variavel:hover {
+
+    transform: translateY(-8px);
+
+    border-color: var(--vermelho);
+
+    box-shadow:
+        0 20px 40px var(--inv-shadow-strong);
+}
+
+.tipo_icon_variavel {
+
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(255, 71, 87, 0.10);
+
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+
+.tipo_icon_variavel img {
+
+    width: 50px;
+    height: 50px;
+
+    object-fit: contain;
+}
+
+.tipo_card_variavel h3 {
+
+    color: var(--inv-text);
+
+    margin-bottom: 15px;
+}
+
+.tipo_desc_variavel {
+
+    color: var(--inv-text-3);
+
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+}
+
+.tipo_vantagens_variavel {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.tipo_vantagens_variavel span {
+
+    background:
+        rgba(255, 71, 87, 0.10);
+
+    padding: 5px 12px;
+
+    border-radius: 50px;
+
+    font-size: 0.8rem;
+
+    color: var(--inv-text);
+}
+
+.tipo_rentabilidade_variavel {
+
+    color: var(--inv-text);
+
+    font-size: 0.9rem;
+
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid var(--inv-border);
+}
+
+
+/* ============================================================
+   COMPARATIVO VARIÁVEL
+============================================================ */
+
+.prós_contrass_variavel {
+
+    padding: 80px 20px;
+
+    background: var(--inv-bg-alt);
+}
+
+.comparativo_grid_variavel {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(300px, 1fr)
+        );
+
+    gap: 40px;
+}
+
+.vantagens_box_variavel,
+.desvantagens_box_variavel {
+
+    padding: 35px;
+
+    border-radius: 24px;
+
+    transition: 0.35s;
+}
+
+.vantagens_box_variavel {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22, 226, 138, 0.10),
+            rgba(22, 226, 138, 0.03)
+        );
+
+    border:
+        1px solid rgba(22, 226, 138, 0.22);
+}
+
+.desvantagens_box_variavel {
+
+    background:
+        var(--danger-bg);
+
+    border:
+        1px solid var(--danger-border);
+}
+
+.vantagens_box_variavel h3 {
+
+    color: var(--verde);
+
+    font-size: 1.8rem;
+
+    margin-bottom: 25px;
+}
+
+.desvantagens_box_variavel h3 {
+
+    color: var(--vermelho);
+
+    font-size: 1.8rem;
+
+    margin-bottom: 25px;
+}
+
+.vantagens_box_variavel ul,
+.desvantagens_box_variavel ul {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+}
+
+.vantagens_box_variavel li,
+.desvantagens_box_variavel li {
+
+    padding: 10px 0;
+
+    color: var(--inv-text-2);
+
+    line-height: 1.6;
+
+    border-bottom:
+        1px solid var(--inv-border);
+}
+
+
+/* ============================================================
+   DICAS VARIÁVEL
+============================================================ */
+
+.dicas_praticas_variavel {
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1a1a2e,
+            #16213e
+        );
+}
+
+.dicas_praticas_variavel .section_title h2 {
+    color: white;
+}
+
+.dicas_praticas_variavel .section_title p {
+    color:
+        rgba(255, 255, 255, 0.8);
+}
+
+.dicas_grid_variavel {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.dica_item_variavel {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    display: flex;
+
+    gap: 25px;
+
+    align-items: flex-start;
+
+    transition: 0.3s;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dica_item_variavel:hover {
+
+    transform: translateX(10px);
+
+    background:
+        rgba(255, 71, 87, 0.10);
+}
+
+.dica_num_variavel {
+
+    font-size: 2rem;
+
+    font-weight: 800;
+
+    color: var(--vermelho);
+
+    min-width: 60px;
+}
+
+.dica_content_variavel h3 {
+
+    color: white;
+
+    margin-bottom: 8px;
+}
+
+.dica_content_variavel p {
+
+    color:
+        rgba(255, 255, 255, 0.8);
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   EXEMPLO VARIÁVEL
+============================================================ */
+
+.exemplo_container_variavel {
+
+    padding: 80px 20px;
+
+    background: var(--inv-bg);
+}
+
+.exemplo_box_variavel {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    background: var(--inv-card);
+
+    border-radius: 32px;
+
+    padding: 50px;
+
+    box-shadow:
+        0 20px 50px var(--inv-shadow);
+}
+
+.exemplo_header_variavel {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.exemplo_header_variavel span {
+
+    display: inline-block;
+
+    background:
+        rgba(255, 71, 87, 0.10);
+
+    color: var(--vermelho);
+
+    padding: 6px 15px;
+
+    border-radius: 50px;
+
+    font-size: 0.85rem;
+
+    margin-bottom: 15px;
+}
+
+.exemplo_header_variavel h2 {
+
+    font-size: 2rem;
+
+    color: var(--inv-text);
+}
+
+.exemplo_calc_variavel {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+.exemplo_valor_variavel {
+
+    text-align: center;
+
+    padding: 20px;
+
+    background: var(--inv-card-soft);
+
+    border-radius: 20px;
+
+    min-width: 180px;
+}
+
+.exemplo_valor_variavel h4 {
+
+    color: var(--inv-text-3);
+
+    font-size: 0.9rem;
+
+    margin-bottom: 10px;
+}
+
+.exemplo_seta_variavel {
+
+    font-size: 2rem;
+
+    color: var(--vermelho);
+
+    font-weight: 800;
+}
+
+.exemplo_nota_variavel {
+
+    text-align: center;
+
+    color: var(--inv-text-muted);
+
+    font-size: 0.85rem;
+
+    margin-top: 25px;
+}
+
+
+/* ============================================================
+   CTA VARIÁVEL
+============================================================ */
+
+.cta_variavel {
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1a1a2e,
+            #16213e
+        );
+
+    text-align: center;
+}
+
+.cta_variavel_content {
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+.cta_variavel_content h2 {
+
+    color: white;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 20px;
+}
+
+.cta_variavel_content p {
+
+    color:
+        rgba(255, 255, 255, 0.85);
+
+    margin-bottom: 35px;
+
+    font-size: 1.1rem;
+}
+
+.cta_variavel_buttons {
+
+    display: flex;
+
+    gap: 20px;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+.btn_cta_variavel {
+
+    background: var(--vermelho);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 50px;
+
+    padding: 15px 35px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    font-size: 1rem;
+}
+
+.btn_cta_variavel:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(255, 71, 87, 0.35);
+}
+
+.btn_cta_sec_variavel {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 50px;
+
+    padding: 15px 35px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn_cta_sec_variavel:hover {
+
+    transform: translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* ============================================================
+   CORREÇÕES ESPECÍFICAS PARA TEMA ESCURO
+   Evita QUALQUER área branca sobrando
+============================================================ */
+
+html.escuro .o_que_e,
+html.escuro .tipos_fixa,
+html.escuro .exemplo_container,
+html.escuro .tipos_variavel,
+html.escuro .exemplo_container_variavel {
+
+    background: var(--inv-bg);
+}
+
+html.escuro .como_funciona_fixa,
+html.escuro .prós_contrass,
+html.escuro .como_funciona_variavel,
+html.escuro .prós_contrass_variavel {
+
+    background: var(--inv-bg-alt);
+}
+
+html.escuro .explicacao_container,
+html.escuro .tipo_card_fixa,
+html.escuro .tipo_card_variavel,
+html.escuro .step_fixa,
+html.escuro .step_variavel,
+html.escuro .exemplo_box,
+html.escuro .exemplo_box_variavel {
+
+    background: var(--inv-card);
+}
+
+html.escuro .exemplo_valor,
+html.escuro .exemplo_valor_variavel,
+html.escuro .taxa_info {
+
+    background: var(--inv-card-soft);
+}
+
+
+/* ============================================================
+   CORREÇÕES SISTEMA ESCURO
+============================================================ */
+
+@media (prefers-color-scheme: dark) {
+
+    html.sistema .o_que_e,
+    html.sistema .tipos_fixa,
+    html.sistema .exemplo_container,
+    html.sistema .tipos_variavel,
+    html.sistema .exemplo_container_variavel {
+
+        background: var(--inv-bg);
+    }
+
+    html.sistema .como_funciona_fixa,
+    html.sistema .prós_contrass,
+    html.sistema .como_funciona_variavel,
+    html.sistema .prós_contrass_variavel {
+
+        background: var(--inv-bg-alt);
+    }
+
+    html.sistema .explicacao_container,
+    html.sistema .tipo_card_fixa,
+    html.sistema .tipo_card_variavel,
+    html.sistema .step_fixa,
+    html.sistema .step_variavel,
+    html.sistema .exemplo_box,
+    html.sistema .exemplo_box_variavel {
+
+        background: var(--inv-card);
+    }
+
+    html.sistema .exemplo_valor,
+    html.sistema .exemplo_valor_variavel,
+    html.sistema .taxa_info {
+
+        background: var(--inv-card-soft);
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVO
+============================================================ */
+
+@media (max-width: 992px) {
+
+    .hero_fixa_container,
+    .hero_variavel_container {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 40px 20px;
+    }
+
+    .hero_fixa_content p,
+    .hero_variavel_content p {
+
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+    .hero_fixa_buttons,
+    .hero_variavel_buttons {
+
+        justify-content: center;
+    }
+
+    .explicacao_container,
+    .explicacao_container_variavel {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 35px;
+    }
+
+    .exemplo_calc,
+    .exemplo_calc_variavel {
+
+        flex-direction: column;
+    }
+
+    .exemplo_seta,
+    .exemplo_seta_variavel {
+
+        transform: rotate(90deg);
+    }
+
+    .dica_item,
+    .dica_item_variavel {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        align-items: center;
+    }
+
+    .dica_item:hover,
+    .dica_item_variavel:hover {
+
+        transform: translateY(-5px);
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .hero_fixa_content h1,
+    .hero_variavel_content h1 {
+
+        font-size: 2rem;
+    }
+
+    .section_title h2 {
+
+        font-size: 1.8rem;
+    }
+
+    .card_fixa_info,
+    .card_variavel_info {
+
+        width: 100%;
+
+        max-width: 320px;
+
+        margin: 0 auto;
+    }
+
+    .exemplo_box,
+    .exemplo_box_variavel {
+
+        padding: 30px;
+    }
+
+    .tipo_card_fixa,
+    .tipo_card_variavel {
+
+        padding: 25px;
+    }
+
+    .cta_fixa_content h2,
+    .cta_variavel_content h2 {
+
+        font-size: 2rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .hero_fixa {
+        padding-top: 100px;
+    }
+
+    .hero_variavel {
+        padding-top: 100px;
+    }
+
+    .hero_fixa_container,
+    .hero_variavel_container {
+
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .explicacao_container,
+    .explicacao_container_variavel {
+
+        padding: 25px 20px;
+    }
+
+    .exemplo_box,
+    .exemplo_box_variavel {
+
+        padding: 25px 18px;
+    }
+
+    .cta_fixa,
+    .cta_variavel {
+
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .btn_fixa_primary,
+    .btn_fixa_secondary,
+    .btn_cta,
+    .btn_cta_sec,
+    .btn_variavel_primary,
+    .btn_variavel_secondary,
+    .btn_cta_variavel,
+    .btn_cta_sec_variavel {
+
+        width: 100%;
+    }
+}
+
+
+
+/* ============================================================
+   AFDE / Liquid Glass — Renda Fixa padronizada
+   Override scoped: não altera as outras páginas de investimentos.
+============================================================ */
+body.renda-fixa-page {
+    overflow-x: hidden;
+    background:
+        radial-gradient(ellipse at 12% 8%, rgba(93,139,255,.22), transparent 32%),
+        radial-gradient(ellipse at 88% 18%, rgba(55,229,177,.15), transparent 31%),
+        radial-gradient(ellipse at 52% 112%, rgba(151,94,255,.15), transparent 34%),
+        linear-gradient(135deg, #070b16, #101a32) !important;
+    color: #f6f9ff;
+}
+body.renda-fixa-page main { background: transparent !important; }
+body.renda-fixa-page .hero_fixa {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 72px 20px 80px;
+    background: transparent !important;
+}
+body.renda-fixa-page .hero_fixa::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background:
+        radial-gradient(circle at 78% 34%, rgba(55,229,177,.18), transparent 24%),
+        linear-gradient(135deg, rgba(7,11,22,.82), rgba(16,26,50,.72));
+    pointer-events: none;
+}
+body.renda-fixa-page .hero_fixa_container {
+    max-width: 1160px;
+    min-height: 430px;
+    gap: clamp(30px, 6vw, 90px);
+    padding: 42px clamp(24px, 5vw, 64px);
+    border: 1px solid rgba(225,239,255,.20);
+    border-radius: 28px;
+    background: linear-gradient(145deg, rgba(26,40,72,.78), rgba(20,31,57,.52));
+    box-shadow: 0 24px 80px rgba(0,0,0,.30), inset 0 1px rgba(255,255,255,.12);
+    backdrop-filter: blur(26px) saturate(165%);
+    -webkit-backdrop-filter: blur(26px) saturate(165%);
+}
+body.renda-fixa-page .tag_fixa {
+    display: inline-flex;
+    padding: 9px 16px;
+    border: 1px solid rgba(105,232,187,.38);
+    border-radius: 999px;
+    background: rgba(105,232,187,.11);
+    color: #69e8bb !important;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+body.renda-fixa-page .hero_fixa h1 {
+    color: #f6f9ff !important;
+    font-size: clamp(2.35rem, 5vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -.055em;
+}
+body.renda-fixa-page .hero_fixa h1 .destaque,
+body.renda-fixa-page .destaque { color: #69e8bb !important; }
+body.renda-fixa-page .hero_fixa p { color: rgba(227,235,255,.68) !important; line-height: 1.75; }
+body.renda-fixa-page .hero_fixa_buttons button,
+body.renda-fixa-page .btn_cta,
+body.renda-fixa-page .btn_cta_sec {
+    border-radius: 14px;
+    border: 1px solid rgba(225,239,255,.22);
+    box-shadow: 0 12px 28px rgba(0,0,0,.20), inset 0 1px rgba(255,255,255,.18);
+}
+body.renda-fixa-page .btn_fixa_primary,
+body.renda-fixa-page .btn_cta {
+    background: linear-gradient(135deg, #69e8bb, #78a9ff) !important;
+    color: #071522 !important;
+}
+body.renda-fixa-page .btn_fixa_secondary,
+body.renda-fixa-page .btn_cta_sec {
+    background: rgba(255,255,255,.07) !important;
+    color: #f6f9ff !important;
+}
+body.renda-fixa-page .hero_fixa_card {
+    border: 1px solid rgba(225,239,255,.18);
+    border-radius: 24px;
+    background: rgba(2,10,25,.28) !important;
+    box-shadow: inset 0 1px rgba(255,255,255,.10), 0 18px 45px rgba(0,0,0,.20);
+    backdrop-filter: blur(18px);
+}
+body.renda-fixa-page .card_fixa_info { gap: 16px; }
+body.renda-fixa-page .taxa_info {
+    border: 1px solid rgba(225,239,255,.16);
+    border-radius: 17px;
+    background: rgba(255,255,255,.07) !important;
+    box-shadow: inset 0 1px rgba(255,255,255,.10);
+}
+body.renda-fixa-page .taxa_info span,
+body.renda-fixa-page .taxa_info small { color: rgba(227,235,255,.60) !important; }
+body.renda-fixa-page .taxa_info h3 { color: #69e8bb !important; }
+
+body.renda-fixa-page .o_que_e,
+body.renda-fixa-page .como_funciona_fixa,
+body.renda-fixa-page .tipos_fixa,
+body.renda-fixa-page .prós_contrass,
+body.renda-fixa-page .exemplo_container {
+    background: transparent !important;
+    color: #f6f9ff;
+}
+body.renda-fixa-page .o_que_e,
+body.renda-fixa-page .como_funciona_fixa,
+body.renda-fixa-page .tipos_fixa,
+body.renda-fixa-page .prós_contrass,
+body.renda-fixa-page .dicas_praticas,
+body.renda-fixa-page .exemplo_container { padding-top: 82px; padding-bottom: 82px; }
+body.renda-fixa-page .section_title h2,
+body.renda-fixa-page .section_title h2 .destaque { color: #f6f9ff !important; }
+body.renda-fixa-page .section_title h2 .destaque { color: #69e8bb !important; }
+body.renda-fixa-page .section_title p,
+body.renda-fixa-page .explicacao_texto p,
+body.renda-fixa-page .step_fixa p,
+body.renda-fixa-page .tipo_desc_fixa,
+body.renda-fixa-page .exemplo_nota { color: rgba(227,235,255,.66) !important; }
+body.renda-fixa-page .explicacao_container,
+body.renda-fixa-page .step_fixa,
+body.renda-fixa-page .tipo_card_fixa,
+body.renda-fixa-page .vantagens_box,
+body.renda-fixa-page .desvantagens_box,
+body.renda-fixa-page .exemplo_box {
+    border: 1px solid rgba(225,239,255,.18);
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(26,40,72,.68), rgba(20,31,57,.48)) !important;
+    box-shadow: 0 18px 55px rgba(0,0,0,.22), inset 0 1px rgba(255,255,255,.10);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+}
+body.renda-fixa-page .explicacao_container { padding: 38px; }
+body.renda-fixa-page .explicacao_texto strong,
+body.renda-fixa-page .step_fixa h3,
+body.renda-fixa-page .tipo_card_fixa h3,
+body.renda-fixa-page .dica_content h3 { color: #f6f9ff !important; }
+body.renda-fixa-page .destaque_box {
+    border: 1px solid rgba(105,232,187,.28);
+    border-left: 3px solid #69e8bb;
+    border-radius: 15px;
+    background: rgba(105,232,187,.08) !important;
+}
+body.renda-fixa-page .icon_circle,
+body.renda-fixa-page .tipo_icon_fixa,
+body.renda-fixa-page .step_num,
+body.renda-fixa-page .dica_num {
+    background: linear-gradient(135deg, rgba(105,232,187,.22), rgba(120,169,255,.18)) !important;
+    border-color: rgba(105,232,187,.42) !important;
+    color: #69e8bb !important;
+}
+body.renda-fixa-page .tipo_vantagens_fixa span {
+    border: 1px solid rgba(105,232,187,.22);
+    background: rgba(105,232,187,.08) !important;
+    color: #b8f8df !important;
+}
+body.renda-fixa-page .tipo_rentabilidade_fixa { color: rgba(227,235,255,.78) !important; border-color: rgba(225,239,255,.14); }
+body.renda-fixa-page .dicas_praticas {
+    background: linear-gradient(135deg, rgba(7,11,22,.76), rgba(16,26,50,.72)) !important;
+}
+body.renda-fixa-page .dica_item {
+    border-color: rgba(225,239,255,.16) !important;
+    background: rgba(255,255,255,.055) !important;
+    box-shadow: inset 0 1px rgba(255,255,255,.08);
+}
+body.renda-fixa-page .dica_content p { color: rgba(227,235,255,.66) !important; }
+body.renda-fixa-page .vantagens_box h3 { color: #69e8bb !important; }
+body.renda-fixa-page .desvantagens_box h3 { color: #ff8290 !important; }
+body.renda-fixa-page .vantagens_box li,
+body.renda-fixa-page .desvantagens_box li { color: rgba(227,235,255,.70) !important; border-color: rgba(225,239,255,.12); }
+body.renda-fixa-page .exemplo_calc { color: #f6f9ff; }
+body.renda-fixa-page .exemplo_valor h4 { color: rgba(227,235,255,.58) !important; }
+body.renda-fixa-page .valor_grande,
+body.renda-fixa-page .valor_medio { color: #f6f9ff !important; }
+body.renda-fixa-page .cta_fixa {
+    margin: 0 20px 70px;
+    border: 1px solid rgba(225,239,255,.20);
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(26,40,72,.76), rgba(20,31,57,.52)) !important;
+    box-shadow: 0 24px 70px rgba(0,0,0,.26), inset 0 1px rgba(255,255,255,.12);
+    backdrop-filter: blur(24px);
+}
+body.renda-fixa-page .cta_fixa_content h2 { color: #f6f9ff !important; }
+body.renda-fixa-page .cta_fixa_content p { color: rgba(227,235,255,.68) !important; }
+@media (max-width: 760px) {
+    body.renda-fixa-page .hero_fixa { padding: 38px 14px 55px; }
+    body.renda-fixa-page .hero_fixa_container { padding: 30px 20px; }
+    body.renda-fixa-page .hero_fixa h1 { font-size: clamp(2.35rem, 12vw, 3.4rem); }
+    body.renda-fixa-page .explicacao_container { padding: 24px; }
+    body.renda-fixa-page .o_que_e,
+    body.renda-fixa-page .como_funciona_fixa,
+    body.renda-fixa-page .tipos_fixa,
+    body.renda-fixa-page .prós_contrass,
+    body.renda-fixa-page .dicas_praticas,
+    body.renda-fixa-page .exemplo_container { padding-top: 58px; padding-bottom: 58px; }
+    body.renda-fixa-page .cta_fixa { margin: 0 14px 42px; }
+}
+
+body.renda-fixa-page .tipo_icon_glyph {
+    display: inline-grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    color: #69e8bb;
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 0 0 22px rgba(105,232,187,.30);
+}

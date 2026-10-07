@@ -1,0 +1,1408 @@
+/* ============================================================
+   analisador.css
+   AFDE - Analisador de Gastos
+   Tema vindo diretamente do banco:
+   claro | escuro | sistema
+============================================================ */
+
+
+/* ============================================================
+   VARIÁVEIS BASE
+============================================================ */
+
+:root {
+
+    --primary: #0A2540;
+
+    --accent: #16E28A;
+
+    --accent-dark: #0DB873;
+
+    --radius-sm: 12px;
+
+    --radius-md: 16px;
+
+    --radius-full: 9999px;
+
+    --glass-blur: 30px;
+
+    --transition-base: .3s ease;
+
+}
+
+
+/* ============================================================
+   TEMA CLARO
+============================================================ */
+
+html.claro {
+
+    --bg-body: #F8FAFC;
+
+    --bg-main: #F8FAFC;
+
+    --bg-section: #FFFFFF;
+
+    --bg-section-alt: #F1F5F9;
+
+
+    --title: #0F172A;
+
+    --text: #334155;
+
+    --text-muted: #64748B;
+
+
+    --card: #FFFFFF;
+
+    --card-hover: #F8FAFC;
+
+    --border: rgba(15, 23, 42, .14);
+
+    --border-hover: rgba(22, 226, 138, .55);
+
+
+    --upload-bg: #F8FAFC;
+
+    --upload-bg-hover: #F1F5F9;
+
+    --upload-border: #CBD5E1;
+
+
+    --chip-bg: #F1F5F9;
+
+    --chip-border: #CBD5E1;
+
+
+    --input-bg: #FFFFFF;
+
+    --input-text: #0F172A;
+
+    --input-border: #CBD5E1;
+
+    --input-placeholder: #64748B;
+
+
+    --btn-disabled-bg: #E2E8F0;
+
+    --btn-disabled-text: #64748B;
+
+
+    --hero-bg:
+        linear-gradient(
+            135deg,
+            #F8FAFC 0%,
+            #FFFFFF 50%,
+            #E0F2FE 100%
+        );
+
+    --hero-title: #0F172A;
+
+    --hero-text: #334155;
+
+
+    --resultado-bg: #0A2540;
+
+    --resultado-border: rgba(22, 226, 138, .35);
+
+    --resultado-header-border: rgba(255, 255, 255, .12);
+
+    --resultado-title: #FFFFFF;
+
+    --resultado-text: rgba(255, 255, 255, .92);
+
+    --resultado-subtitle: rgba(255, 255, 255, .65);
+
+
+    --code-bg: rgba(255, 255, 255, .08);
+
+    --code-border: rgba(255, 255, 255, .12);
+
+
+    --card-shadow:
+        0 10px 30px rgba(15, 23, 42, .10);
+
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+============================================================ */
+
+html.escuro {
+
+    --bg-body: #07111F;
+
+    --bg-main: #07111F;
+
+    --bg-section: #0A1626;
+
+    --bg-section-alt: #0D1B2A;
+
+
+    --title: #FFFFFF;
+
+    --text: #D1D5DB;
+
+    --text-muted: #9CA3AF;
+
+
+    --card: rgba(17, 24, 39, .78);
+
+    --card-hover: rgba(23, 32, 51, .90);
+
+    --border: rgba(255, 255, 255, .12);
+
+    --border-hover: rgba(22, 226, 138, .40);
+
+
+    --upload-bg: rgba(255, 255, 255, .03);
+
+    --upload-bg-hover: rgba(255, 255, 255, .06);
+
+    --upload-border: rgba(255, 255, 255, .20);
+
+
+    --chip-bg: rgba(255, 255, 255, .08);
+
+    --chip-border: rgba(255, 255, 255, .10);
+
+
+    --input-bg: rgba(255, 255, 255, .05);
+
+    --input-text: #FFFFFF;
+
+    --input-border: rgba(255, 255, 255, .15);
+
+    --input-placeholder: #9CA3AF;
+
+
+    --btn-disabled-bg: #2B3444;
+
+    --btn-disabled-text: #6B7684;
+
+
+    --hero-bg:
+        linear-gradient(
+            135deg,
+            #07111F 0%,
+            #0A1626 50%,
+            #0B2230 100%
+        );
+
+    --hero-title: #FFFFFF;
+
+    --hero-text: #D1D5DB;
+
+
+    --resultado-bg: rgba(8, 13, 22, .92);
+
+    --resultado-border: rgba(22, 226, 138, .25);
+
+    --resultado-header-border: rgba(255, 255, 255, .10);
+
+    --resultado-title: #FFFFFF;
+
+    --resultado-text: rgba(255, 255, 255, .90);
+
+    --resultado-subtitle: rgba(255, 255, 255, .55);
+
+
+    --code-bg: rgba(255, 255, 255, .08);
+
+    --code-border: rgba(255, 255, 255, .08);
+
+
+    --card-shadow:
+        0 10px 35px rgba(0, 0, 0, .30);
+
+}
+
+
+/* ============================================================
+   TEMA SISTEMA
+   Usa automaticamente o tema do sistema operacional.
+============================================================ */
+
+@media (prefers-color-scheme: light) {
+
+    html.sistema {
+
+        --bg-body: #F8FAFC;
+
+        --bg-main: #F8FAFC;
+
+        --bg-section: #FFFFFF;
+
+        --bg-section-alt: #F1F5F9;
+
+
+        --title: #0F172A;
+
+        --text: #334155;
+
+        --text-muted: #64748B;
+
+
+        --card: rgba(255, 255, 255, .88);
+
+        --card-hover: rgba(255, 255, 255, .96);
+
+        --border: rgba(15, 23, 42, .14);
+
+        --border-hover: rgba(22, 226, 138, .55);
+
+
+        --upload-bg: #F8FAFC;
+
+        --upload-bg-hover: #F1F5F9;
+
+        --upload-border: #CBD5E1;
+
+
+        --chip-bg: #F1F5F9;
+
+        --chip-border: #CBD5E1;
+
+
+        --input-bg: #FFFFFF;
+
+        --input-text: #0F172A;
+
+        --input-border: #CBD5E1;
+
+        --input-placeholder: #64748B;
+
+
+        --btn-disabled-bg: #E2E8F0;
+
+        --btn-disabled-text: #64748B;
+
+
+        --hero-bg:
+            linear-gradient(
+                135deg,
+                #F8FAFC 0%,
+                #FFFFFF 50%,
+                #E0F2FE 100%
+            );
+
+        --hero-title: #0F172A;
+
+        --hero-text: #334155;
+
+
+        --resultado-bg: #0A2540;
+
+        --resultado-border: rgba(22, 226, 138, .35);
+
+        --resultado-header-border: rgba(255, 255, 255, .12);
+
+        --resultado-title: #FFFFFF;
+
+        --resultado-text: rgba(255, 255, 255, .92);
+
+        --resultado-subtitle: rgba(255, 255, 255, .65);
+
+
+        --code-bg: rgba(255, 255, 255, .08);
+
+        --code-border: rgba(255, 255, 255, .12);
+
+    }
+
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+    html.sistema {
+
+        --bg-body: #07111F;
+
+        --bg-main: #07111F;
+
+        --bg-section: #0A1626;
+
+        --bg-section-alt: #0D1B2A;
+
+
+        --title: #FFFFFF;
+
+        --text: #D1D5DB;
+
+        --text-muted: #9CA3AF;
+
+
+        --card: rgba(17, 24, 39, .78);
+
+        --card-hover: rgba(23, 32, 51, .90);
+
+        --border: rgba(255, 255, 255, .12);
+
+        --border-hover: rgba(22, 226, 138, .40);
+
+
+        --upload-bg: rgba(255, 255, 255, .03);
+
+        --upload-bg-hover: rgba(255, 255, 255, .06);
+
+        --upload-border: rgba(255, 255, 255, .20);
+
+
+        --chip-bg: rgba(255, 255, 255, .08);
+
+        --chip-border: rgba(255, 255, 255, .10);
+
+
+        --input-bg: rgba(255, 255, 255, .05);
+
+        --input-text: #FFFFFF;
+
+        --input-border: rgba(255, 255, 255, .15);
+
+        --input-placeholder: #9CA3AF;
+
+
+        --btn-disabled-bg: #2B3444;
+
+        --btn-disabled-text: #6B7684;
+
+
+        --hero-bg:
+            linear-gradient(
+                135deg,
+                #07111F 0%,
+                #0A1626 50%,
+                #0B2230 100%
+            );
+
+        --hero-title: #FFFFFF;
+
+        --hero-text: #D1D5DB;
+
+
+        --resultado-bg: rgba(8, 13, 22, .92);
+
+        --resultado-border: rgba(22, 226, 138, .25);
+
+        --resultado-header-border: rgba(255, 255, 255, .10);
+
+        --resultado-title: #FFFFFF;
+
+        --resultado-text: rgba(255, 255, 255, .90);
+
+        --resultado-subtitle: rgba(255, 255, 255, .55);
+
+
+        --code-bg: rgba(255, 255, 255, .08);
+
+        --code-border: rgba(255, 255, 255, .08);
+
+    }
+
+}
+
+
+/* ============================================================
+   BODY
+============================================================ */
+
+html.claro body,
+html.escuro body,
+html.sistema body {
+
+    background: var(--bg-body);
+
+    color: var(--text);
+
+    transition:
+        background-color .3s ease,
+        color .3s ease;
+
+}
+
+
+/* ============================================================
+   SEÇÕES
+============================================================ */
+
+html.claro main,
+html.escuro main,
+html.sistema main {
+
+    background: var(--bg-main);
+
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+html.claro .hero,
+html.escuro .hero,
+html.sistema .hero {
+
+    background: var(--hero-bg);
+
+    color: var(--hero-text);
+
+}
+
+
+html.claro .hero h1,
+html.claro .hero h2,
+html.claro .hero h3,
+html.escuro .hero h1,
+html.escuro .hero h2,
+html.escuro .hero h3,
+html.sistema .hero h1,
+html.sistema .hero h2,
+html.sistema .hero h3 {
+
+    color: var(--hero-title);
+
+}
+
+
+html.claro .hero p,
+html.escuro .hero p,
+html.sistema .hero p {
+
+    color: var(--hero-text);
+
+}
+
+
+/* ============================================================
+   SEÇÃO UPLOAD
+============================================================ */
+
+html.claro .section_dark,
+html.escuro .section_dark,
+html.sistema .section_dark {
+
+    background: var(--bg-section);
+
+}
+
+
+html.claro .section_light,
+html.escuro .section_light,
+html.sistema .section_light {
+
+    background: var(--bg-section-alt);
+
+}
+
+
+/* ============================================================
+   TÍTULOS
+============================================================ */
+
+html.claro h1,
+html.claro h2,
+html.claro h3,
+html.claro h4,
+html.claro h5,
+html.claro h6,
+
+html.escuro h1,
+html.escuro h2,
+html.escuro h3,
+html.escuro h4,
+html.escuro h5,
+html.escuro h6,
+
+html.sistema h1,
+html.sistema h2,
+html.sistema h3,
+html.sistema h4,
+html.sistema h5,
+html.sistema h6 {
+
+    color: var(--title);
+
+}
+
+
+/* ============================================================
+   TEXTOS
+============================================================ */
+
+html.claro p,
+html.claro span,
+html.claro li,
+html.claro label,
+
+html.escuro p,
+html.escuro span,
+html.escuro li,
+html.escuro label,
+
+html.sistema p,
+html.sistema span,
+html.sistema li,
+html.sistema label {
+
+    color: var(--text);
+
+}
+
+
+/* ============================================================
+   CAIXA PRINCIPAL
+============================================================ */
+
+.analisador_box {
+
+    max-width: 620px;
+
+    margin: 48px auto 0;
+
+    background: var(--card);
+
+    backdrop-filter: blur(var(--glass-blur));
+
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    padding: 40px 36px;
+
+    box-shadow: var(--card-shadow);
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+
+}
+
+
+.analisador_box:hover {
+
+    background: var(--card-hover);
+
+    border-color: var(--border-hover);
+
+}
+
+
+/* ============================================================
+   UPLOAD
+============================================================ */
+
+.upload_slot {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    text-align: center;
+
+    padding: 44px 20px;
+
+    background: var(--upload-bg);
+
+    border: 2px dashed var(--upload-border);
+
+    border-radius: var(--radius-sm);
+
+    cursor: pointer;
+
+    color: var(--accent-dark);
+
+    transition:
+        background .2s ease,
+        border-color .2s ease;
+
+}
+
+
+.upload_slot:hover,
+.upload_slot:focus-within,
+.upload_slot--drag {
+
+    border-color: var(--accent-dark);
+
+    background: var(--upload-bg-hover);
+
+}
+
+
+.upload_slot_icon {
+
+    color: var(--accent-dark);
+
+    opacity: .85;
+
+}
+
+
+.upload_slot_label {
+
+    font-weight: 600;
+
+    font-size: 15px;
+
+    color: var(--title) !important;
+
+}
+
+
+.upload_slot_hint {
+
+    font-size: 12.5px;
+
+    color: var(--text-muted) !important;
+
+}
+
+
+/* ============================================================
+   ARQUIVO
+============================================================ */
+
+.file_chip {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-top: 16px;
+
+    padding: 10px 14px;
+
+    background: var(--chip-bg);
+
+    border: 1px solid var(--chip-border);
+
+    border-radius: 8px;
+
+    font-size: 13.5px;
+
+}
+
+
+.file_chip_name {
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color: var(--title) !important;
+
+}
+
+
+.file_chip_remove {
+
+    background: none;
+
+    border: none;
+
+    color: var(--text-muted) !important;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    padding: 0 2px;
+
+}
+
+
+.file_chip_remove:hover {
+
+    color: var(--title) !important;
+
+}
+
+
+/* ============================================================
+   BOTÃO
+============================================================ */
+
+.btn_full {
+
+    width: 100%;
+
+    margin-top: 24px;
+
+    display: block;
+
+    text-align: center;
+
+    border: none;
+
+    border-radius: var(--radius-full);
+
+    padding: 14px 28px;
+
+    background: var(--accent);
+
+    color: var(--primary) !important;
+
+    font-weight: 700;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+
+    box-shadow:
+        0 8px 20px rgba(22, 226, 138, .30);
+
+}
+
+
+.btn_full:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 20px 45px rgba(22, 226, 138, .35);
+
+}
+
+
+.btn_full:disabled {
+
+    background: var(--btn-disabled-bg);
+
+    color: var(--btn-disabled-text) !important;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+
+}
+
+
+/* ============================================================
+   STATUS
+============================================================ */
+
+.upload_status {
+
+    min-height: 20px;
+
+    margin: 14px 0 0;
+
+    font-size: 13.5px;
+
+    text-align: center;
+
+}
+
+
+.upload_status--pending {
+
+    color: var(--text-muted) !important;
+
+}
+
+
+.upload_status--ok {
+
+    color: var(--accent-dark) !important;
+
+}
+
+
+.upload_status--error {
+
+    color: #B3483A !important;
+
+}
+
+
+/* ============================================================
+   RESULTADO
+============================================================ */
+
+.resultado_box {
+
+    margin-top: 28px;
+
+    padding: 24px 26px;
+
+    background: var(--resultado-bg);
+
+    border: 1px solid var(--resultado-border);
+
+    border-left: 4px solid var(--accent);
+
+    border-radius: var(--radius-md);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, .18),
+        inset 0 1px 0 rgba(255, 255, 255, .08);
+
+}
+
+
+.resultado_header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 22px;
+
+    padding-bottom: 16px;
+
+    border-bottom:
+        1px solid var(--resultado-header-border);
+
+}
+
+
+.resultado_icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(22, 226, 138, .12);
+
+    border:
+        1px solid rgba(22, 226, 138, .20);
+
+    font-size: 20px;
+
+}
+
+
+.resultado_header h3 {
+
+    margin: 0;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    color: var(--resultado-title) !important;
+
+}
+
+
+.resultado_subtitle {
+
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 12px;
+
+    color: var(--resultado-subtitle) !important;
+
+}
+
+
+/* ============================================================
+   CONTEÚDO DO RESULTADO
+============================================================ */
+
+.resultado_conteudo {
+
+    color: var(--resultado-text);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    overflow-wrap: break-word;
+
+    word-wrap: break-word;
+
+}
+
+
+.resultado_conteudo p {
+
+    margin: 0 0 16px;
+
+    color: var(--resultado-text) !important;
+
+}
+
+
+.resultado_conteudo h3,
+.resultado_conteudo h4 {
+
+    color: var(--resultado-title) !important;
+
+}
+
+
+.resultado_conteudo h5 {
+
+    color: var(--accent) !important;
+
+}
+
+
+.resultado_conteudo strong {
+
+    color: var(--resultado-title) !important;
+
+}
+
+
+.resultado_conteudo em {
+
+    color: var(--resultado-text) !important;
+
+}
+
+
+.resultado_conteudo li {
+
+    color: var(--resultado-text) !important;
+
+}
+
+
+.resultado_conteudo li::marker {
+
+    color: var(--accent);
+
+}
+
+
+.resultado_conteudo code {
+
+    padding: 3px 6px;
+
+    border-radius: 5px;
+
+    background: var(--code-bg);
+
+    border: 1px solid var(--code-border);
+
+    color: var(--accent);
+
+    font-family:
+        Consolas,
+        Monaco,
+        monospace;
+
+    font-size: 13px;
+
+}
+
+
+.resultado_conteudo hr {
+
+    margin: 20px 0;
+
+    border: 0;
+
+    border-top:
+        1px solid var(--resultado-header-border);
+
+}
+
+
+/* ============================================================
+   INPUTS
+============================================================ */
+
+html.claro input,
+html.claro textarea,
+html.claro select,
+html.escuro input,
+html.escuro textarea,
+html.escuro select,
+html.sistema input,
+html.sistema textarea,
+html.sistema select {
+
+    background: var(--input-bg);
+
+    color: var(--input-text);
+
+    border: 1px solid var(--input-border);
+
+}
+
+
+input::placeholder,
+textarea::placeholder {
+
+    color: var(--input-placeholder);
+
+}
+
+
+/* ============================================================
+   ANIMAÇÃO
+============================================================ */
+
+@keyframes analisador_fade {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(4px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVO
+============================================================ */
+
+@media (max-width: 640px) {
+
+    .analisador_box {
+
+        margin-top: 32px;
+
+        padding: 28px 22px;
+
+        border-radius: var(--radius-sm);
+
+    }
+
+
+    .upload_slot {
+
+        padding: 32px 14px;
+
+    }
+
+
+    .resultado_box {
+
+        padding: 20px 18px;
+
+    }
+
+
+    .resultado_header h3 {
+
+        font-size: 17px;
+
+    }
+
+
+    .resultado_conteudo {
+
+        font-size: 13.5px;
+
+        line-height: 1.75;
+
+    }
+
+}
+
+/* ============================================================
+   CORREÇÃO GLOBAL DO TEMA
+   ============================================================ */
+
+/* ============================================================
+   TEMA CLARO
+   ============================================================ */
+
+html.claro body {
+    background: #F8FAFC !important;
+    color: #0F172A !important;
+}
+
+html.claro main {
+    background: #F8FAFC !important;
+}
+
+html.claro section {
+    color: #0F172A;
+}
+
+
+/* HERO */
+
+html.claro #analisador-hero {
+    background:
+        linear-gradient(
+            135deg,
+            #F8FAFC 0%,
+            #FFFFFF 55%,
+            #E0F2FE 100%
+        ) !important;
+}
+
+
+/* SEÇÃO DE UPLOAD */
+
+html.claro #upload {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+}
+
+
+/* SEÇÃO COMO FUNCIONA */
+
+html.claro .section_light {
+    background: #F8FAFC !important;
+    color: #0F172A !important;
+}
+
+
+/* TEXTOS */
+
+html.claro .hero_content h1,
+html.claro .hero_content h2,
+html.claro .hero_content h3,
+html.claro .section_title h1,
+html.claro .section_title h2,
+html.claro .section_title h3 {
+    color: #0F172A !important;
+}
+
+
+html.claro .hero_content p,
+html.claro .section_title p {
+    color: #334155 !important;
+}
+
+
+/* CARDS */
+
+html.claro .hero_card,
+html.claro .card_dashboard,
+html.claro .step_card,
+html.claro .analisador_box {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    border-color: rgba(15, 23, 42, 0.14);
+}
+
+
+/* TEXTOS DOS CARDS */
+
+html.claro .hero_card *,
+html.claro .card_dashboard *,
+html.claro .step_card * {
+    color: #0F172A;
+}
+
+
+/* TAG */
+
+html.claro .tag {
+    background: #F1F5F9;
+    color: #0369A1 !important;
+    border-color: #CBD5E1;
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+   ============================================================ */
+
+html.escuro body {
+    background: #0B1120 !important;
+    color: #FFFFFF !important;
+}
+
+html.escuro main {
+    background: #0B1120 !important;
+}
+
+
+html.escuro #analisador-hero {
+    background:
+        linear-gradient(
+            135deg,
+            #0B1120 0%,
+            #111827 55%,
+            #0A2540 100%
+        ) !important;
+}
+
+
+html.escuro #upload {
+    background: #0B1120 !important;
+    color: #FFFFFF !important;
+}
+
+
+html.escuro .section_light {
+    background: #111827 !important;
+    color: #FFFFFF !important;
+}
+
+
+html.escuro .hero_content h1,
+html.escuro .hero_content h2,
+html.escuro .hero_content h3,
+html.escuro .section_title h1,
+html.escuro .section_title h2,
+html.escuro .section_title h3 {
+    color: #FFFFFF !important;
+}
+
+
+html.escuro .hero_content p,
+html.escuro .section_title p {
+    color: #D1D5DB !important;
+}
+
+
+html.escuro .hero_card,
+html.escuro .card_dashboard,
+html.escuro .step_card,
+html.escuro .analisador_box {
+    background: rgba(17, 24, 39, 0.78) !important;
+    color: #FFFFFF !important;
+}
+
+
+/* ============================================================
+   TEMA SISTEMA
+   ============================================================ */
+
+@media (prefers-color-scheme: light) {
+
+    html.sistema body {
+        background: #F8FAFC !important;
+        color: #0F172A !important;
+    }
+
+    html.sistema main {
+        background: #F8FAFC !important;
+    }
+
+    html.sistema #analisador-hero {
+        background:
+            linear-gradient(
+                135deg,
+                #F8FAFC 0%,
+                #FFFFFF 55%,
+                #E0F2FE 100%
+            ) !important;
+    }
+
+    html.sistema #upload {
+        background: #FFFFFF !important;
+    }
+
+    html.sistema .section_light {
+        background: #F8FAFC !important;
+    }
+
+    html.sistema .hero_content h1,
+    html.sistema .hero_content h2,
+    html.sistema .hero_content h3,
+    html.sistema .section_title h1,
+    html.sistema .section_title h2,
+    html.sistema .section_title h3 {
+        color: #0F172A !important;
+    }
+
+    html.sistema .hero_content p,
+    html.sistema .section_title p {
+        color: #334155 !important;
+    }
+
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+    html.sistema body {
+        background: #0B1120 !important;
+        color: #FFFFFF !important;
+    }
+
+    html.sistema main {
+        background: #0B1120 !important;
+    }
+
+    html.sistema #analisador-hero {
+        background:
+            linear-gradient(
+                135deg,
+                #0B1120 0%,
+                #111827 55%,
+                #0A2540 100%
+            ) !important;
+    }
+
+    html.sistema #upload {
+        background: #0B1120 !important;
+    }
+
+    html.sistema .section_light {
+        background: #111827 !important;
+    }
+
+    html.sistema .hero_content h1,
+    html.sistema .hero_content h2,
+    html.sistema .hero_content h3,
+    html.sistema .section_title h1,
+    html.sistema .section_title h2,
+    html.sistema .section_title h3 {
+        color: #FFFFFF !important;
+    }
+
+    html.sistema .hero_content p,
+    html.sistema .section_title p {
+        color: #D1D5DB !important;
+    }
+
+}
+

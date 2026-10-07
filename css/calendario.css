@@ -1,0 +1,645 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background: #07131f;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* FUNDO */
+
+.background_shapes {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.22;
+}
+
+
+.shape1 {
+    width: 450px;
+    height: 450px;
+    background: #54e39a;
+    top: -180px;
+    left: -100px;
+}
+
+
+.shape2 {
+    width: 500px;
+    height: 500px;
+    background: #4dabf7;
+    right: -200px;
+    top: 150px;
+}
+
+
+.shape3 {
+    width: 350px;
+    height: 350px;
+    background: #9775fa;
+    bottom: -150px;
+    left: 35%;
+}
+
+
+/* CONTAINER */
+
+.calendario_container {
+    width: min(1200px, calc(100% - 40px));
+    margin: auto;
+    padding: 100px 0 60px;
+}
+
+
+/* GLASS */
+
+.glass,
+.glass-card {
+    background: rgba(255, 255, 255, 0.06);
+
+    backdrop-filter: blur(25px);
+
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+
+/* VOLTAR */
+
+.btn_voltar {
+    position: fixed;
+
+    top: 25px;
+
+    left: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 12px 18px;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(15px);
+
+    transition: 0.25s;
+
+    z-index: 10;
+}
+
+
+.btn_voltar:hover {
+    transform: translateX(-4px);
+}
+
+
+/* HEADER */
+
+.calendario_header {
+    padding: 35px;
+
+    border-radius: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+
+    animation: aparecer 0.6s ease;
+}
+
+
+.calendario_eyebrow {
+    color: #54e39a;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.calendario_header h1 {
+    margin-top: 8px;
+    font-size: 32px;
+}
+
+
+.calendario_header p {
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+
+.calendar_icon {
+    width: 75px;
+    height: 75px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 20px;
+
+    background: rgba(84, 227, 154, 0.12);
+
+    color: #54e39a;
+}
+
+
+.calendar_icon span {
+    font-size: 35px;
+}
+
+
+/* NAVEGAÇÃO */
+
+.month_navigation {
+    border-radius: 20px;
+
+    padding: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+
+.month_title_container {
+    text-align: center;
+}
+
+
+.month_title_container span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+.month_title_container h2 {
+    margin-top: 4px;
+}
+
+
+.month_button {
+    width: 45px;
+    height: 45px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    color: white;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    transition: 0.2s;
+}
+
+
+.month_button:hover {
+    transform: scale(1.08);
+    background: rgba(84, 227, 154, 0.18);
+}
+
+
+/* DASHBOARD */
+
+.dashboard_grid {
+    display: grid;
+
+    grid-template-columns: 1fr 280px;
+
+    gap: 25px;
+}
+
+
+.chart_card {
+    border-radius: 25px;
+
+    padding: 28px;
+
+    min-height: 480px;
+}
+
+
+.chart_header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+}
+
+
+.chart_header h2 {
+    font-size: 20px;
+}
+
+
+.chart_header p {
+    margin-top: 6px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+.chart_badge {
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    background: rgba(84, 227, 154, 0.12);
+
+    color: #54e39a;
+}
+
+
+.chart_area {
+    position: relative;
+
+    height: 360px;
+
+    margin-top: 30px;
+}
+
+
+/* VAZIO */
+
+.empty_chart {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.65);
+}
+
+
+.empty_chart span {
+    font-size: 70px;
+    margin-bottom: 15px;
+    color: #54e39a;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+/* RESUMO */
+
+.summary_column {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+.summary_card {
+    border-radius: 20px;
+
+    padding: 22px;
+
+    min-height: 140px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    transition: 0.25s;
+}
+
+
+.summary_card:hover {
+    transform: translateY(-5px);
+}
+
+
+.summary_top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+.summary_icon {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 11px;
+}
+
+
+.summary_icon.receita {
+    color: #54e39a;
+    background: rgba(84, 227, 154, 0.12);
+}
+
+
+.summary_icon.despesa {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.12);
+}
+
+
+.summary_icon.resultado {
+    color: #4dabf7;
+    background: rgba(77, 171, 247, 0.12);
+}
+
+
+.summary_card strong {
+    font-size: 22px;
+}
+
+
+.positive {
+    color: #54e39a;
+}
+
+
+.negative {
+    color: #ff6b6b;
+}
+
+
+/* LEGENDA */
+
+.legend_card {
+    margin-top: 25px;
+
+    border-radius: 25px;
+
+    padding: 25px;
+}
+
+
+.legend_header {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+
+.legend_header span {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+}
+
+
+.category_list {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+
+.category_item {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    animation: aparecer 0.35s ease;
+}
+
+
+.category_left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.category_color {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+}
+
+
+/* ANIMAÇÃO */
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 850px) {
+
+    .dashboard_grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .summary_column {
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+
+    .category_list {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .calendario_container {
+
+        width: min(
+            100% - 24px,
+            1200px
+        );
+
+        padding-top: 90px;
+
+    }
+
+
+    .calendario_header {
+
+        padding: 25px;
+
+    }
+
+
+    .calendar_icon {
+
+        display: none;
+
+    }
+
+
+    .summary_column {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .btn_voltar {
+
+        left: 12px;
+
+        top: 12px;
+
+    }
+
+}
+
+
+
+/* HISTÓRICO E ORIGEM DOS DADOS */
+
+.data_source {
+    display: block;
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.52);
+    font-size: 12px;
+}
+
+.history_card {
+    margin-top: 25px;
+    border-radius: 25px;
+    padding: 28px;
+}
+
+.history_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.history_header h2 {
+    font-size: 20px;
+}
+
+.history_header p {
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 14px;
+}
+
+.history_chart_area {
+    position: relative;
+    height: 340px;
+    margin-top: 25px;
+}
+
+.history_chart_area canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+@media (max-width: 600px) {
+    .history_card {
+        padding: 22px;
+    }
+
+    .history_chart_area {
+        height: 290px;
+    }
+}

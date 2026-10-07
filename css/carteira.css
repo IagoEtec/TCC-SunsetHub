@@ -1,0 +1,2201 @@
+/* ============================================================
+   carteira.css – Carteira Financeira
+   Tema Claro + Tema Escuro
+   ============================================================ */
+
+
+/* ============================================================
+   VARIÁVEIS – TEMA ESCURO / PADRÃO
+============================================================ */
+
+:root {
+
+    --primary: #0A2540;
+
+    --accent: #16E28A;
+    --accent-light: #36f2ac;
+
+    --danger: #FF4757;
+
+    --white: #ffffff;
+
+
+    /* FUNDO */
+
+    --page-bg: #07111f;
+    --page-bg-secondary: #0d1b2a;
+
+
+    /* TEXTO */
+
+    --text-main: #ffffff;
+    --text-secondary: rgba(255,255,255,.72);
+    --text-muted: rgba(255,255,255,.55);
+
+
+    /* CARDS */
+
+    --card-bg: rgba(255,255,255,.06);
+    --card-bg-hover: rgba(255,255,255,.09);
+
+    --card-border: rgba(255,255,255,.12);
+
+
+    /* GLASS */
+
+    --glass-bg: rgba(255,255,255,.06);
+    --glass-border: rgba(255,255,255,.12);
+
+    --glass-blur: 30px;
+
+
+    --glass-shadow:
+        0 8px 32px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+
+    --glass-shadow-hover:
+        0 16px 48px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.12);
+
+
+    /* OPEN FINANCE */
+
+    --open-card-bg: rgba(255,255,255,.06);
+    --open-item-bg: rgba(255,255,255,.05);
+    --open-item-hover: rgba(255,255,255,.09);
+    --open-item-border: rgba(255,255,255,.10);
+
+
+    /* INPUT */
+
+    --input-bg: rgba(255,255,255,.08);
+    --input-border: rgba(255,255,255,.15);
+
+    --input-text: #ffffff;
+    --input-placeholder: rgba(255,255,255,.45);
+
+
+    /* MODAL */
+
+    --modal-overlay: rgba(0,0,0,.70);
+
+    --modal-bg:
+        linear-gradient(
+            135deg,
+            #0A2540,
+            #162d49
+        );
+
+
+    /* DETALHES */
+
+    --gray-100: #f8fafc;
+    --gray-400: #94a3b8;
+
+
+    /* BORDAS */
+
+    --radius-sm: 12px;
+    --radius-lg: 24px;
+    --radius-xl: 28px;
+    --radius-full: 9999px;
+
+
+    /* SOMBRAS */
+
+    --shadow-accent:
+        0 15px 30px rgba(22,226,138,.35);
+
+
+    --shadow-accent-hover:
+        0 20px 45px rgba(22,226,138,.45);
+
+
+    /* FONTE */
+
+    --font-family:
+        'Inter',
+        sans-serif;
+
+
+    /* TRANSIÇÃO */
+
+    --transition-base:
+        .3s ease;
+}
+
+
+/* ============================================================
+   TEMA CLARO
+   Funciona se .claro estiver no <html> OU no <body>
+============================================================ */
+
+html.claro,
+body.claro {
+
+    --primary: #0A2540;
+
+    --accent: #16E28A;
+    --accent-light: #36f2ac;
+
+    --danger: #FF4757;
+
+    --white: #ffffff;
+
+
+    /* FUNDO */
+
+    --page-bg: #F8FAFC;
+    --page-bg-secondary: #EEF4F8;
+
+
+    /* TEXTO */
+
+    --text-main: #0A2540;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+
+
+    /* CARDS */
+
+    --card-bg: rgba(255,255,255,.92);
+    --card-bg-hover: #ffffff;
+
+    --card-border:
+        rgba(10,37,64,.10);
+
+
+    /* GLASS */
+
+    --glass-bg:
+        rgba(255,255,255,.78);
+
+    --glass-border:
+        rgba(10,37,64,.10);
+
+
+    --glass-shadow:
+        0 10px 30px rgba(10,37,64,.08),
+        0 2px 8px rgba(10,37,64,.04);
+
+
+    --glass-shadow-hover:
+        0 16px 40px rgba(10,37,64,.13),
+        0 4px 12px rgba(10,37,64,.06);
+
+
+    /* OPEN FINANCE */
+
+    --open-card-bg:
+        rgba(255,255,255,.92);
+
+    --open-item-bg:
+        #F8FAFC;
+
+    --open-item-hover:
+        #FFFFFF;
+
+    --open-item-border:
+        rgba(10,37,64,.10);
+
+
+    /* INPUT */
+
+    --input-bg:
+        #FFFFFF;
+
+    --input-border:
+        #DBE3EB;
+
+    --input-text:
+        #0A2540;
+
+    --input-placeholder:
+        #94A3B8;
+
+
+    /* MODAL */
+
+    --modal-overlay:
+        rgba(10,37,64,.45);
+
+    --modal-bg:
+        linear-gradient(
+            135deg,
+            #FFFFFF,
+            #F1F5F9
+        );
+
+
+    --gray-100:
+        #f8fafc;
+
+    --gray-400:
+        #64748B;
+}
+
+
+/* ============================================================
+   CONFIGURAÇÃO GLOBAL
+============================================================ */
+
+html,
+body {
+
+    margin: 0;
+
+    min-height: 100%;
+
+    background:
+        var(--page-bg);
+
+    color:
+        var(--text-main);
+
+    transition:
+        background .3s ease,
+        color .3s ease;
+}
+
+
+body {
+
+    font-family:
+        var(--font-family);
+}
+
+
+html:not(.claro) {
+
+    color-scheme:dark;
+}
+
+
+html.claro {
+
+    color-scheme: light;
+}
+
+html.escuro{
+    color-scheme: dark;
+}
+
+
+/* ============================================================
+   MAIN
+============================================================ */
+
+.main {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    padding:
+        140px 30px 50px;
+
+    background:
+
+        radial-gradient(
+            circle at 90% 8%,
+            rgba(22,226,138,.13),
+            transparent 25rem
+        ),
+
+        linear-gradient(
+            180deg,
+            var(--page-bg) 0%,
+            var(--page-bg-secondary) 100%
+        );
+
+    color:
+        var(--text-main);
+
+    transition:
+        background .3s ease,
+        color .3s ease;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.carteira-hero {
+
+    max-width:
+        1400px;
+
+    min-height:
+        250px;
+
+    margin:
+        0 auto 32px;
+
+    padding:
+        42px 48px;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        32px;
+
+    box-sizing:
+        border-box;
+
+    border:
+        1px solid rgba(255,255,255,.16);
+
+    border-radius:
+        var(--radius-xl);
+
+    background:
+        linear-gradient(
+            135deg,
+            #0A2540 0%,
+            #24314c 100%
+        );
+
+    box-shadow:
+        var(--glass-shadow);
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.carteira-hero::after {
+
+    content:
+        "";
+
+    width:
+        280px;
+
+    height:
+        280px;
+
+    position:
+        absolute;
+
+    right:
+        -75px;
+
+    bottom:
+        -145px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(22,226,138,.18);
+
+    filter:
+        blur(12px);
+
+    pointer-events:
+        none;
+}
+
+
+.carteira-tag {
+
+    display:
+        inline-block;
+
+    margin-bottom:
+        14px;
+
+    padding:
+        8px 14px;
+
+    border:
+        1px solid
+        rgba(22,226,138,.35);
+
+    border-radius:
+        var(--radius-full);
+
+    color:
+        var(--accent);
+
+    background:
+        rgba(22,226,138,.10);
+
+    font-size:
+        .8rem;
+
+    font-weight:
+        800;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        .08em;
+}
+
+
+.carteira-hero h1 {
+
+    margin:
+        0 0 12px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        clamp(2rem,4vw,3.15rem);
+
+    line-height:
+        1.1;
+}
+
+
+.carteira-hero p {
+
+    max-width:
+        680px;
+
+    margin:
+        0;
+
+    color:
+        rgba(255,255,255,.78);
+
+    line-height:
+        1.7;
+}
+
+
+/* ============================================================
+   HERO – TEMA CLARO
+============================================================ */
+
+html.claro .carteira-hero,
+body.claro .carteira-hero {
+
+    border-color:
+        rgba(10,37,64,.10);
+
+    background:
+        linear-gradient(
+            135deg,
+            #FFFFFF 0%,
+            #EEF4F8 100%
+        );
+
+    box-shadow:
+        0 10px 30px rgba(10,37,64,.08);
+}
+
+
+html.claro .carteira-hero h1,
+body.claro .carteira-hero h1 {
+
+    color:
+        #0A2540;
+}
+
+
+html.claro .carteira-hero p,
+body.claro .carteira-hero p {
+
+    color:
+        #475569;
+}
+
+
+/* ============================================================
+   SALDO HERO
+============================================================ */
+
+.hero-saldo {
+
+    min-width:
+        250px;
+
+    padding:
+        24px;
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    box-sizing:
+        border-box;
+}
+
+
+.hero-saldo span {
+
+    display:
+        block;
+
+    margin-bottom:
+        8px;
+
+    color:
+        rgba(255,255,255,.70);
+
+    font-size:
+        .9rem;
+}
+
+
+.hero-saldo strong {
+
+    color:
+        var(--accent);
+
+    font-size:
+        1.75rem;
+}
+
+
+/* ============================================================
+   HERO SALDO – TEMA CLARO
+============================================================ */
+
+html.claro .hero-saldo,
+body.claro .hero-saldo {
+
+    border-color:
+        rgba(10,37,64,.10);
+
+    background:
+        rgba(255,255,255,.70);
+
+    box-shadow:
+        0 8px 24px rgba(10,37,64,.08);
+}
+
+
+html.claro .hero-saldo span,
+body.claro .hero-saldo span {
+
+    color:
+        #64748B;
+}
+
+
+/* ============================================================
+   CARDS
+============================================================ */
+
+.cards {
+
+    max-width:
+        1400px;
+
+    margin:
+        0 auto 35px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px,1fr)
+        );
+
+    gap:
+        25px;
+}
+
+
+.card {
+
+    box-sizing:
+        border-box;
+
+    background:
+        var(--card-bg);
+
+    backdrop-filter:
+        blur(var(--glass-blur));
+
+    -webkit-backdrop-filter:
+        blur(var(--glass-blur));
+
+    border:
+        1px solid
+        var(--card-border);
+
+    border-radius:
+        var(--radius-lg);
+
+    padding:
+        30px;
+
+    box-shadow:
+        var(--glass-shadow);
+
+    transition:
+        var(--transition-base);
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    color:
+        var(--text-main);
+}
+
+
+.card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    width:
+        100%;
+
+    height:
+        4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent-light)
+        );
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        var(--accent);
+
+    background:
+        var(--card-bg-hover);
+
+    box-shadow:
+        var(--glass-shadow-hover);
+}
+
+
+.card h4 {
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        .8px;
+
+    margin:
+        0 0 15px;
+}
+
+
+.card p {
+
+    color:
+        var(--text-main);
+
+    font-size:
+        2rem;
+
+    font-weight:
+        800;
+
+    margin:
+        0;
+}
+
+
+.green {
+
+    color:
+        var(--accent) !important;
+}
+
+
+.red {
+
+    color:
+        var(--danger) !important;
+}
+
+
+/* ============================================================
+   PROGRESS
+============================================================ */
+
+.progress {
+
+    width:
+        100%;
+
+    height:
+        10px;
+
+    background:
+        rgba(100,116,139,.18);
+
+    border-radius:
+        var(--radius-full);
+
+    margin-top:
+        18px;
+
+    overflow:
+        hidden;
+}
+
+
+.bar {
+
+    height:
+        100%;
+
+    border-radius:
+        var(--radius-full);
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent-light)
+        );
+}
+
+
+.progresso-75 {
+
+    width:
+        75%;
+}
+
+
+/* ============================================================
+   CONTROLE FINANCEIRO
+============================================================ */
+
+.controle-financeiro {
+
+    max-width:
+        1400px;
+
+    margin:
+        0 auto;
+
+    box-sizing:
+        border-box;
+
+    background:
+        var(--glass-bg);
+
+    backdrop-filter:
+        blur(var(--glass-blur));
+
+    -webkit-backdrop-filter:
+        blur(var(--glass-blur));
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    border-radius:
+        var(--radius-xl);
+
+    padding:
+        40px;
+
+    box-shadow:
+        var(--glass-shadow);
+
+    transition:
+        var(--transition-base);
+
+    color:
+        var(--text-main);
+}
+
+
+.controle-financeiro:hover {
+
+    border-color:
+        rgba(22,226,138,.55);
+
+    box-shadow:
+        var(--glass-shadow-hover);
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.section-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+
+    flex-wrap:
+        wrap;
+}
+
+
+.section-header h2 {
+
+    color:
+        var(--text-main);
+
+    font-size:
+        2rem;
+
+    font-weight:
+        800;
+
+    margin:
+        0 0 8px;
+}
+
+
+.section-header p {
+
+    color:
+        var(--text-secondary);
+
+    line-height:
+        1.6;
+
+    margin:
+        0;
+}
+
+
+.carteira-acoes {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+}
+
+
+/* ============================================================
+   BOTÃO MOVIMENTAÇÃO
+============================================================ */
+
+.btn-movimentacao {
+
+    border:
+        none;
+
+    border-radius:
+        var(--radius-full);
+
+    padding:
+        15px 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-light)
+        );
+
+    color:
+        #0A2540;
+
+    font-weight:
+        800;
+
+    font-size:
+        15px;
+
+    cursor:
+        pointer;
+
+    transition:
+        var(--transition-base);
+
+    box-shadow:
+        0 12px 25px
+        rgba(22,226,138,.30);
+}
+
+
+.btn-movimentacao:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        var(--shadow-accent-hover);
+}
+
+
+/* ============================================================
+   OPEN FINANCE
+============================================================ */
+
+.dados-open-finance {
+
+    max-width:
+        1400px;
+
+    margin:
+        35px auto 0;
+
+    padding:
+        0;
+
+    color:
+        var(--text-main);
+}
+
+
+.dados-open-finance[aria-busy="true"]
+.open-finance-bloco {
+
+    opacity:
+        .72;
+}
+
+
+.open-finance-cabecalho {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        22px;
+}
+
+
+.open-finance-cabecalho h2,
+.open-finance-bloco h3 {
+
+    color:
+        var(--text-main);
+}
+
+
+.open-finance-cabecalho h2 {
+
+    margin:
+        0 0 8px;
+
+    font-size:
+        1.7rem;
+}
+
+
+.open-finance-cabecalho p,
+.sem-dados {
+
+    color:
+        var(--text-secondary);
+}
+
+
+/* ============================================================
+   BOTÃO ATUALIZAR
+============================================================ */
+
+.btn-atualizar {
+
+    border:
+        1px solid
+        var(--accent);
+
+    border-radius:
+        var(--radius-full);
+
+    padding:
+        12px 20px;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-main);
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    transition:
+        var(--transition-base);
+}
+
+
+.btn-atualizar:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        var(--accent);
+
+    color:
+        #0A2540;
+
+    box-shadow:
+        var(--shadow-accent);
+}
+
+
+/* ============================================================
+   GRID OPEN FINANCE
+============================================================ */
+
+.open-finance-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0,1fr)
+        );
+
+    gap:
+        20px;
+}
+
+
+.open-finance-bloco {
+
+    min-width:
+        0;
+
+    min-height:
+        200px;
+
+    padding:
+        26px;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    box-sizing:
+        border-box;
+
+    border:
+        1px solid
+        var(--card-border);
+
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        var(--open-card-bg);
+
+    box-shadow:
+        var(--glass-shadow);
+
+    transition:
+        var(--transition-base);
+
+    color:
+        var(--text-main);
+}
+
+
+.open-finance-bloco::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0 auto 0 0;
+
+    width:
+        4px;
+
+    background:
+        var(--accent);
+}
+
+
+.emprestimos-bloco::before {
+
+    background:
+        #f59e0b;
+}
+
+
+.investimentos-bloco::before {
+
+    background:
+        #4f6fdf;
+}
+
+
+.open-finance-bloco:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(22,226,138,.65);
+
+    box-shadow:
+        var(--glass-shadow-hover);
+}
+
+
+/* ============================================================
+   TÍTULO OPEN FINANCE
+============================================================ */
+
+.titulo-open-finance {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+}
+
+
+.titulo-open-finance h3 {
+
+    margin:
+        0;
+
+    color:
+        var(--text-main);
+}
+
+
+.titulo-open-finance span {
+
+    display:
+        grid;
+
+    min-width:
+        28px;
+
+    height:
+        28px;
+
+    padding:
+        0 8px;
+
+    place-items:
+        center;
+
+    border-radius:
+        var(--radius-full);
+
+    background:
+        rgba(22,226,138,.12);
+
+    color:
+        var(--accent);
+
+    font-size:
+        .78rem;
+
+    font-weight:
+        800;
+}
+
+
+/* ============================================================
+   LISTAS
+============================================================ */
+
+.lista-open-finance {
+
+    display:
+        grid;
+
+    gap:
+        10px;
+
+    margin-top:
+        20px;
+
+    max-height:
+        380px;
+
+    overflow-y:
+        auto;
+
+    padding:
+        2px 4px 2px 2px;
+}
+
+
+.lista-open-finance::-webkit-scrollbar {
+
+    width:
+        5px;
+}
+
+
+.lista-open-finance::-webkit-scrollbar-thumb {
+
+    border-radius:
+        99px;
+
+    background:
+        rgba(100,116,139,.35);
+}
+
+
+/* ============================================================
+   ITEM OPEN FINANCE
+============================================================ */
+
+.item-open-finance {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        38px minmax(0,1fr) auto;
+
+    align-items:
+        center;
+
+    gap:
+        11px;
+
+    padding:
+        12px;
+
+    border:
+        1px solid
+        var(--open-item-border);
+
+    border-radius:
+        var(--radius-sm);
+
+    color:
+        var(--text-main);
+
+    background:
+        var(--open-item-bg);
+
+    transition:
+        var(--transition-base);
+}
+
+
+.item-open-finance:hover {
+
+    transform:
+        translateX(3px);
+
+    border-color:
+        rgba(22,226,138,.65);
+
+    background:
+        var(--open-item-hover);
+}
+
+
+.icone-open-finance {
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(22,226,138,.12);
+
+    color:
+        var(--accent);
+
+    font-size:
+        1.2rem;
+
+    font-weight:
+        800;
+}
+
+
+.item-open-finance.emprestimos
+.icone-open-finance {
+
+    background:
+        rgba(245,158,11,.12);
+
+    color:
+        #f59e0b;
+}
+
+
+.item-open-finance.investimentos
+.icone-open-finance {
+
+    background:
+        rgba(79,111,223,.12);
+
+    color:
+        #6d8cff;
+}
+
+
+.descricao-open-finance {
+
+    min-width:
+        0;
+}
+
+
+.item-open-finance strong,
+.item-open-finance small {
+
+    display:
+        block;
+}
+
+
+.item-open-finance strong {
+
+    overflow:
+        hidden;
+
+    font-size:
+        .9rem;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+
+    color:
+        var(--text-main);
+}
+
+
+.item-open-finance small {
+
+    overflow:
+        hidden;
+
+    margin-top:
+        4px;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        .73rem;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+.item-open-finance > span {
+
+    white-space:
+        nowrap;
+
+    font-size:
+        .88rem;
+
+    font-weight:
+        800;
+}
+
+
+.valor-positivo {
+
+    color:
+        var(--accent);
+}
+
+
+.valor-negativo {
+
+    color:
+        var(--danger);
+}
+
+
+/* ============================================================
+   SEM DADOS
+============================================================ */
+
+.sem-dados {
+
+    margin:
+        14px 0 0;
+
+    padding:
+        28px 16px;
+
+    border:
+        1px dashed
+        var(--open-item-border);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        var(--open-item-bg);
+
+    text-align:
+        center;
+
+    font-size:
+        .9rem;
+
+    line-height:
+        1.5;
+}
+
+
+/* ============================================================
+   PLUGGY
+============================================================ */
+
+#pluggyConnectButton {
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    background:
+        var(--card-bg);
+
+    color:
+        var(--text-main);
+
+    box-shadow:
+        none;
+
+    transition:
+        var(--transition-base);
+}
+
+
+#pluggyConnectButton:hover {
+
+    border-color:
+        var(--accent);
+
+    background:
+        rgba(22,226,138,.10);
+
+    color:
+        var(--text-main);
+
+    box-shadow:
+        var(--shadow-accent);
+}
+
+
+/* ============================================================
+   MODAL
+============================================================ */
+
+.modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    background:
+        var(--modal-overlay);
+
+    display:
+        none;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    z-index:
+        99999;
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+}
+
+
+.modal.active {
+
+    display:
+        flex;
+}
+
+
+.modal-content {
+
+    width:
+        95%;
+
+    max-width:
+        550px;
+
+    box-sizing:
+        border-box;
+
+    background:
+        var(--modal-bg);
+
+    backdrop-filter:
+        blur(var(--glass-blur));
+
+    -webkit-backdrop-filter:
+        blur(var(--glass-blur));
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    border-radius:
+        var(--radius-lg);
+
+    padding:
+        30px;
+
+    box-shadow:
+        var(--glass-shadow);
+
+    color:
+        var(--text-main);
+}
+
+
+.modal-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        25px;
+}
+
+
+.modal-header h2 {
+
+    color:
+        var(--text-main);
+
+    margin:
+        0;
+}
+
+
+.close-modal {
+
+    border:
+        none;
+
+    background:
+        none;
+
+    font-size:
+        24px;
+
+    cursor:
+        pointer;
+
+    color:
+        var(--text-secondary);
+}
+
+
+.close-modal:hover {
+
+    color:
+        var(--danger);
+}
+
+
+/* ============================================================
+   FORMULÁRIO
+============================================================ */
+
+.form-group {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    margin-bottom:
+        18px;
+}
+
+
+.form-group label {
+
+    margin-bottom:
+        8px;
+
+    font-weight:
+        600;
+
+    color:
+        var(--text-main);
+}
+
+
+.form-group input,
+.form-group select {
+
+    width:
+        100%;
+
+    box-sizing:
+        border-box;
+
+    padding:
+        14px;
+
+    border:
+        1px solid
+        var(--input-border);
+
+    border-radius:
+        var(--radius-sm);
+
+    outline:
+        none;
+
+    font-size:
+        15px;
+
+    font-family:
+        inherit;
+
+    transition:
+        var(--transition-base);
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--input-text);
+}
+
+
+.form-group select option {
+
+    color:
+        #0A2540;
+
+    background:
+        #ffffff;
+}
+
+
+.form-group input::placeholder {
+
+    color:
+        var(--input-placeholder);
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+
+    border-color:
+        var(--accent);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(22,226,138,.12);
+}
+
+
+/* ============================================================
+   BOTÃO SALVAR
+============================================================ */
+
+.btn-salvar {
+
+    width:
+        100%;
+
+    border:
+        none;
+
+    border-radius:
+        var(--radius-full);
+
+    padding:
+        15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-light)
+        );
+
+    color:
+        #0A2540;
+
+    font-weight:
+        800;
+
+    cursor:
+        pointer;
+
+    transition:
+        var(--transition-base);
+
+    box-shadow:
+        var(--shadow-accent);
+}
+
+
+.btn-salvar:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        var(--shadow-accent-hover);
+}
+
+
+/* ============================================================
+   RESPONSIVO – 992PX
+============================================================ */
+
+@media (max-width: 992px) {
+
+    .main {
+
+        padding:
+            130px 20px 40px;
+    }
+
+
+    .carteira-hero {
+
+        padding:
+            36px;
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+
+    .section-header {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+
+    .btn-movimentacao {
+
+        width:
+            100%;
+    }
+
+
+    .carteira-acoes {
+
+        width:
+            100%;
+    }
+
+
+    .open-finance-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .open-finance-cabecalho {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVO – 768PX
+============================================================ */
+
+@media (max-width: 768px) {
+
+    .carteira-hero {
+
+        min-height:
+            auto;
+
+        padding:
+            30px 25px;
+    }
+
+
+    .hero-saldo {
+
+        width:
+            100%;
+
+        min-width:
+            0;
+    }
+
+
+    .cards {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .card {
+
+        padding:
+            25px;
+    }
+
+
+    .card p {
+
+        font-size:
+            1.7rem;
+    }
+
+
+    .controle-financeiro {
+
+        padding:
+            25px;
+    }
+
+
+    .section-header h2 {
+
+        font-size:
+            1.6rem;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVO – 500PX
+============================================================ */
+
+@media (max-width: 500px) {
+
+    .main {
+
+        padding:
+            120px 15px 30px;
+    }
+
+
+    .card p {
+
+        font-size:
+            1.5rem;
+    }
+
+
+    .carteira-hero {
+
+        padding:
+            25px 20px;
+    }
+
+
+    .carteira-hero h1 {
+
+        font-size:
+            2rem;
+    }
+
+
+    .carteira-hero p {
+
+        font-size:
+            .95rem;
+    }
+
+
+    .open-finance-bloco,
+    .controle-financeiro {
+
+        padding:
+            22px;
+    }
+
+
+    .btn-movimentacao {
+
+        padding:
+            14px;
+    }
+
+
+    .modal-content {
+
+        padding:
+            22px;
+    }
+}
+
+
+/* ============================================================
+   ACESSIBILIDADE
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .card,
+    .open-finance-bloco,
+    .item-open-finance,
+    .btn-movimentacao,
+    .btn-atualizar,
+    .btn-salvar {
+
+        transition:
+            none;
+    }
+
+
+    html,
+    body,
+    .main,
+    .carteira-hero {
+
+        transition:
+            none;
+    }
+}
+
+
+
+/* ============================================================
+   CATEGORIA DAS TRANSAÇÕES IMPORTADAS
+============================================================ */
+
+.categoria-open-finance {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    color: var(--text-muted);
+    font-size: .68rem;
+}
+
+.categoria-open-finance select {
+    max-width: 130px;
+    padding: 5px 7px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    outline: none;
+    background: var(--input-bg);
+    color: var(--input-text);
+    font: inherit;
+}
+
+.categoria-open-finance select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(22,226,138,.12);
+}
+
+/* ============================================================
+   ACESSO AO CALENDÁRIO
+============================================================ */
+
+.acesso-calendario {
+    max-width: 1400px;
+    margin: 35px auto 0;
+    padding: 30px 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-sizing: border-box;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    background: var(--glass-bg);
+    box-shadow: var(--glass-shadow);
+}
+
+.acesso-calendario h2 {
+    margin: 0 0 8px;
+    color: var(--text-main);
+    font-size: 1.45rem;
+}
+
+.acesso-calendario p {
+    max-width: 700px;
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.btn-calendario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 14px 22px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: #0A2540;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: var(--shadow-accent);
+    transition: var(--transition-base);
+}
+
+.btn-calendario:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-accent-hover);
+}
+
+@media (max-width: 768px) {
+    .acesso-calendario {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 25px;
+    }
+
+    .btn-calendario {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

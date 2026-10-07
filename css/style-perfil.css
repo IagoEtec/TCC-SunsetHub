@@ -1,0 +1,1850 @@
+/* ============================================================
+   STYLE-PERFIL.CSS
+   Página de Perfil
+   Compatível com app.css global
+   ============================================================ */
+
+
+/* ============================================================
+   VARIÁVEIS LOCAIS
+   Não altera as variáveis do app.css
+   ============================================================ */
+
+.perfil-page {
+
+    --perfil-bg:
+        linear-gradient(
+            135deg,
+            #061525 0%,
+            #0b2238 50%,
+            #062d2d 100%
+        );
+
+    --perfil-card:
+        rgba(12, 38, 62, 0.90);
+
+    --perfil-card-2:
+        rgba(18, 48, 75, 0.92);
+
+    --perfil-border:
+        rgba(150, 205, 225, 0.20);
+
+    --perfil-border-strong:
+        rgba(150, 205, 225, 0.30);
+
+    --perfil-text:
+        #f4f7fa;
+
+    --perfil-text-muted:
+        #b9c7d4;
+
+    --perfil-input:
+        #071729;
+
+    --perfil-input-border:
+        rgba(160, 200, 220, 0.25);
+
+    --perfil-accent:
+        #48e8ae;
+
+    --perfil-accent-dark:
+        #18d995;
+
+    --perfil-danger:
+        #ef5350;
+
+    --perfil-radius:
+        22px;
+
+    --perfil-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.28);
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding:
+        120px
+        24px
+        60px;
+
+    position: relative;
+
+    z-index: 2;
+
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   RESET LOCAL
+   Impede o app.css de deformar os elementos do perfil
+   ============================================================ */
+
+.perfil-page *,
+.perfil-page *::before,
+.perfil-page *::after {
+
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   BODY DA PÁGINA
+   ============================================================ */
+
+body:has(.perfil-page) {
+
+    min-height: 100vh;
+
+    margin: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #061525 0%,
+            #081a2d 45%,
+            #062d2d 100%
+        );
+
+    color: var(--perfil-text);
+}
+
+
+/* ============================================================
+   ELEMENTOS DECORATIVOS
+   ============================================================ */
+
+.background_shapes {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.background_shapes .shape {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(2px);
+}
+
+.background_shapes .shape1 {
+
+    width: 380px;
+    height: 380px;
+
+    top: -150px;
+    left: -120px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(72, 232, 174, 0.10),
+            transparent 70%
+        );
+}
+
+.background_shapes .shape2 {
+
+    width: 450px;
+    height: 450px;
+
+    right: -180px;
+    top: 25%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 150, 255, 0.08),
+            transparent 70%
+        );
+}
+
+.background_shapes .shape3 {
+
+    width: 420px;
+    height: 420px;
+
+    bottom: -180px;
+    left: 35%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(72, 232, 174, 0.07),
+            transparent 70%
+        );
+}
+
+
+/* ============================================================
+   BOTÃO VOLTAR
+   É um <a>, não um <button>
+   Fica fora de .perfil-page, portanto não usar
+   .perfil-page .btn_voltar
+   ============================================================ */
+
+.btn_voltar {
+    position: fixed;
+
+    top: 120px;
+    left: 25px;
+
+    z-index: 9998;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    min-width: 0;
+    min-height: 42px;
+
+    margin: 0;
+    padding: 9px 17px;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+
+    background: rgba(10, 30, 50, 0.85);
+
+    color: #ffffff !important;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-align: center;
+    text-decoration: none !important;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.20);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* ============================================================
+   ÍCONE
+   ============================================================ */
+
+.btn_voltar i {
+    margin-right: 8px;
+
+    font-size: 13px;
+
+    color: inherit;
+}
+
+
+/* ============================================================
+   REMOVE EFEITOS GLOBAIS DE LINKS
+   ============================================================ */
+
+.btn_voltar::before,
+.btn_voltar::after {
+    content: none !important;
+
+    display: none !important;
+}
+
+
+/* ============================================================
+   HOVER
+   ============================================================ */
+
+.btn_voltar:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(25, 55, 80, 0.96);
+
+    border-color:
+        rgba(72, 232, 174, 0.45);
+
+    color: #ffffff !important;
+
+    text-decoration: none !important;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+
+/* ============================================================
+   CLIQUE
+   ============================================================ */
+
+.btn_voltar:active {
+    transform: translateY(0);
+}
+
+
+/* ============================================================
+   FOCO
+   ============================================================ */
+
+.btn_voltar:focus {
+    outline: none;
+}
+
+.btn_voltar:focus-visible {
+    outline: none;
+
+    border-color:
+        rgba(72, 232, 174, 0.75);
+
+    box-shadow:
+        0 0 0 3px rgba(72, 232, 174, 0.20),
+        0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+
+/* ============================================================
+   CELULAR
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .btn_voltar {
+        position: absolute;
+
+        top: 92px;
+        left: 12px;
+
+        min-height: 40px;
+
+        padding: 9px 14px;
+
+        font-size: 13px;
+    }
+
+}
+
+
+/* ============================================================
+   CELULAR PEQUENO
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+    .btn_voltar {
+
+        top: 88px;
+        left: 10px;
+
+        padding: 8px 12px;
+
+        font-size: 12px;
+    }
+
+}
+
+
+/*
+   CELULAR
+*/
+
+@media (max-width: 600px) {
+
+    .btn_voltar {
+
+        position: fixed;
+
+        top: 92px;
+
+        left: 12px;
+
+        min-height: 40px;
+
+        padding: 9px 14px;
+
+        font-size: 13px;
+
+    }
+
+}
+
+
+/*
+   CELULAR MUITO PEQUENO
+*/
+
+@media (max-width: 400px) {
+
+    .btn_voltar {
+
+        top: 88px;
+
+        left: 10px;
+
+        padding: 8px 12px;
+
+        font-size: 12px;
+
+    }
+
+}
+
+
+/* ============================================================
+   ALERTAS
+   ============================================================ */
+
+.perfil-page .perfil_alert {
+
+    width: 100%;
+
+    margin:
+        0
+        0
+        20px;
+
+    padding: 14px 18px;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    border: 1px solid transparent;
+
+    box-sizing: border-box;
+}
+
+.perfil-page .perfil_alert-error {
+
+    color: #ffd6d6;
+
+    background:
+        rgba(239, 83, 80, 0.12);
+
+    border-color:
+        rgba(239, 83, 80, 0.35);
+}
+
+.perfil-page .perfil_alert-success {
+
+    color: #caffea;
+
+    background:
+        rgba(72, 232, 174, 0.10);
+
+    border-color:
+        rgba(72, 232, 174, 0.30);
+}
+
+
+/* ============================================================
+   CABEÇALHO DO PERFIL
+   ============================================================ */
+
+.perfil-page .perfil_header-cover {
+
+    position: relative;
+
+    width: 100%;
+
+    /*
+       IMPORTANTE:
+       Não usar height fixa pequena.
+       Era isso que estava cortando o botão inferior.
+    */
+
+    min-height: 300px;
+
+    height: auto;
+
+    padding:
+        145px
+        32px
+        32px;
+
+    display: grid;
+
+    grid-template-columns:
+        100px
+        minmax(0, 1fr)
+        auto;
+
+    align-items: center;
+
+    column-gap: 24px;
+
+    overflow: visible;
+
+    border:
+        1px solid
+        var(--perfil-border-strong);
+
+    border-radius:
+        24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(11, 37, 62, 0.96),
+            rgba(3, 21, 37, 0.96)
+        );
+
+    box-shadow:
+        var(--perfil-shadow);
+
+    isolation: isolate;
+}
+
+
+/* ============================================================
+   BANNER
+   ============================================================ */
+
+.perfil-page .perfil-banner-image {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: -3;
+
+    border-radius: inherit;
+}
+
+.perfil-page .perfil-cover-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -2;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3, 17, 30, 0.96) 0%,
+            rgba(4, 22, 37, 0.86) 45%,
+            rgba(4, 22, 37, 0.72) 100%
+        );
+}
+
+.perfil-page .perfil_header-cover:not(.has-banner) {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0a2540 0%,
+            #071a2c 55%,
+            #052f31 100%
+        );
+}
+
+
+/* ============================================================
+   FORMULÁRIO DO AVATAR
+   ============================================================ */
+
+.perfil-page .perfil-avatar-form {
+
+    position: relative;
+
+    width: 100px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: 0;
+
+    z-index: 5;
+}
+
+
+/* ============================================================
+   AVATAR GRANDE
+   ============================================================ */
+
+.perfil-page .perfil_avatar {
+
+    width: 92px;
+    height: 92px;
+
+    min-width: 92px;
+    min-height: 92px;
+
+    margin: 0;
+
+    padding: 4px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4ff0b5,
+            #42dca8
+        );
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.65);
+
+    box-shadow:
+        0 0 0 3px rgba(72, 232, 174, 0.18),
+        0 10px 30px rgba(0, 0, 0, 0.30);
+
+    flex-shrink: 0;
+}
+
+.perfil-page .perfil_avatar img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+
+/* ============================================================
+   INFORMAÇÕES DO USUÁRIO
+   ============================================================ */
+
+.perfil-page .perfil-info-cover {
+
+    min-width: 0;
+
+    align-self: center;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+.perfil-page .perfil-info-cover h1 {
+
+    margin:
+        0
+        0
+        10px;
+
+    padding: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            34px
+        );
+
+    line-height: 1.15;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+
+    overflow-wrap: anywhere;
+}
+
+.perfil-page .perfil-info-cover p {
+
+    margin: 0;
+
+    padding: 0;
+
+    color:
+        rgba(255, 255, 255, 0.78);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   FORMULÁRIO DO BANNER
+   ============================================================ */
+
+.perfil-page .perfil-banner-form {
+
+    width: auto;
+
+    min-width: 200px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+.perfil-page .perfil-banner-form small {
+
+    display: block;
+
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   BOTÃO SECUNDÁRIO
+   ============================================================ */
+
+.perfil-page .btn_secondary {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: auto;
+
+    min-height: 44px;
+
+    margin: 0;
+
+    padding:
+        11px
+        20px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.22);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    box-shadow: none;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.perfil-page .btn_secondary:hover {
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    border-color:
+        rgba(72, 232, 174, 0.45);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+.perfil-page .perfil_card {
+
+    width: 100%;
+
+    margin:
+        30px
+        0
+        0;
+
+    padding:
+        30px;
+
+    border:
+        1px solid
+        var(--perfil-border);
+
+    border-radius:
+        var(--perfil-radius);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(16, 46, 73, 0.94),
+            rgba(8, 29, 49, 0.94)
+        );
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.20);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    color:
+        var(--perfil-text);
+}
+
+.perfil-page .perfil_card h2 {
+
+    margin:
+        0
+        0
+        24px;
+
+    padding: 0;
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    line-height: 1.3;
+
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   FORMULÁRIOS
+   ============================================================ */
+
+.perfil-page form {
+
+    margin: 0;
+}
+
+.perfil-page .form_group {
+
+    width: 100%;
+
+    margin:
+        0
+        0
+        20px;
+
+    padding: 0;
+}
+
+.perfil-page .form_group:last-child {
+
+    margin-bottom: 0;
+}
+
+.perfil-page .form_group label {
+
+    display: block;
+
+    margin:
+        0
+        0
+        8px;
+
+    padding: 0;
+
+    color:
+        #cbd7e2;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+.perfil-page input[type="text"],
+.perfil-page input[type="email"],
+.perfil-page input[type="tel"],
+.perfil-page input[type="password"] {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 50px;
+
+    margin: 0;
+
+    padding:
+        0
+        16px;
+
+    border:
+        1px solid
+        var(--perfil-input-border);
+
+    border-radius: 17px;
+
+    outline: none;
+
+    background:
+        var(--perfil-input);
+
+    color:
+        #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    box-shadow: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.perfil-page input:hover {
+
+    border-color:
+        rgba(160, 200, 220, 0.38);
+}
+
+.perfil-page input:focus {
+
+    border-color:
+        var(--perfil-accent);
+
+    background:
+        #081b2e;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(72, 232, 174, 0.12);
+
+    outline: none;
+}
+
+.perfil-page input::placeholder {
+
+    color:
+        rgba(255, 255, 255, 0.38);
+}
+
+
+/* ============================================================
+   AUTOFILL DO CHROME
+   ============================================================ */
+
+.perfil-page input:-webkit-autofill,
+.perfil-page input:-webkit-autofill:hover,
+.perfil-page input:-webkit-autofill:focus {
+
+    -webkit-text-fill-color: #ffffff;
+
+    -webkit-box-shadow:
+        0 0 0 1000px
+        var(--perfil-input)
+        inset;
+
+    transition:
+        background-color 9999s ease-in-out 0s;
+}
+
+
+/* ============================================================
+   BOTÃO PRINCIPAL
+   ============================================================ */
+
+.perfil-page .btn_primary {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: 49px;
+
+    margin:
+        24px
+        0
+        0;
+
+    padding:
+        12px
+        20px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4cebb0,
+            #18d995
+        );
+
+    color:
+        #04151f;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(24, 217, 149, 0.20);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+.perfil-page .btn_primary:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(24, 217, 149, 0.28);
+
+    filter: brightness(1.04);
+}
+
+.perfil-page .btn_primary:active {
+
+    transform:
+        translateY(0);
+}
+
+
+/* ============================================================
+   INPUT DE ARQUIVO
+   ============================================================ */
+
+.perfil-page input[type="file"] {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
+
+/* ============================================================
+   MODAL DE CORTE
+   ============================================================ */
+
+.perfil-page .crop-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(1, 8, 15, 0.78);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+}
+
+.perfil-page .crop-modal[hidden] {
+
+    display: none !important;
+}
+
+
+/* ============================================================
+   CAIXA DO MODAL
+   ============================================================ */
+
+.perfil-page .crop-dialog {
+
+    position: relative;
+
+    width: min(
+        1050px,
+        100%
+    );
+
+    max-height:
+        calc(100vh - 40px);
+
+    overflow-y: auto;
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(160, 210, 225, 0.20);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d2943,
+            #071a2c
+        );
+
+    box-shadow:
+        0 30px 100px
+        rgba(0, 0, 0, 0.50);
+
+    color: #ffffff;
+}
+
+.perfil-page .crop-close {
+
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.16);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   TÍTULO DO MODAL
+   ============================================================ */
+
+.perfil-page .crop-kicker {
+
+    margin:
+        0
+        0
+        6px;
+
+    color:
+        var(--perfil-accent);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.perfil-page .crop-heading {
+
+    margin:
+        0
+        0
+        24px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   ÁREA DE TRABALHO
+   ============================================================ */
+
+.perfil-page .crop-workspace {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(220px, 0.7fr);
+
+    gap: 24px;
+
+    align-items: start;
+}
+
+.perfil-page .crop-stage {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 360px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 18px;
+
+    background:
+        #020b14;
+}
+
+.perfil-page #cropCanvas {
+
+    display: block;
+
+    max-width: 100%;
+
+    height: auto;
+}
+
+.perfil-page .crop-guide {
+
+    position: absolute;
+
+    inset: 50% auto auto 50%;
+
+    width: 80%;
+
+    aspect-ratio: 1 / 1;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.80);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.perfil-page .crop-preview-wrap {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    min-height: 260px;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+
+    border-radius: 18px;
+
+    background:
+        rgba(0, 0, 0, 0.16);
+}
+
+.perfil-page #cropPreview {
+
+    width: 180px;
+    height: 180px;
+
+    max-width: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        3px solid
+        rgba(72, 232, 174, 0.75);
+}
+
+
+/* ============================================================
+   ZOOM
+   ============================================================ */
+
+.perfil-page .crop-zoom-label {
+
+    display: block;
+
+    margin:
+        20px
+        0
+        8px;
+
+    color:
+        var(--perfil-text-muted);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.perfil-page .crop-zoom {
+
+    width: 100%;
+
+    accent-color:
+        var(--perfil-accent);
+
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   AÇÕES DO CROP
+   ============================================================ */
+
+.perfil-page .crop-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 24px;
+}
+
+.perfil-page .crop-button {
+
+    min-height: 44px;
+
+    padding:
+        10px
+        18px;
+
+    border-radius: 12px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.perfil-page .crop-button-ghost {
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    color: #ffffff;
+}
+
+.perfil-page .crop-button-primary {
+
+    border: none;
+
+    background:
+        var(--perfil-accent);
+
+    color:
+        #04151f;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+    .perfil-page {
+
+        padding:
+            120px
+            18px
+            45px;
+    }
+
+    .perfil-page .perfil_header-cover {
+
+        grid-template-columns:
+            90px
+            minmax(0, 1fr);
+
+        padding:
+            125px
+            24px
+            28px;
+
+        column-gap: 18px;
+    }
+
+    .perfil-page .perfil-banner-form {
+
+        grid-column: 1 / -1;
+
+        width: 100%;
+
+        margin-top: 10px;
+
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            auto;
+
+        align-items: center;
+
+        gap: 12px;
+    }
+
+    .perfil-page .perfil-banner-form small {
+
+        text-align: left;
+    }
+
+    .perfil-page .perfil_card {
+
+        padding: 24px;
+    }
+
+    .perfil-page .crop-workspace {
+
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ============================================================
+   CELULAR
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .perfil-page {
+
+        padding:
+            105px
+            12px
+            35px;
+    }
+
+    .perfil-page .btn_voltar {
+
+        position: absolute;
+
+        top: 92px;
+        left: 12px;
+    }
+
+    .perfil-page .perfil_header-cover {
+
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+
+        justify-items: center;
+
+        padding:
+            120px
+            18px
+            24px;
+
+        row-gap: 18px;
+
+        text-align: center;
+    }
+
+    .perfil-page .perfil-avatar-form {
+
+        width: 100%;
+    }
+
+    .perfil-page .perfil-info-cover {
+
+        width: 100%;
+    }
+
+    .perfil-page .perfil-info-cover h1 {
+
+        font-size: 24px;
+
+        overflow-wrap: anywhere;
+    }
+
+    .perfil-page .perfil-banner-form {
+
+        grid-column: auto;
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        margin-top: 0;
+    }
+
+    .perfil-page .perfil-banner-form .btn_secondary {
+
+        width: 100%;
+    }
+
+    .perfil-page .perfil-banner-form small {
+
+        text-align: center;
+    }
+
+    .perfil-page .perfil_card {
+
+        margin-top: 20px;
+
+        padding: 20px 16px;
+
+        border-radius: 18px;
+    }
+
+    .perfil-page .perfil_card h2 {
+
+        font-size: 18px;
+    }
+
+    .perfil-page .crop-dialog {
+
+        padding: 20px 15px;
+    }
+
+    .perfil-page .crop-stage {
+
+        min-height: 250px;
+    }
+
+    .perfil-page .crop-preview-wrap {
+
+        min-height: 200px;
+    }
+
+    .perfil-page #cropPreview {
+
+        width: 140px;
+        height: 140px;
+    }
+
+    .perfil-page .crop-actions {
+
+        flex-direction: column;
+    }
+
+    .perfil-page .crop-button {
+
+        width: 100%;
+    }
+}
+
+
+/* ============================================================
+   CELULAR PEQUENO
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+    .perfil-page {
+
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .perfil-page .perfil_header-cover {
+
+        padding:
+            115px
+            14px
+            22px;
+    }
+
+    .perfil-page .perfil_card {
+
+        padding:
+            18px
+            13px;
+    }
+
+    .perfil-page input[type="text"],
+    .perfil-page input[type="email"],
+    .perfil-page input[type="tel"],
+    .perfil-page input[type="password"] {
+
+        min-height: 48px;
+
+        padding:
+            0
+            14px;
+    }
+}
+
+
+/* ============================================================
+   ACESSIBILIDADE
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .perfil-page *,
+    .perfil-page *::before,
+    .perfil-page *::after {
+
+        scroll-behavior: auto !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+    }
+}
+
+
+/* Ajustes do editor de avatar e upload de banner */
+.perfil-page .perfil-banner-form input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.perfil-page .crop-help { margin: 12px 0 0; color: var(--perfil-text-muted); font-size: 12px; text-align: center; }
+.perfil-page .crop-stage { touch-action: none; cursor: grab; }
+.perfil-page .crop-stage:active { cursor: grabbing; }
+.perfil-page .crop-preview-wrap strong { color: #d9fff0; font-size: 13px; }
+@media (max-width: 600px) {
+  .perfil-page .perfil-banner-form { grid-template-columns: 1fr; }
+  .perfil-page .perfil-banner-form .btn_secondary { width: 100%; }
+  .perfil-page .crop-dialog { padding: 22px 16px; }
+  .perfil-page .crop-actions { flex-direction: column-reverse; }
+  .perfil-page .crop-button { width: 100%; }
+}
+
+
+/* Editor v67: gatilho de foto acessível e compatível com mouse, toque e teclado */
+.perfil-page #avatarTrigger { cursor: pointer; outline: none; }
+.perfil-page #avatarTrigger:hover { transform: scale(1.03); }
+.perfil-page #avatarTrigger:focus-visible { box-shadow: 0 0 0 4px rgba(72, 232, 174, .45), 0 0 0 7px rgba(2, 11, 20, .85); }
+.perfil-page .crop-modal { overscroll-behavior: contain; }
+.perfil-page .crop-dialog { animation: perfil-modal-in .18s ease-out both; }
+@keyframes perfil-modal-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+
+/* Editor v2: banner horizontal 3:1 */
+.perfil-page .banner-stage { min-height: 0; aspect-ratio: 3 / 1; }
+.perfil-page #bannerCanvas { display: block; width: 100%; height: auto; max-width: 100%; }
+.perfil-page #bannerPreview { width: min(360px, 100%); height: 120px; object-fit: cover; border-radius: 12px; border: 2px solid rgba(72,232,174,.75); }
+.perfil-page .banner-workspace { grid-template-columns: minmax(0, 1.8fr) minmax(220px, .7fr); }
+@media (max-width: 850px) { .perfil-page .banner-workspace { grid-template-columns: 1fr; } }
+
+
+/* Evolução v68: enquadramento sem escapar da imagem e prévias maiores */
+.perfil-page .perfil_header-cover { grid-template-columns: 120px minmax(0, 1fr) auto; }
+.perfil-page .perfil-avatar-form { width: 120px; }
+.perfil-page .perfil_avatar { width: 112px; height: 112px; min-width: 112px; min-height: 112px; }
+.perfil-page #cropPreview { width: 220px; height: 220px; }
+.perfil-page .crop-stage, .perfil-page .banner-stage { user-select: none; -webkit-user-select: none; }
+@media (max-width: 850px) { .perfil-page .perfil_header-cover { grid-template-columns: 100px minmax(0, 1fr); } .perfil-page .perfil-avatar-form { width: 100px; } .perfil-page .perfil_avatar { width: 92px; height: 92px; min-width: 92px; min-height: 92px; } }
+
+
+/* Patente persistida do usuário */
+.perfil-patente {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 190, 78, .34);
+    border-radius: 999px;
+    background: rgba(255, 173, 51, .12);
+    color: #ffd27a;
+    font-weight: 800;
+    letter-spacing: .02em;
+    box-shadow: 0 8px 24px rgba(255, 173, 51, .10), inset 0 1px rgba(255,255,255,.08);
+}
+.perfil-patente i { color: #ffbd4d; }
+
+
+/* Progressão de patente — painel Liquid Glass em destaque */
+.perfil-page .perfil-rank-card {
+    position: relative;
+    overflow: hidden;
+    margin: 24px 0;
+    padding: 30px 32px;
+    border: 1px solid rgba(196, 224, 255, .24);
+    border-radius: 26px;
+    background: linear-gradient(140deg, rgba(43, 68, 108, .78), rgba(12, 26, 50, .66));
+    box-shadow: 0 24px 70px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.14);
+    backdrop-filter: blur(28px) saturate(155%);
+    -webkit-backdrop-filter: blur(28px) saturate(155%);
+}
+.perfil-page .perfil-rank-card::before {
+    content: ""; position: absolute; inset: -40%; pointer-events: none;
+    background: radial-gradient(circle at 82% 28%, rgba(255, 194, 83, .20), transparent 28%), radial-gradient(circle at 12% 100%, rgba(105,232,187,.13), transparent 32%);
+}
+.perfil-rank-heading, .perfil-xp-meta, .perfil-xp-track, .perfil-xp-foot { position: relative; z-index: 1; }
+.perfil-rank-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.perfil-rank-eyebrow { display: block; margin-bottom: 7px; color: #8deac7; font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.perfil-rank-heading h2 { margin: 0; color: #fff; font-size: clamp(2.2rem, 6vw, 4.4rem); line-height: .98; letter-spacing: -.05em; text-shadow: 0 8px 26px rgba(0,0,0,.24); }
+.perfil-rank-heading p { margin: 12px 0 0; color: rgba(235,244,255,.72); font-size: .98rem; }
+.perfil-rank-medal { display: grid; place-items: center; width: 82px; height: 82px; flex: 0 0 82px; border: 1px solid rgba(255,211,126,.40); border-radius: 24px; background: linear-gradient(145deg, rgba(255,198,82,.26), rgba(255,157,44,.10)); color: #ffd273; font-size: 2.4rem; box-shadow: 0 16px 38px rgba(255,174,58,.14), inset 0 1px rgba(255,255,255,.18); }
+.perfil-xp-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 28px; color: rgba(235,244,255,.70); }
+.perfil-xp-meta strong { color: #fff; font-size: 1.18rem; }
+.perfil-xp-meta span { font-size: .9rem; text-align: right; }
+.perfil-xp-track { height: 15px; margin-top: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(3, 13, 29, .58); box-shadow: inset 0 2px 8px rgba(0,0,0,.28), 0 0 0 4px rgba(105,232,187,.05); }
+.perfil-xp-track span { display: block; height: 100%; min-width: 8px; border-radius: inherit; background: linear-gradient(90deg, #55dcae, #b8f4ce 55%, #ffd273); box-shadow: 0 0 22px rgba(105,232,187,.38); transition: width .8s cubic-bezier(.2,.8,.2,1); }
+.perfil-xp-foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 9px; color: rgba(235,244,255,.56); font-size: .78rem; }
+@media (max-width: 680px) { .perfil-page .perfil-rank-card { padding: 24px 20px; } .perfil-rank-medal { width: 62px; height: 62px; flex-basis: 62px; font-size: 1.8rem; border-radius: 18px; } .perfil-rank-heading h2 { font-size: 2.6rem; } }
+
+.perfil-xp-meta strong { display: inline-flex; align-items: center; gap: 7px; }
+.perfil-xp-meta strong i { color: #ffd273; font-size: .95em; }
+.perfil-rank-eyebrow i { margin-right: 4px; }
+
+.perfil-streak-card{display:flex;align-items:center;gap:16px;margin:22px auto;max-width:980px;padding:20px 24px;border:1px solid rgba(255,216,120,.28);border-radius:20px;background:linear-gradient(135deg,rgba(255,216,120,.12),rgba(255,255,255,.05));box-shadow:0 16px 40px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.12);backdrop-filter:blur(18px)}.perfil-streak-flame{font-size:42px;color:#ffd878;filter:drop-shadow(0 0 12px rgba(255,166,50,.7));animation:perfilFlame 1.5s ease-in-out infinite alternate}.perfil-streak-card div:nth-child(2){display:grid;gap:4px;flex:1}.perfil-streak-eyebrow{font-size:10px;letter-spacing:.12em;color:#aebed0}.perfil-streak-card strong{font-size:19px;color:#fff}.perfil-streak-card small{color:#aebed0}.perfil-streak-status{font-size:10px;letter-spacing:.08em;color:#ffd878;border:1px solid rgba(255,216,120,.35);padding:9px 12px;border-radius:999px}@keyframes perfilFlame{to{transform:scale(1.08) rotate(-3deg)}}@media(max-width:640px){.perfil-streak-card{align-items:flex-start;flex-wrap:wrap}.perfil-streak-status{margin-left:58px}}

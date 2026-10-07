@@ -1,0 +1,1234 @@
+/* =========================================================
+   NAVBAR
+   Tema escuro = padrão
+   Tema claro = html.claro
+   ========================================================= */
+
+
+/* =========================================================
+   VARIÁVEIS — TEMA ESCURO
+   ========================================================= */
+
+:root {
+
+    --nav-bg:
+        rgba(10, 37, 64, 0.78);
+
+    --nav-border:
+        rgba(255, 255, 255, 0.08);
+
+    --nav-shadow:
+        rgba(0, 0, 0, 0.20);
+
+    --nav-text:
+        rgba(255, 255, 255, 0.92);
+
+    --nav-text-hover:
+        #16E28A;
+
+    --nav-green:
+        #16E28A;
+
+    --nav-green-dark:
+        #0FCF79;
+
+    --nav-button-text:
+        #06150F;
+
+    --nav-secondary-bg:
+        rgba(255, 255, 255, 0.08);
+
+    --nav-secondary-border:
+        rgba(255, 255, 255, 0.12);
+
+    --nav-secondary-hover:
+        rgba(255, 255, 255, 0.15);
+
+
+    /* Dropdown */
+
+    --dropdown-bg:
+        rgba(10, 37, 64, 0.97);
+
+    --dropdown-border:
+        rgba(255, 255, 255, 0.10);
+
+    --dropdown-text:
+        rgba(255, 255, 255, 0.92);
+
+    --dropdown-muted:
+        rgba(255, 255, 255, 0.60);
+
+    --dropdown-hover:
+        rgba(22, 226, 138, 0.10);
+
+    --dropdown-hover-text:
+        #16E28A;
+
+    --dropdown-divider:
+        rgba(255, 255, 255, 0.10);
+
+    --dropdown-logout:
+        #FF6B6B;
+
+    --dropdown-logout-hover:
+        rgba(255, 107, 107, 0.10);
+
+
+    /* Avatar */
+
+    --avatar-bg:
+        linear-gradient(
+            135deg,
+            #4CAF50,
+            #2E7D32
+        );
+
+    --avatar-text:
+        #FFFFFF;
+}
+
+
+/* =========================================================
+   VARIÁVEIS — TEMA CLARO
+   ========================================================= */
+
+html.claro {
+
+    --nav-bg:
+        rgba(255, 255, 255, 0.94);
+
+    --nav-border:
+        rgba(15, 23, 42, 0.10);
+
+    --nav-shadow:
+        rgba(15, 23, 42, 0.12);
+
+    --nav-text:
+        #334155;
+
+    --nav-text-hover:
+        #0369A1;
+
+    --nav-green:
+        #0E9F6E;
+
+    --nav-green-dark:
+        #087F5B;
+
+    --nav-button-text:
+        #052E1B;
+
+    --nav-secondary-bg:
+        #F1F5F9;
+
+    --nav-secondary-border:
+        #CBD5E1;
+
+    --nav-secondary-hover:
+        #E2E8F0;
+
+
+    /* Dropdown claro */
+
+    --dropdown-bg:
+        rgba(255, 255, 255, 0.98);
+
+    --dropdown-border:
+        rgba(15, 23, 42, 0.12);
+
+    --dropdown-text:
+        #0F172A;
+
+    --dropdown-muted:
+        #64748B;
+
+    --dropdown-hover:
+        rgba(14, 159, 110, 0.08);
+
+    --dropdown-hover-text:
+        #087F5B;
+
+    --dropdown-divider:
+        rgba(15, 23, 42, 0.10);
+
+    --dropdown-logout:
+        #DC2626;
+
+    --dropdown-logout-hover:
+        rgba(220, 38, 38, 0.08);
+
+
+    /* Avatar */
+
+    --avatar-bg:
+        linear-gradient(
+            135deg,
+            #4CAF50,
+            #2E7D32
+        );
+
+    --avatar-text:
+        #FFFFFF;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+
+    position: fixed;
+
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: calc(100% - 60px);
+    max-width: 1400px;
+
+    height: 85px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 35px;
+
+    background: var(--nav-bg);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid var(--nav-border);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 10px 40px var(--nav-shadow),
+        0 0 0 1px var(--nav-border);
+
+    z-index: 9999;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.investment-trigger{
+    color: white;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+
+    width: 65px;
+
+    display: block;
+
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   MENU
+   ========================================================= */
+
+nav ul {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 40px;
+
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+nav a {
+
+    position: relative;
+
+    color: var(--nav-text);
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-family: sans-serif;
+
+    font-weight: 600;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+nav a:hover {
+
+    color: var(--nav-text-hover);
+}
+
+
+nav a::after {
+
+    content: '';
+
+    position: absolute;
+
+    bottom: -8px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 2px;
+
+    border-radius: 50px;
+
+    background: var(--nav-green);
+
+    transition:
+        width 0.3s ease;
+}
+
+
+nav a:hover::after {
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   ÁREA DIREITA
+   ========================================================= */
+
+.home_bot {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.user_area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.user_name {
+
+    color: var(--nav-text);
+
+    font-weight: 600;
+
+    font-size: 15px;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+.button_log {
+
+    border: none;
+
+    border-radius: 50px;
+
+    padding: 12px 22px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+    background: var(--nav-green);
+
+    color: var(--nav-button-text);
+
+    box-shadow:
+        0 8px 20px rgba(22, 226, 138, 0.25);
+}
+
+
+.button_log:hover {
+
+    transform: translateY(-3px);
+
+    background: var(--nav-green-dark);
+}
+
+
+.button_log.conectar {
+
+    background: var(--nav-secondary-bg);
+
+    color: var(--nav-text);
+
+    border: 1px solid var(--nav-secondary-border);
+
+    box-shadow: none;
+}
+
+
+.button_log.conectar:hover {
+
+    background: var(--nav-secondary-hover);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   DROPDOWN DO USUÁRIO
+   ========================================================= */
+
+.user_dropdown {
+
+    position: relative;
+}
+
+
+.user_dropdown > a {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+}
+
+
+.user_dropdown img {
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease;
+
+    object-fit: cover;
+
+    width: 45px;
+    height: 45px;
+}
+
+
+.user_dropdown img:hover {
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
+.avatar_img,
+.avatar_placeholder {
+
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+    min-height: 40px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.avatar_placeholder {
+
+    background: var(--avatar-bg);
+
+    color: var(--avatar-text);
+
+    font-size: 1.1rem;
+
+    font-weight: 600;
+
+    font-family: "Inter", sans-serif;
+}
+
+
+/* =========================================================
+   LINK DO AVATAR
+   ========================================================= */
+
+#avatarBtn {
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.avatar_btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-block;
+}
+
+
+/* =========================================================
+   DROPDOWN
+   ========================================================= */
+
+.dropdown_menu {
+
+    display: none;
+
+    opacity: 0;
+
+    position: absolute;
+
+    top: calc(100% + 15px);
+
+    right: 0;
+
+    min-width: 230px;
+
+    background: var(--dropdown-bg);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid var(--dropdown-border);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.25),
+        0 0 0 1px var(--dropdown-border);
+
+    padding: 10px;
+
+    z-index: 9999;
+
+    transition:
+        opacity 0.2s ease;
+}
+
+
+.dropdown_menu.active {
+
+    display: block;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   CABEÇALHO DO DROPDOWN
+   ========================================================= */
+
+.dropdown_header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 12px;
+
+    color: var(--dropdown-text);
+
+    font-size: 14px;
+
+    border-bottom:
+        1px solid var(--dropdown-divider);
+
+    margin-bottom: 6px;
+}
+
+
+.dropdown_header > div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    min-width: 0;
+}
+
+
+.dropdown_header strong {
+
+    color: var(--dropdown-text);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.dropdown_header small {
+
+    color: var(--dropdown-muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ITENS DO DROPDOWN
+   ========================================================= */
+
+.dropdown_item {
+
+    display: block;
+
+    padding: 10px 12px;
+
+    color: var(--dropdown-text);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    border-radius: 10px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+.dropdown_item:hover {
+
+    background: var(--dropdown-hover);
+
+    color: var(--dropdown-hover-text);
+}
+
+
+/* =========================================================
+   DIVISOR
+   ========================================================= */
+
+.dropdown_menu hr {
+
+    border: none;
+
+    border-top:
+        1px solid var(--dropdown-divider);
+
+    margin: 6px 0;
+}
+
+
+/* =========================================================
+   SAIR
+   ========================================================= */
+
+.dropdown_item.logout {
+
+    color: var(--dropdown-logout);
+}
+
+
+.dropdown_item.logout:hover {
+
+    background: var(--dropdown-logout-hover);
+
+    color: var(--dropdown-logout);
+}
+
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    header {
+
+        width: calc(100% - 30px);
+
+        height: 75px;
+
+        padding: 0 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .logo {
+
+        width: 55px;
+    }
+
+
+    nav {
+
+        display: none;
+    }
+
+
+    .home_bot {
+
+        gap: 8px;
+    }
+
+
+    .button_log {
+
+        padding: 10px 15px;
+
+        font-size: 13px;
+    }
+
+
+    .user_area {
+
+        gap: 10px;
+    }
+
+
+    .user_name {
+
+        display: none;
+    }
+
+
+    .dropdown_menu {
+
+        right: -5px;
+
+        min-width: 210px;
+    }
+}
+
+
+/* =========================================================
+   TELAS MUITO PEQUENAS
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    header {
+
+        width: calc(100% - 20px);
+
+        padding: 0 14px;
+
+        top: 10px;
+    }
+
+
+    .button_log {
+
+        padding: 9px 12px;
+
+        font-size: 12px;
+    }
+
+
+    .home_bot {
+
+        gap: 5px;
+    }
+
+
+    .dropdown_menu {
+
+        right: -5px;
+
+        min-width: 200px;
+    }
+}
+/* =========================================
+   DROPDOWN EDUCAÇÃO
+========================================= */
+
+.education-dropdown {
+    position: relative !important;
+}
+
+
+/* BOTÃO EDUCAÇÃO */
+
+.education-trigger {
+    display: flex !important;
+    align-items: center;
+    gap: 7px;
+}
+
+
+/* SETINHA */
+
+.education-arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+
+/* GIRA A SETA */
+
+.education-dropdown:hover .education-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================
+   GAVETA
+========================================= */
+
+.education-dropdown-menu {
+
+    position: absolute !important;
+
+    top: 100% !important;
+    left: 50% !important;
+
+    transform:
+        translateX(-50%)
+        translateY(12px);
+
+    width: 290px;
+
+    padding: 10px;
+
+    /* LIQUID GLASS */
+
+    background:
+        rgba(20, 40, 65, 0.88);
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.30);
+
+    /* ESCONDIDO */
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    /* ANIMAÇÃO */
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+
+    z-index: 999999;
+}
+
+
+/* =========================================
+   ABRIR NO HOVER
+========================================= */
+
+.education-dropdown:hover
+.education-dropdown-menu {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(8px);
+
+}
+
+
+/* =========================================
+   CADA OPÇÃO
+========================================= */
+
+.education-dropdown-menu a {
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 13px;
+
+    width: 100%;
+
+    padding: 13px;
+
+    border-radius: 13px;
+
+    text-decoration: none;
+
+    color: white;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+/* HOVER ITEM */
+
+.education-dropdown-menu a:hover {
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    transform:
+        translateX(4px);
+
+}
+
+
+/* =========================================
+   ÍCONES
+========================================= */
+
+.education-dropdown-menu a > i {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 40px;
+
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    color: #54e39a;
+
+    background:
+        rgba(84, 227, 154, 0.12);
+
+}
+
+
+/* =========================================
+   TEXTOS
+========================================= */
+
+.education-dropdown-menu a div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.education-dropdown-menu a strong {
+
+    font-size: 14px;
+
+    color: white;
+
+}
+
+
+.education-dropdown-menu a span {
+
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.60);
+
+}
+/* =========================================
+   DROPDOWN INVESTIMENTOS
+========================================= */
+
+.investment-dropdown {
+    position: relative !important;
+}
+
+
+/* BOTÃO */
+
+.investment-trigger {
+    display: flex !important;
+    align-items: center;
+    gap: 7px;
+}
+
+
+/* SETA */
+
+.investment-arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+
+/* GIRA A SETA */
+
+.investment-dropdown:hover .investment-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================
+   GAVETA
+========================================= */
+
+.investment-dropdown-menu {
+
+    position: absolute !important;
+
+    top: 100% !important;
+
+    left: 50% !important;
+
+    transform:
+        translateX(-50%)
+        translateY(12px);
+
+    width: 300px;
+
+    padding: 10px;
+
+    /* LIQUID GLASS */
+
+    background:
+        rgba(20, 40, 65, 0.88);
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.30);
+
+    /* ESCONDIDO */
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    /* ANIMAÇÃO */
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+
+    z-index: 999999;
+}
+
+
+/* =========================================
+   ABRIR NO HOVER
+========================================= */
+
+.investment-dropdown:hover
+.investment-dropdown-menu {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(8px);
+
+}
+
+
+/* =========================================
+   ITENS
+========================================= */
+
+.investment-dropdown-menu a {
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 13px;
+
+    width: 100%;
+
+    padding: 13px;
+
+    border-radius: 13px;
+
+    text-decoration: none;
+
+    color: white;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+/* HOVER */
+
+.investment-dropdown-menu a:hover {
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    transform:
+        translateX(4px);
+
+}
+
+
+/* =========================================
+   ÍCONES
+========================================= */
+
+.investment-dropdown-menu a > i {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 40px;
+
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    color: #54e39a;
+
+    background:
+        rgba(84, 227, 154, 0.12);
+
+}
+
+
+/* =========================================
+   TEXTOS
+========================================= */
+
+.investment-dropdown-menu a div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.investment-dropdown-menu a strong {
+
+    font-size: 14px;
+
+    color: white;
+
+}
+
+
+.investment-dropdown-menu a span {
+
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.60);
+
+}
+
+
+/* Acesso rápido ao Sunset Hub no celular (a navbar principal é ocultada abaixo de 768px). */
+.community-mobile-link{display:none;text-decoration:none;color:var(--nav-text);font-size:12px;font-weight:700;padding:9px 11px;border:1px solid var(--nav-secondary-border);border-radius:999px;white-space:nowrap}
+@media(max-width:768px){.community-mobile-link{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;margin-right:8px;color:var(--nav-green);border-color:rgba(22,226,138,.35)}.home_bot{flex-shrink:0}}
+@media(max-width:420px){.community-mobile-link{font-size:11px;padding:8px 9px;margin-right:5px}}

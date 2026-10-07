@@ -1,0 +1,1554 @@
+/* ============================================================
+   configuracoes.css – Página de Configurações
+   Estilo Liquid Glass (Apple)
+   ============================================================ */
+
+
+/* =========================
+   VARIÁVEIS
+========================= */
+
+:root {
+
+  /* Cores base */
+
+  --primary: #0A2540;
+
+  --primary-light: #24314C;
+
+  --primary-dark: #081b30;
+
+  --accent: #16E28A;
+
+  --accent-dark: #0db873;
+
+  --accent-light: #29f0a0;
+
+  --danger: #FF4757;
+
+  --danger-light: #ff6b81;
+
+  --white: #ffffff;
+
+  --gray-100: #f8fafc;
+
+  --gray-200: #eef4f8;
+
+  --gray-300: #dbe3eb;
+
+  --gray-400: #64748b;
+
+  --gray-500: #444;
+
+  --gray-600: #666;
+
+  --gray-700: #888;
+
+  --dark: #0B0F19;
+
+
+  /* Tipografia */
+
+  --font-family: 'Inter', sans-serif;
+
+
+  --radius-sm: 12px;
+
+  --radius-md: 16px;
+
+  --radius-lg: 24px;
+
+  --radius-xl: 28px;
+
+  --radius-full: 9999px;
+
+
+  /* Sombras e vidro */
+
+  --glass-bg: rgba(255, 255, 255, 0.08);
+
+  --glass-border: rgba(255, 255, 255, 0.15);
+
+  --glass-blur: 30px;
+
+  --glass-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  --glass-shadow-hover:
+    0 16px 48px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  --glass-border-hover:
+    rgba(255, 255, 255, 0.25);
+
+
+  /* Sombras comuns */
+
+  --shadow-sm:
+    0 10px 30px rgba(0, 0, 0, 0.08);
+
+  --shadow-md:
+    0 15px 40px rgba(0, 0, 0, 0.12);
+
+  --shadow-lg:
+    0 20px 50px rgba(0, 0, 0, 0.15);
+
+  --shadow-accent:
+    0 15px 30px rgba(22, 226, 138, 0.35);
+
+  --shadow-accent-hover:
+    0 20px 45px rgba(22, 226, 138, 0.45);
+
+
+  /* Transições */
+
+  --transition-fast: 0.2s ease;
+
+  --transition-base: 0.3s ease;
+
+  --transition-slow: 0.5s ease;
+
+}
+
+
+/* =========================
+   RESET E BASE
+========================= */
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: var(--font-family);
+
+  scroll-behavior: smooth;
+
+}
+
+
+body {
+
+  background: var(--gray-100);
+
+  color: var(--primary);
+
+  min-height: 100vh;
+
+  position: relative;
+
+  overflow-x: hidden;
+
+}
+
+
+/* =========================
+   FUNDO ANIMADO
+========================= */
+
+.background_shapes {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -1;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+}
+
+
+.shape {
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+
+  opacity: 0.5;
+
+}
+
+
+.shape1 {
+
+  width: 550px;
+
+  height: 550px;
+
+  background: rgba(22, 226, 138, 0.16);
+
+  top: -180px;
+
+  right: -160px;
+
+}
+
+
+.shape2 {
+
+  width: 480px;
+
+  height: 480px;
+
+  background: rgba(10, 37, 64, 0.10);
+
+  bottom: -200px;
+
+  left: -160px;
+
+}
+
+
+.shape3 {
+
+  width: 320px;
+
+  height: 320px;
+
+  background: rgba(22, 226, 138, 0.10);
+
+  top: 45%;
+
+  left: 60%;
+
+}
+
+
+/* =========================
+   LIQUID GLASS
+========================= */
+
+.glass {
+
+  background: rgba(255, 255, 255, 0.55);
+
+  backdrop-filter: blur(var(--glass-blur));
+
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  box-shadow: var(--shadow-sm);
+
+  transition: var(--transition-base);
+
+}
+
+
+.glass-card {
+
+  background: rgba(255, 255, 255, 0.65);
+
+  backdrop-filter: blur(var(--glass-blur));
+
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  box-shadow: var(--shadow-sm);
+
+  border-radius: var(--radius-lg);
+
+  transition: var(--transition-base);
+
+}
+
+
+.glass-card:hover {
+
+  transform: translateY(-4px);
+
+  border-color: rgba(22, 226, 138, 0.4);
+
+  box-shadow: var(--shadow-md);
+
+}
+
+
+/* =========================
+   BOTÃO VOLTAR
+========================= */
+
+.btn_voltar {
+
+  position: fixed;
+
+  top: 30px;
+
+  left: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 12px 20px;
+
+  background: var(--glass-bg);
+
+  color: var(--primary);
+
+  background: rgba(255, 255, 255, 0.7);
+
+  backdrop-filter: blur(var(--glass-blur));
+
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  border-radius: var(--radius-full);
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  font-size: 14px;
+
+  box-shadow: var(--shadow-sm);
+
+  transition: var(--transition-base);
+
+  z-index: 999;
+
+}
+
+
+.btn_voltar .material-icons {
+
+  font-size: 18px;
+
+}
+
+
+.btn_voltar:hover {
+
+  transform: translateY(-2px);
+
+  color: var(--accent-dark);
+
+  box-shadow: var(--shadow-md);
+
+}
+
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+
+.perfil_container {
+
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 120px 30px 80px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+
+}
+
+
+/* =========================
+   CABEÇALHO DO PERFIL
+========================= */
+
+.perfil_header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+
+  padding: 35px;
+
+  border-radius: var(--radius-xl);
+
+  margin-bottom: 10px;
+
+}
+
+
+.perfil_header_info {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+}
+
+
+.perfil_avatar {
+
+  width: 90px;
+
+  height: 90px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 3px solid var(--white);
+
+  box-shadow: var(--shadow-sm);
+
+  flex-shrink: 0;
+
+}
+
+
+.perfil_avatar_placeholder {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      var(--accent-dark)
+    );
+
+  color: var(--white);
+
+  font-weight: 800;
+
+  font-size: 1.8rem;
+
+}
+
+
+.perfil_dados h1 {
+
+  font-size: 1.6rem;
+
+  color: var(--primary);
+
+  margin-bottom: 8px;
+
+}
+
+
+.perfil_dados p {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color: var(--gray-600);
+
+  font-size: 0.9rem;
+
+  margin-top: 4px;
+
+}
+
+
+.perfil_dados .material-icons {
+
+  font-size: 16px;
+
+  color: var(--gray-400);
+
+}
+
+
+/* =========================
+   BOTÃO EDITAR PERFIL
+========================= */
+
+.btn_editar_perfil {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border: none;
+
+  border-radius: var(--radius-full);
+
+  padding: 13px 24px;
+
+  font-weight: 700;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  background: var(--accent);
+
+  color: var(--primary-dark);
+
+  box-shadow: var(--shadow-accent);
+
+  transition: var(--transition-base);
+
+  white-space: nowrap;
+
+}
+
+
+.btn_editar_perfil:hover {
+
+  transform: translateY(-3px);
+
+  box-shadow: var(--shadow-accent-hover);
+
+}
+
+
+.btn_editar_perfil .material-icons {
+
+  font-size: 18px;
+
+}
+
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.settings_section_title {
+
+  font-size: 0.85rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.06em;
+
+  color: var(--gray-400);
+
+  margin: 18px 4px 2px;
+
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.settings_grid {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+}
+
+
+.settings_card {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 22px 26px;
+
+  text-decoration: none;
+
+  color: inherit;
+
+}
+
+
+.settings_card_icon {
+
+  width: 48px;
+
+  height: 48px;
+
+  flex-shrink: 0;
+
+  border-radius: var(--radius-md);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgba(22, 226, 138, 0.12);
+
+  color: var(--accent-dark);
+
+  transition: var(--transition-base);
+
+}
+
+
+.settings_card:hover .settings_card_icon {
+
+  background: var(--accent);
+
+  color: var(--primary-dark);
+
+}
+
+
+.settings_card_text {
+
+  flex: 1;
+
+}
+
+
+.settings_card_text h3 {
+
+  font-size: 1rem;
+
+  color: var(--primary);
+
+  margin-bottom: 4px;
+
+}
+
+
+.settings_card_text p {
+
+  font-size: 0.85rem;
+
+  color: var(--gray-600);
+
+  line-height: 1.5;
+
+}
+
+
+.settings_card_arrow {
+
+  font-size: 16px !important;
+
+  color: var(--gray-400);
+
+  transition: var(--transition-base);
+
+}
+
+
+.settings_card:hover .settings_card_arrow {
+
+  color: var(--accent-dark);
+
+  transform: translateX(4px);
+
+}
+
+
+/* =========================
+   CARD DE PERIGO
+========================= */
+
+.settings_card_danger .settings_card_icon {
+
+  background: rgba(255, 71, 87, 0.12);
+
+  color: var(--danger);
+
+}
+
+
+.settings_card_danger .settings_card_text h3 {
+
+  color: var(--danger);
+
+}
+
+
+.settings_card_danger:hover {
+
+  border-color: rgba(255, 71, 87, 0.4);
+
+}
+
+
+.settings_card_danger:hover .settings_card_icon {
+
+  background: var(--danger);
+
+  color: var(--white);
+
+}
+
+
+.settings_card_danger:hover .settings_card_arrow {
+
+  color: var(--danger);
+
+}
+
+
+/* =========================
+   SETTINGS CARD BUTTON
+========================= */
+
+.settings_card_btn {
+
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.65);
+
+  backdrop-filter: blur(var(--glass-blur));
+
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font: inherit;
+
+}
+
+
+/* =========================
+   OVERLAY DO MODAL
+========================= */
+
+.modal_overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(10, 37, 64, 0.45);
+
+  backdrop-filter: blur(6px);
+
+  -webkit-backdrop-filter: blur(6px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition:
+    opacity var(--transition-base),
+    visibility var(--transition-base);
+
+  z-index: 1000;
+
+}
+
+
+.modal_overlay.modal_open {
+
+  opacity: 1;
+
+  visibility: visible;
+
+}
+
+
+body.modal_no_scroll {
+
+  overflow: hidden;
+
+}
+
+
+/* =========================
+   CAIXA DO MODAL
+========================= */
+
+.modal_box {
+
+  position: relative;
+
+  width: 100%;
+
+  max-width: 440px;
+
+  max-height: 88vh;
+
+  overflow-y: auto;
+
+  padding: 40px 32px 32px;
+
+  border-radius: var(--radius-xl);
+
+  background: rgba(255, 255, 255, 0.85);
+
+  transform: translateY(20px) scale(0.97);
+
+  opacity: 0;
+
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base);
+
+}
+
+
+.modal_overlay.modal_open .modal_box {
+
+  transform: translateY(0) scale(1);
+
+  opacity: 1;
+
+}
+
+
+/* =========================
+   FECHAR MODAL
+========================= */
+
+.modal_close {
+
+  position: absolute;
+
+  top: 18px;
+
+  right: 18px;
+
+  width: 34px;
+
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(10, 37, 64, 0.06);
+
+  color: var(--gray-400);
+
+  cursor: pointer;
+
+  transition: var(--transition-fast);
+
+}
+
+
+.modal_close:hover {
+
+  background: rgba(10, 37, 64, 0.1);
+
+  color: var(--primary);
+
+}
+
+
+.modal_close .material-icons {
+
+  font-size: 20px;
+
+}
+
+
+/* =========================
+   CONTEÚDO MODAL
+========================= */
+
+.modal_icon {
+
+  width: 56px;
+
+  height: 56px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: var(--radius-md);
+
+  background: rgba(22, 226, 138, 0.12);
+
+  color: var(--accent-dark);
+
+  margin-bottom: 18px;
+
+}
+
+
+.modal_icon .material-icons {
+
+  font-size: 28px;
+
+}
+
+
+.modal_icon_danger {
+
+  background: rgba(255, 71, 87, 0.12);
+
+  color: var(--danger);
+
+}
+
+
+.modal_title {
+
+  font-size: 1.3rem;
+
+  color: var(--primary);
+
+  margin-bottom: 10px;
+
+}
+
+
+.modal_text {
+
+  font-size: 0.9rem;
+
+  color: var(--gray-600);
+
+  line-height: 1.6;
+
+  margin-bottom: 24px;
+
+}
+
+
+/* =========================
+   FORMULÁRIO MODAL
+========================= */
+
+.modal_form {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+
+}
+
+
+.modal_field {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+}
+
+
+.modal_field label {
+
+  font-size: 0.82rem;
+
+  font-weight: 600;
+
+  color: var(--primary);
+
+}
+
+
+.modal_field select {
+
+  padding: 12px 14px;
+
+  border-radius: var(--radius-sm);
+
+  border: 1px solid var(--gray-300);
+
+  background: var(--white);
+
+  color: var(--primary);
+
+  font-size: 0.9rem;
+
+  cursor: pointer;
+
+  transition: var(--transition-fast);
+
+}
+
+
+.modal_field select:focus {
+
+  outline: none;
+
+  border-color: var(--accent);
+
+}
+
+
+/* =========================
+   TOGGLES
+========================= */
+
+.modal_toggle {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  cursor: pointer;
+
+}
+
+
+.modal_toggle_text {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+}
+
+
+.modal_toggle_text span {
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  color: var(--primary);
+
+}
+
+
+.modal_toggle_text small {
+
+  font-size: 0.78rem;
+
+  color: var(--gray-600);
+
+  line-height: 1.4;
+
+}
+
+
+.modal_toggle input[type="checkbox"] {
+
+  position: absolute;
+
+  opacity: 0;
+
+  width: 0;
+
+  height: 0;
+
+}
+
+
+.modal_toggle_slider {
+
+  position: relative;
+
+  flex-shrink: 0;
+
+  width: 44px;
+
+  height: 26px;
+
+  border-radius: var(--radius-full);
+
+  background: var(--gray-300);
+
+  transition: var(--transition-fast);
+
+}
+
+
+.modal_toggle_slider::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 3px;
+
+  left: 3px;
+
+  width: 20px;
+
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: var(--white);
+
+  box-shadow: var(--shadow-sm);
+
+  transition: var(--transition-fast);
+
+}
+
+
+.modal_toggle input:checked + .modal_toggle_slider {
+
+  background: var(--accent);
+
+}
+
+
+.modal_toggle input:checked + .modal_toggle_slider::before {
+
+  transform: translateX(18px);
+
+}
+
+
+/* =========================
+   AÇÕES DO MODAL
+========================= */
+
+.modal_actions {
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  margin-top: 8px;
+
+}
+
+
+.btn_modal_primario,
+.btn_modal_secundario,
+.btn_modal_perigo {
+
+  border: none;
+
+  border-radius: var(--radius-full);
+
+  padding: 12px 22px;
+
+  font-weight: 700;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  transition: var(--transition-base);
+
+  white-space: nowrap;
+
+}
+
+
+.btn_modal_primario {
+
+  background: var(--accent);
+
+  color: var(--primary-dark);
+
+  box-shadow: var(--shadow-accent);
+
+}
+
+
+.btn_modal_primario:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-accent-hover);
+
+}
+
+
+.btn_modal_secundario {
+
+  background: rgba(10, 37, 64, 0.06);
+
+  color: var(--primary);
+
+}
+
+
+.btn_modal_secundario:hover {
+
+  background: rgba(10, 37, 64, 0.1);
+
+}
+
+
+.btn_modal_perigo {
+
+  background: var(--danger);
+
+  color: var(--white);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+.btn_modal_perigo:hover {
+
+  transform: translateY(-2px);
+
+  background: var(--danger-light);
+
+}
+
+
+/* ============================================================
+   TEMA CLARO
+============================================================ */
+
+html.claro {
+
+  background: var(--gray-100);
+
+  color: var(--primary);
+
+}
+
+
+html.claro body {
+
+  background: var(--gray-100);
+
+  color: var(--primary);
+
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+============================================================ */
+
+html.escuro {
+
+  background: #0B0F19;
+
+  color: #ffffff;
+
+}
+
+
+html.escuro body {
+
+  background: #0B0F19;
+
+  color: #ffffff;
+
+}
+
+
+html.escuro .glass {
+
+  background: rgba(20, 27, 40, 0.75);
+
+  border-color: rgba(255, 255, 255, 0.12);
+
+}
+
+
+html.escuro .glass-card {
+
+  background: rgba(20, 27, 40, 0.75);
+
+  border-color: rgba(255, 255, 255, 0.12);
+
+}
+
+
+html.escuro .btn_voltar {
+
+  background: rgba(20, 27, 40, 0.75);
+
+  border-color: rgba(255, 255, 255, 0.12);
+
+  color: #ffffff;
+
+}
+
+
+html.escuro .perfil_dados h1 {
+
+  color: #ffffff;
+
+}
+
+
+html.escuro .perfil_dados p {
+
+  color: #aaa;
+
+}
+
+
+html.escuro .settings_section_title {
+
+  color: #aaa;
+
+}
+
+
+html.escuro .settings_card_text h3 {
+
+  color: #ffffff;
+
+}
+
+
+html.escuro .settings_card_text p {
+
+  color: #aaa;
+
+}
+
+
+html.escuro .settings_card_arrow {
+
+  color: #aaa;
+
+}
+
+
+html.escuro .settings_card_btn {
+
+  background: rgba(20, 27, 40, 0.75);
+
+  border-color: rgba(255, 255, 255, 0.12);
+
+  color: #ffffff;
+
+}
+
+
+html.escuro .modal_overlay {
+
+  background: rgba(0, 0, 0, 0.65);
+
+}
+
+
+html.escuro .modal_box {
+
+  background: rgba(20, 27, 40, 0.95);
+
+  border-color: rgba(255, 255, 255, 0.12);
+
+}
+
+
+html.escuro .modal_close {
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: #aaa;
+
+}
+
+
+html.escuro .modal_title {
+
+  color: #ffffff;
+
+}
+
+
+html.escuro .modal_text {
+
+  color: #aaa;
+
+}
+
+
+html.escuro .modal_field label {
+
+  color: #ffffff;
+
+}
+
+
+html.escuro .modal_field select {
+
+  background: #141b28;
+
+  border-color: #334155;
+
+  color: #ffffff;
+
+}
+
+
+html.escuro .modal_toggle_text span {
+
+  color: #ffffff;
+
+}
+
+
+html.escuro .modal_toggle_text small {
+
+  color: #aaa;
+
+}
+
+
+html.escuro .btn_modal_secundario {
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: #ffffff;
+
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 600px) {
+
+  .perfil_container {
+
+    padding: 110px 18px 60px;
+
+  }
+
+
+  .btn_voltar {
+
+    top: 18px;
+
+    left: 18px;
+
+    padding: 10px 16px;
+
+    font-size: 13px;
+
+  }
+
+
+  .perfil_header {
+
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 28px 22px;
+
+  }
+
+
+  .perfil_header_info {
+
+    flex-direction: column;
+
+  }
+
+
+  .perfil_dados p {
+
+    justify-content: center;
+
+  }
+
+
+  .btn_editar_perfil {
+
+    width: 100%;
+
+    justify-content: center;
+
+  }
+
+
+  .settings_card {
+
+    padding: 18px 20px;
+
+  }
+
+
+  .settings_card_icon {
+
+    width: 42px;
+
+    height: 42px;
+
+  }
+
+
+  .modal_box {
+
+    padding: 32px 22px 24px;
+
+  }
+
+
+  .modal_actions {
+
+    flex-direction: column-reverse;
+
+  }
+
+
+  .btn_modal_primario,
+  .btn_modal_secundario,
+  .btn_modal_perigo {
+
+    width: 100%;
+
+    text-align: center;
+
+  }
+
+}
+

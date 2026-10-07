@@ -1,0 +1,471 @@
+/* ============================================================
+   central-ajuda.css – Central de ajuda
+   Estilo Liquid Glass (Apple) — mesma base do style.css
+   ============================================================ */
+
+/* =========================
+   VARIÁVEIS
+   (idênticas às de style.css para manter consistência visual)
+========================= */
+
+:root {
+  /* Cores base */
+  --primary: #0A2540;
+  --primary-light: #24314C;
+  --primary-dark: #081b30;
+  --accent: #16E28A;
+  --accent-dark: #0db873;
+  --accent-light: #29f0a0;
+  --danger: #FF4757;
+  --danger-light: #ff6b81;
+  --white: #ffffff;
+  --gray-100: #f8fafc;
+  --gray-200: #eef4f8;
+  --gray-300: #dbe3eb;
+  --gray-400: #64748b;
+  --gray-500: #444;
+  --gray-600: #666;
+  --gray-700: #888;
+  --dark: #0B0F19;
+
+  /* Tipografia */
+  --font-family: 'Inter', sans-serif;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Sombras e vidro (Liquid Glass) */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-blur: 30px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --glass-border-hover: rgba(255, 255, 255, 0.25);
+
+  /* Sombras comuns */
+  --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 15px 40px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+  --shadow-accent: 0 15px 30px rgba(22, 226, 138, 0.35);
+  --shadow-accent-hover: 0 20px 45px rgba(22, 226, 138, 0.45);
+
+  /* Transições */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* =========================
+   RESET E BASE
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 55%, var(--primary) 100%);
+  color: var(--primary);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* =========================
+   CLASSES UTILITÁRIAS LIQUID GLASS
+========================= */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-base);
+}
+
+.glass:hover {
+  box-shadow: var(--glass-shadow-hover);
+  border-color: var(--glass-border-hover);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-base);
+}
+
+.glass-card:hover {
+  box-shadow: var(--glass-shadow-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* =========================
+   BACKGROUND SHAPES
+========================= */
+
+.background_shapes {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.shape1 {
+  width: 600px;
+  height: 600px;
+  background: rgba(22, 226, 138, 0.10);
+  top: -200px;
+  right: -150px;
+}
+
+.shape2 {
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  bottom: -180px;
+  left: -120px;
+}
+
+.shape3 {
+  width: 350px;
+  height: 350px;
+  background: rgba(22, 226, 138, 0.06);
+  top: 45%;
+  left: 55%;
+}
+
+/* =========================
+   BOTÃO VOLTAR
+========================= */
+
+.btn_voltar {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-base);
+  z-index: 100;
+}
+
+.btn_voltar:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.btn_voltar .material-icons {
+  font-size: 18px;
+}
+
+/* =========================
+   CONTAINER DA PÁGINA
+========================= */
+
+.pagina_container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 120px 30px 80px;
+  position: relative;
+}
+
+/* =========================
+   CABEÇALHO DA PÁGINA
+========================= */
+
+.pagina_header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 45px;
+}
+
+.pagina_header_icon {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background: rgba(22, 226, 138, 0.12);
+  border: 1px solid rgba(22, 226, 138, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.pagina_header_icon .material-icons {
+  font-size: 34px;
+  color: var(--accent);
+}
+
+.pagina_header h1 {
+  color: var(--white);
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.pagina_header p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+}
+
+/* =========================
+   TÍTULO DE SEÇÃO
+========================= */
+
+.pagina_section_title {
+  color: var(--white);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 40px 0 18px;
+}
+
+.pagina_section_title:first-of-type {
+  margin-top: 0;
+}
+
+/* =========================
+   BUSCA
+========================= */
+
+.pagina_search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 22px;
+  border-radius: var(--radius-full);
+  margin-bottom: 45px;
+}
+
+.pagina_search .material-icons {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.pagina_search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--white);
+  font-size: 15px;
+}
+
+.pagina_search input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* =========================
+   FAQ (acordeão)
+========================= */
+
+.faq_list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq_item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.faq_question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.faq_arrow {
+  color: rgba(255, 255, 255, 0.6);
+  transition: var(--transition-base);
+  flex-shrink: 0;
+}
+
+.faq_item.active .faq_arrow {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.faq_answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: var(--transition-base);
+  padding: 0 24px;
+}
+
+.faq_item.active .faq_answer {
+  max-height: 300px;
+  padding: 0 24px 22px;
+}
+
+.faq_answer p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================
+   CARD DE CONTATO
+========================= */
+
+.pagina_card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 26px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 16px;
+}
+
+.pagina_card_icon {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: rgba(22, 226, 138, 0.12);
+  border: 1px solid rgba(22, 226, 138, 0.3);
+}
+
+.pagina_card_icon .material-icons {
+  color: var(--accent);
+  font-size: 26px;
+}
+
+.pagina_card_text {
+  flex: 1;
+}
+
+.pagina_card_text h3 {
+  color: var(--white);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.pagina_card_text p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.btn_pagina_secundario {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: var(--transition-base);
+}
+
+.btn_pagina_secundario:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn_pagina_secundario .material-icons {
+  font-size: 18px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 768px) {
+  .btn_voltar {
+    top: 18px;
+    left: 18px;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .pagina_container {
+    padding: 100px 18px 60px;
+  }
+
+  .pagina_header {
+    gap: 16px;
+    margin-bottom: 35px;
+  }
+
+  .pagina_header_icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .pagina_header_icon .material-icons {
+    font-size: 28px;
+  }
+
+  .pagina_header h1 {
+    font-size: 1.6rem;
+  }
+
+  .pagina_card,
+  .faq_question {
+    flex-wrap: wrap;
+  }
+
+  .pagina_card_text {
+    min-width: 200px;
+  }
+
+  .btn_pagina_secundario {
+    margin-top: 4px;
+  }
+}
+

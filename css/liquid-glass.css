@@ -1,0 +1,710 @@
+/*
+ * AFDE Liquid Glass System
+ * Inspirado no material de apoio Liquid Glass: tint, frost, rim light,
+ * specular highlight, layered surfaces e conteúdo sempre nítido.
+ */
+:root {
+  --lg-bg: #070b16;
+  --lg-bg-2: #101a32;
+  --lg-text: #f6f9ff;
+  --lg-muted: rgba(227, 235, 255, .68);
+  --lg-faint: rgba(227, 235, 255, .48);
+  --lg-accent: #69e8bb;
+  --lg-accent-2: #78a9ff;
+  --lg-surface: rgba(20, 31, 57, .58);
+  --lg-surface-strong: rgba(26, 40, 72, .74);
+  --lg-surface-soft: rgba(255, 255, 255, .075);
+  --lg-border: rgba(225, 239, 255, .20);
+  --lg-border-strong: rgba(225, 239, 255, .34);
+  --lg-shadow: 0 24px 80px rgba(0, 0, 0, .28), inset 0 1px rgba(255,255,255,.12);
+  --lg-blur: 26px;
+}
+html.claro {
+  --lg-bg: #e9f0f8;
+  --lg-bg-2: #d4e3f5;
+  --lg-text: #10213e;
+  --lg-muted: rgba(16, 33, 62, .70);
+  --lg-faint: rgba(16, 33, 62, .52);
+  --lg-surface: rgba(255, 255, 255, .56);
+  --lg-surface-strong: rgba(255, 255, 255, .76);
+  --lg-surface-soft: rgba(255, 255, 255, .46);
+  --lg-border: rgba(31, 65, 105, .16);
+  --lg-border-strong: rgba(31, 65, 105, .28);
+  --lg-shadow: 0 24px 70px rgba(30, 64, 105, .16), inset 0 1px rgba(255,255,255,.72);
+}
+
+html, body { background: var(--lg-bg); color: var(--lg-text); }
+body {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(93, 139, 255, .22), transparent 32%),
+    radial-gradient(ellipse at 88% 18%, rgba(55, 229, 177, .15), transparent 31%),
+    radial-gradient(ellipse at 52% 112%, rgba(151, 94, 255, .15), transparent 34%),
+    linear-gradient(135deg, var(--lg-bg), var(--lg-bg-2));
+}
+body::before, body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 999px;
+  filter: blur(58px);
+  opacity: .42;
+  transform: translate3d(0,0,0);
+}
+body::before { width: 360px; height: 360px; top: 12%; right: -140px; background: #6d8fff; }
+body::after { width: 300px; height: 300px; bottom: -100px; left: 12%; background: #43e1b2; }
+
+/* Material: translucent tint + frost + a double specular rim. */
+.liquid-glass-surface, .glass, .glass-card, .hero_card, .card, .card_dashboard,
+.perfil_card, .perfil_header-cover, .settings_card, .dashboard_card, .stat-card,
+.login_box, .cadastro_box, .form_container, .modal-content, .dropdown_menu,
+.crop-dialog, .support_card, .feature_card, .info_card, .content-card {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, var(--lg-surface-strong), var(--lg-surface));
+  border: 1px solid var(--lg-border);
+  box-shadow: var(--lg-shadow);
+  -webkit-backdrop-filter: blur(var(--lg-blur)) saturate(165%);
+  backdrop-filter: blur(var(--lg-blur)) saturate(165%);
+}
+.liquid-glass-surface::before, .glass::before, .glass-card::before,
+.hero_card::before, .card::before, .card_dashboard::before, .perfil_card::before,
+.perfil_header-cover::before, .settings_card::before, .dashboard_card::before,
+.stat-card::before, .login_box::before, .cadastro_box::before, .form_container::before,
+.modal-content::before, .dropdown_menu::before, .crop-dialog::before,
+.support_card::before, .feature_card::before, .info_card::before, .content-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--lg-x, 50%) var(--lg-y, 0%), rgba(255,255,255,.16), transparent 28%), linear-gradient(125deg, rgba(255,255,255,.22), transparent 24%, transparent 72%, rgba(117,175,255,.10));
+  opacity: .72;
+}
+.liquid-glass-surface::after, .glass::after, .glass-card::after, .hero_card::after,
+.card::after, .card_dashboard::after, .perfil_card::after, .perfil_header-cover::after,
+.settings_card::after, .dashboard_card::after, .stat-card::after, .login_box::after,
+.cadastro_box::after, .form_container::after, .modal-content::after, .dropdown_menu::after,
+.crop-dialog::after, .support_card::after, .feature_card::after, .info_card::after,
+.content-card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.045), inset 0 14px 28px rgba(255,255,255,.025);
+}
+
+header, .navbar, nav {
+  background: rgba(9, 18, 36, .60) !important;
+  border-bottom: 1px solid var(--lg-border) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,.18), inset 0 -1px rgba(255,255,255,.07) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+}
+html.claro header, html.claro .navbar, html.claro nav { background: rgba(236,244,255,.62) !important; }
+header a, nav a { color: var(--lg-muted); }
+header a:hover, nav a:hover { color: var(--lg-accent); }
+
+button, .btn_primary, .btn_secondary, .btn_editar_perfil, .button_log, input[type="submit"] {
+  border: 1px solid rgba(225,239,255,.22);
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.18), inset 0 1px rgba(255,255,255,.18);
+  transition: transform .22s ease, filter .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+button:hover, .btn_primary:hover, .btn_secondary:hover, .btn_editar_perfil:hover, .button_log:hover, input[type="submit"]:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  border-color: rgba(105,232,187,.58);
+  box-shadow: 0 14px 34px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.28);
+}
+input, select, textarea {
+  color: var(--lg-text) !important;
+  background: rgba(2, 10, 25, .34) !important;
+  border-color: var(--lg-border) !important;
+  border-radius: 14px !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+html.claro input, html.claro select, html.claro textarea { background: rgba(255,255,255,.50) !important; }
+input:focus, select:focus, textarea:focus { outline: none !important; border-color: var(--lg-accent) !important; box-shadow: 0 0 0 3px rgba(105,232,187,.15), 0 8px 26px rgba(0,0,0,.12) !important; }
+
+/* Glass cards feel connected instead of isolated: pointer light follows the cursor. */
+.liquid-glass-surface, .glass-card, .hero_card, .card, .perfil_card, .settings_card,
+.dashboard_card, .stat-card, .support_card, .feature_card, .info_card, .content-card { overflow: hidden; }
+.liquid-glass-surface:hover, .glass-card:hover, .hero_card:hover, .card:hover, .perfil_card:hover,
+.settings_card:hover, .dashboard_card:hover, .stat-card:hover, .support_card:hover,
+.feature_card:hover, .info_card:hover, .content-card:hover { border-color: var(--lg-border-strong); }
+[data-liquid-glass] { --lg-x: 50%; --lg-y: 0%; }
+[data-liquid-glass]::marker { color: var(--lg-accent); }
+
+/* Keep the dedicated profile editor compatible with the global material. */
+.perfil-page .crop-modal { background: rgba(4,10,22,.66); }
+.perfil-page .crop-dialog { border-color: var(--lg-border-strong); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+@media (max-width: 720px) {
+  :root { --lg-blur: 18px; }
+  body::before { width: 240px; height: 240px; }
+  body::after { width: 220px; height: 220px; }
+}
+
+
+/* ============================================================
+   Liquid Glass evolution log: v69 → v83
+   ============================================================ */
+/* v69 — shared material tokens */
+/* v70 — layered atmospheric background */
+/* v71 — translucent surfaces with frost and saturation */
+/* v72 — specular rim and inner highlight */
+/* v73 — unified buttons, controls and focus rings */
+/* v74 — pointer light follows the cursor */
+/* v75 — watery sheen animation on hover */
+/* v76 — click ripple propagates through the surface */
+/* v77 — gentle surface tilt follows pointer position */
+/* v78 — interactive form fields use the same material */
+/* v79 — navigation and dropdowns share the glass depth */
+/* v80 — responsive blur and reduced-motion fallback */
+/* v81 — tables and utility cards become connected surfaces */
+/* v82 — mobile touch devices avoid expensive pointer tracking */
+/* v83 — accessible focus, clean cleanup and final QA baseline */
+
+.liquid-glass-ready .liquid-glass-surface,
+.liquid-glass-ready .glass,
+.liquid-glass-ready .glass-card,
+.liquid-glass-ready .hero_card,
+.liquid-glass-ready .card,
+.liquid-glass-ready .card_dashboard,
+.liquid-glass-ready .perfil_card,
+.liquid-glass-ready .settings_card,
+.liquid-glass-ready .dashboard_card,
+.liquid-glass-ready .stat-card,
+.liquid-glass-ready .login_box,
+.liquid-glass-ready .cadastro_box,
+.liquid-glass-ready .form_container,
+.liquid-glass-ready .support_card,
+.liquid-glass-ready .feature_card,
+.liquid-glass-ready .info_card,
+.liquid-glass-ready .content-card,
+.liquid-glass-ready article,
+.liquid-glass-ready table {
+  --lg-tilt-x: 0deg;
+  --lg-tilt-y: 0deg;
+  transform: perspective(1100px) rotateX(var(--lg-tilt-x)) rotateY(var(--lg-tilt-y));
+  transform-origin: center;
+  transition: transform .36s cubic-bezier(.2,.8,.2,1), border-color .3s ease, box-shadow .3s ease, filter .3s ease;
+  will-change: transform;
+}
+.liquid-glass-ready .lg-water-active {
+  box-shadow: 0 28px 90px rgba(0,0,0,.32), 0 0 0 1px rgba(139,221,255,.12), inset 0 1px rgba(255,255,255,.18);
+  filter: saturate(1.08);
+}
+.liquid-glass-ready .liquid-glass-surface::before,
+.liquid-glass-ready .glass::before,
+.liquid-glass-ready .glass-card::before,
+.liquid-glass-ready .hero_card::before,
+.liquid-glass-ready .card::before,
+.liquid-glass-ready .card_dashboard::before,
+.liquid-glass-ready .perfil_card::before,
+.liquid-glass-ready .perfil_header-cover::before,
+.liquid-glass-ready .settings_card::before,
+.liquid-glass-ready .dashboard_card::before,
+.liquid-glass-ready .stat-card::before,
+.liquid-glass-ready .login_box::before,
+.liquid-glass-ready .cadastro_box::before,
+.liquid-glass-ready .form_container::before,
+.liquid-glass-ready .modal-content::before,
+.liquid-glass-ready .dropdown_menu::before,
+.liquid-glass-ready .crop-dialog::before,
+.liquid-glass-ready .support_card::before,
+.liquid-glass-ready .feature_card::before,
+.liquid-glass-ready .info_card::before,
+.liquid-glass-ready .content-card::before {
+  background: radial-gradient(circle at var(--lg-x, 50%) var(--lg-y, 0%), rgba(255,255,255,.25), transparent 25%), linear-gradient(125deg, rgba(255,255,255,.22), transparent 24%, transparent 72%, rgba(117,175,255,.10));
+  transition: background-position .5s ease, opacity .35s ease;
+}
+.liquid-glass-ready .lg-water-active::before { opacity: .92; }
+.liquid-glass-ready .lg-water-ripple {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(.08);
+  border: 1px solid rgba(214,248,255,.65);
+  background: radial-gradient(circle, rgba(150,237,255,.22), rgba(96,194,255,.08) 42%, transparent 70%);
+  box-shadow: 0 0 28px rgba(111,213,255,.25), inset 0 0 18px rgba(255,255,255,.24);
+  animation: lg-water-ripple 1.15s cubic-bezier(.14,.66,.24,1) forwards;
+}
+@keyframes lg-water-ripple {
+  0% { opacity: .85; transform: translate(-50%, -50%) scale(.08); }
+  68% { opacity: .28; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes lg-liquid-sheen {
+  0% { background-position: 0% 0%, 0% 0%; }
+  50% { background-position: 45% 12%, 100% 0%; }
+  100% { background-position: 100% 0%, 0% 0%; }
+}
+.liquid-glass-ready .lg-water-active::after { animation: lg-liquid-sheen 3.6s ease-in-out infinite; }
+.liquid-glass-ready :where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--lg-accent) !important;
+  outline-offset: 3px;
+}
+.liquid-glass-ready table { border-collapse: separate; border-spacing: 0; overflow: hidden; border-radius: 18px; }
+.liquid-glass-ready table tr { transition: background .25s ease, transform .25s ease; }
+.liquid-glass-ready table tbody tr:hover { background: rgba(125,219,255,.08); }
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .liquid-glass-ready .liquid-glass-surface,
+  .liquid-glass-ready .glass,
+  .liquid-glass-ready .glass-card,
+  .liquid-glass-ready .hero_card,
+  .liquid-glass-ready .card,
+  .liquid-glass-ready .card_dashboard,
+  .liquid-glass-ready .perfil_card,
+  .liquid-glass-ready .settings_card,
+  .liquid-glass-ready .dashboard_card,
+  .liquid-glass-ready .stat-card,
+  .liquid-glass-ready .login_box,
+  .liquid-glass-ready .cadastro_box,
+  .liquid-glass-ready .form_container,
+  .liquid-glass-ready article,
+  .liquid-glass-ready table { transform: none; will-change: auto; }
+  .liquid-glass-ready .lg-water-active::after { animation: none; }
+}
+
+
+/* ============================================================
+   Liquid Glass evolution log: v84 → v98
+   ============================================================ */
+/* v84 — page entrance and exit transitions */
+/* v85 — intersection-based reveal for long pages */
+/* v86 — magnetic buttons and navigation controls */
+/* v87 — active navigation marker */
+/* v88 — animated atmospheric water blobs */
+/* v89 — slow background current / moving light */
+/* v90 — deeper hover elevation with optical easing */
+/* v91 — fluid table-row response */
+/* v92 — focus state receives a soft halo */
+/* v93 — current-page navigation gets a glass underline */
+/* v94 — touch and reduced-motion performance gates */
+/* v95 — anchor transitions preserve modifier-key behavior */
+/* v96 — surfaces enter only when visible */
+/* v97 — mobile safe spacing and smaller optical tilt */
+/* v98 — final visual coherence and cache-busted QA */
+
+html.liquid-glass-ready { background: var(--lg-bg); }
+html.liquid-glass-ready body { animation: lg-atmosphere-in .7s ease both; }
+html.lg-page-exit body { animation: lg-page-out .22s ease both; pointer-events: none; }
+@keyframes lg-atmosphere-in { from { opacity: .01; } to { opacity: 1; } }
+@keyframes lg-page-out { from { opacity: 1; filter: blur(0); } to { opacity: .01; filter: blur(4px); } }
+
+.liquid-glass-ready .lg-revealed {
+  animation: lg-surface-reveal .65s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes lg-surface-reveal {
+  from { opacity: 0; transform: translateY(14px) perspective(1100px) rotateX(0deg) rotateY(0deg); }
+  to { opacity: 1; transform: translateY(0) perspective(1100px) rotateX(var(--lg-tilt-x, 0deg)) rotateY(var(--lg-tilt-y, 0deg)); }
+}
+
+.liquid-glass-ready .lg-magnetic-active {
+  transform: translate3d(var(--lg-mx, 0px), var(--lg-my, 0px), 0) scale(1.018);
+}
+.liquid-glass-ready :where(.btn_primary, .btn_secondary, button, input[type="submit"], .nav-link, .navbar a) {
+  --lg-mx: 0px; --lg-my: 0px;
+  transition: transform .24s cubic-bezier(.2,.8,.2,1), box-shadow .24s ease, filter .24s ease;
+}
+.liquid-glass-ready .lg-current-page {
+  color: var(--lg-accent) !important;
+  text-shadow: 0 0 18px rgba(105,232,187,.28);
+  position: relative;
+}
+.liquid-glass-ready .lg-current-page::after {
+  content: ""; position: absolute; left: 12%; right: 12%; bottom: -6px; height: 2px; border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--lg-accent), transparent);
+  box-shadow: 0 0 12px rgba(105,232,187,.72);
+}
+
+body::before, body::after { animation: lg-blob-drift 16s ease-in-out infinite alternate; }
+body::after { animation-delay: -7s; animation-duration: 19s; }
+@keyframes lg-blob-drift {
+  0% { transform: translate3d(-2%, -2%, 0) scale(1); }
+  50% { transform: translate3d(3%, 4%, 0) scale(1.08); }
+  100% { transform: translate3d(-4%, 2%, 0) scale(.94); }
+}
+.liquid-glass-ready body { background-size: 140% 140%; animation: lg-atmosphere-in .7s ease both, lg-background-current 24s ease-in-out infinite alternate; }
+@keyframes lg-background-current { from { background-position: 0% 0%; } to { background-position: 100% 70%; } }
+
+.liquid-glass-ready :where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  box-shadow: 0 0 0 3px rgba(105,232,187,.18), 0 0 28px rgba(105,232,187,.20) !important;
+}
+.liquid-glass-ready table tbody tr:hover { transform: translateX(3px); }
+@media (max-width: 720px) {
+  .liquid-glass-ready body { background-size: 180% 180%; animation-duration: 34s; }
+  .liquid-glass-ready .lg-magnetic-active { transform: none; }
+  .liquid-glass-ready .lg-current-page::after { bottom: -3px; }
+}
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  html.liquid-glass-ready body, body::before, body::after { animation: none; }
+  .liquid-glass-ready .lg-revealed { animation: none; opacity: 1; }
+  .liquid-glass-ready .lg-current-page::after { box-shadow: none; }
+}
+
+
+/* Final refinement: softer white light, one material across pages, elegant orb and parallax. */
+:root {
+  --lg-white-sheen: rgba(255,255,255,.075);
+  --lg-white-rim: rgba(225,239,255,.14);
+  --lg-nav-surface: rgba(18, 29, 54, .66);
+}
+html.claro { --lg-white-sheen: rgba(255,255,255,.26); --lg-white-rim: rgba(31,65,105,.14); --lg-nav-surface: rgba(244,249,255,.66); }
+.liquid-glass-ready .liquid-glass-surface,
+.liquid-glass-ready .glass,
+.liquid-glass-ready .glass-card,
+.liquid-glass-ready .hero_card,
+.liquid-glass-ready .card,
+.liquid-glass-ready .card_dashboard,
+.liquid-glass-ready .perfil_card,
+.liquid-glass-ready .perfil_header-cover,
+.liquid-glass-ready .settings_card,
+.liquid-glass-ready .dashboard_card,
+.liquid-glass-ready .stat-card,
+.liquid-glass-ready .login_box,
+.liquid-glass-ready .cadastro_box,
+.liquid-glass-ready .form_container,
+.liquid-glass-ready .modal-content,
+.liquid-glass-ready .dropdown_menu,
+.liquid-glass-ready .crop-dialog,
+.liquid-glass-ready .support_card,
+.liquid-glass-ready .feature_card,
+.liquid-glass-ready .info_card,
+.liquid-glass-ready .content-card,
+.liquid-glass-ready article,
+.liquid-glass-ready table {
+  background: linear-gradient(145deg, var(--lg-surface-strong), var(--lg-surface)) !important;
+  border-color: var(--lg-white-rim) !important;
+  box-shadow: 0 22px 72px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.065);
+}
+.liquid-glass-ready .liquid-glass-surface::before,
+.liquid-glass-ready .glass::before,
+.liquid-glass-ready .glass-card::before,
+.liquid-glass-ready .hero_card::before,
+.liquid-glass-ready .card::before,
+.liquid-glass-ready .card_dashboard::before,
+.liquid-glass-ready .perfil_card::before,
+.liquid-glass-ready .perfil_header-cover::before,
+.liquid-glass-ready .settings_card::before,
+.liquid-glass-ready .dashboard_card::before,
+.liquid-glass-ready .stat-card::before,
+.liquid-glass-ready .login_box::before,
+.liquid-glass-ready .cadastro_box::before,
+.liquid-glass-ready .form_container::before,
+.liquid-glass-ready .modal-content::before,
+.liquid-glass-ready .dropdown_menu::before,
+.liquid-glass-ready .crop-dialog::before,
+.liquid-glass-ready .support_card::before,
+.liquid-glass-ready .feature_card::before,
+.liquid-glass-ready .info_card::before,
+.liquid-glass-ready .content-card::before {
+  background: radial-gradient(circle at var(--lg-x, 50%) var(--lg-y, 0%), var(--lg-white-sheen), transparent 24%), linear-gradient(125deg, rgba(255,255,255,.095), transparent 28%, transparent 72%, rgba(117,175,255,.065));
+  opacity: .82;
+}
+.liquid-glass-ready header,
+.liquid-glass-ready .navbar,
+.liquid-glass-ready nav {
+  background: var(--lg-nav-surface) !important;
+  border: 1px solid var(--lg-white-rim) !important;
+  box-shadow: 0 18px 54px rgba(0,0,0,.22), inset 0 1px rgba(255,255,255,.08) !important;
+}
+/* Navbar links are transparent glass items, never opaque colored tiles. */
+.liquid-glass-ready nav ul,
+.liquid-glass-ready nav li,
+.liquid-glass-ready nav li > a,
+.liquid-glass-ready nav .nav-link,
+.liquid-glass-ready .education-trigger,
+.liquid-glass-ready .investment-trigger,
+.liquid-glass-ready .education-dropdown-menu a,
+.liquid-glass-ready .investment-dropdown-menu a,
+.liquid-glass-ready .dropdown_item {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none;
+}
+.liquid-glass-ready .education-dropdown-menu,
+.liquid-glass-ready .investment-dropdown-menu,
+.liquid-glass-ready .dropdown_menu {
+  background: var(--lg-nav-surface) !important;
+  border-color: var(--lg-white-rim) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(145%);
+  backdrop-filter: blur(30px) saturate(145%);
+}
+.liquid-glass-ready nav a:hover,
+.liquid-glass-ready nav li:hover > a,
+.liquid-glass-ready .education-dropdown-menu a:hover,
+.liquid-glass-ready .investment-dropdown-menu a:hover,
+.liquid-glass-ready .dropdown_item:hover { background: rgba(105,232,187,.075) !important; color: var(--lg-accent) !important; }
+
+/* The cursor orb is deliberately tiny, dim and non-interactive. */
+.lg-cursor-orb {
+  position: fixed;
+  left: 0; top: 0;
+  z-index: 2147483000;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: .52;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.62), rgba(126,231,208,.26) 36%, rgba(126,231,208,0) 74%);
+  box-shadow: 0 0 16px rgba(126,231,208,.20), 0 0 3px rgba(255,255,255,.28);
+  mix-blend-mode: screen;
+  transition: opacity .5s ease;
+}
+.lg-cursor-orb::after { content: ""; position: absolute; inset: -8px; border: 1px solid rgba(126,231,208,.10); border-radius: 50%; animation: lg-orb-breathe 3.4s ease-in-out infinite; }
+.lg-parallax-haze {
+  position: fixed;
+  z-index: -1;
+  left: 20%; top: 18%; width: 62vw; height: 48vh;
+  pointer-events: none;
+  opacity: .18;
+  filter: blur(44px);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(111,158,255,.20), rgba(104,230,194,.06) 38%, transparent 72%);
+  transition: opacity .7s ease;
+}
+.lg-cursor-away { opacity: 0 !important; }
+@keyframes lg-orb-breathe { 0%,100% { transform: scale(.88); opacity: .55; } 50% { transform: scale(1.12); opacity: .20; } }
+@media (pointer: coarse), (prefers-reduced-motion: reduce) { .lg-cursor-orb, .lg-parallax-haze { display: none; } }
+
+
+/* ============================================================
+   v100 — material uniforme para cards específicos de cada página
+   ============================================================ */
+.liquid-glass-ready .lg-card-surface {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(30, 49, 82, .72), rgba(14, 25, 48, .56)) !important;
+  border: 1px solid rgba(196, 224, 255, .20) !important;
+  box-shadow: 0 20px 58px rgba(0, 0, 0, .24), inset 0 1px rgba(255, 255, 255, .10) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  backdrop-filter: blur(24px) saturate(150%);
+  transform: translate3d(0, var(--lg-scroll-shift, 0px), 0) perspective(1100px) rotateX(var(--lg-tilt-x, 0deg)) rotateY(var(--lg-tilt-y, 0deg));
+  transition: transform .48s cubic-bezier(.2, .8, .2, 1), border-color .35s ease, box-shadow .35s ease, background .35s ease;
+  will-change: transform;
+}
+.liquid-glass-ready .lg-card-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--lg-x, 50%) var(--lg-y, 0%), rgba(218, 246, 255, .13), transparent 28%), linear-gradient(125deg, rgba(255,255,255,.12), transparent 30%, transparent 70%, rgba(105, 232, 187, .08));
+  opacity: .82;
+  transition: opacity .4s ease, background-position .55s ease;
+}
+.liquid-glass-ready .lg-card-surface::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.035), inset 0 16px 30px rgba(255,255,255,.025);
+}
+.liquid-glass-ready .lg-card-surface:hover,
+.liquid-glass-ready .lg-card-surface.lg-water-active {
+  border-color: rgba(125, 232, 201, .42) !important;
+  box-shadow: 0 28px 78px rgba(0, 0, 0, .30), 0 0 0 1px rgba(139, 221, 255, .10), inset 0 1px rgba(255,255,255,.15) !important;
+}
+.liquid-glass-ready .lg-card-surface.lg-water-active::before { opacity: .96; }
+
+/* Cards que anteriormente tinham superfícies opacas próprias. */
+.liquid-glass-ready .modulo-card,
+.liquid-glass-ready .aula-item,
+.liquid-glass-ready .quiz-card,
+.liquid-glass-ready .streak-modal-card,
+.liquid-glass-ready .item-card,
+.liquid-glass-ready .saldo-card,
+.liquid-glass-ready .como-ganhar-box,
+.liquid-glass-ready .resultado-card,
+.liquid-glass-ready .chart_card,
+.liquid-glass-ready .summary_card,
+.liquid-glass-ready .legend_card,
+.liquid-glass-ready .history_card,
+.liquid-glass-ready .pagina_card,
+.liquid-glass-ready .sobre_card,
+.liquid-glass-ready .missao_card,
+.liquid-glass-ready .recurso_card,
+.liquid-glass-ready .beneficio_card,
+.liquid-glass-ready .step_card,
+.liquid-glass-ready .prefs_card,
+.liquid-glass-ready .cadastro_card,
+.liquid-glass-ready .login_card,
+.liquid-glass-ready .form-card,
+.liquid-glass-ready .card-stat {
+  background: linear-gradient(145deg, rgba(30, 49, 82, .72), rgba(14, 25, 48, .56)) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+  backdrop-filter: blur(24px) saturate(150%) !important;
+}
+
+/* Parallax óptico: o conteúdo respira em ritmos diferentes sem exagero. */
+.liquid-glass-ready .lg-card-surface > :where(.modulo-icon, .item-icone, .card_icon, .pagina_card_icon, .sobre_card_icon, .missao_card_icon, .feature_icon) {
+  transition: transform .55s cubic-bezier(.2,.8,.2,1), filter .45s ease;
+  will-change: transform;
+}
+.liquid-glass-ready .lg-card-surface:hover > :where(.modulo-icon, .item-icone, .card_icon, .pagina_card_icon, .sobre_card_icon, .missao_card_icon, .feature_icon) {
+  transform: translate3d(0, -4px, 0) scale(1.035);
+  filter: drop-shadow(0 8px 18px rgba(87, 230, 190, .16));
+}
+.liquid-glass-ready .lg-card-surface > :where(h1, h2, h3, h4, .modulo-desc, .aula-titulo, .item-desc) {
+  transition: transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.liquid-glass-ready .lg-card-surface:hover > :where(h1, h2, h3, h4, .modulo-desc, .aula-titulo, .item-desc) { transform: translate3d(0, -1px, 0); }
+
+/* Navegação permanece translúcida, sem fundos estranhos nos itens internos. */
+.liquid-glass-ready header nav a,
+.liquid-glass-ready .navbar a,
+.liquid-glass-ready nav a,
+.liquid-glass-ready .navbar li,
+.liquid-glass-ready nav li,
+.liquid-glass-ready .dropdown_menu,
+.liquid-glass-ready .dropdown_menu a {
+  background: transparent !important;
+  box-shadow: none;
+}
+.liquid-glass-ready .dropdown_menu { background: rgba(14, 27, 49, .88) !important; }
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .liquid-glass-ready .lg-card-surface { transform: none; will-change: auto; }
+  .liquid-glass-ready .lg-card-surface > :where(.modulo-icon, .item-icone, .card_icon, .pagina_card_icon, .sobre_card_icon, .missao_card_icon, .feature_icon) { transition: none; }
+}
+
+
+.btn-voltar-aprendizado {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border: 1px solid rgba(196,224,255,.22);
+  border-radius: 999px;
+  background: rgba(255,255,255,.07);
+  color: var(--lg-text, #f6f9ff);
+  text-decoration: none;
+  font-weight: 750;
+  box-shadow: 0 10px 28px rgba(0,0,0,.16), inset 0 1px rgba(255,255,255,.12);
+  transition: transform .28s ease, border-color .28s ease, background .28s ease;
+}
+.btn-voltar-aprendizado:hover { transform: translateY(-2px); border-color: rgba(105,232,187,.52); background: rgba(105,232,187,.12); }
+
+/* Camada de consist?ncia v101: tokens e acessibilidade compartilhados. */
+:root {
+  --af-font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --af-radius-control: 14px;
+  --af-radius-card: 20px;
+  --af-focus-ring: 0 0 0 3px rgba(105, 232, 187, .28);
+  --af-transition: 180ms ease;
+}
+html { color-scheme: dark; }
+html.claro { color-scheme: light; }
+body, button, input, select, textarea { font-family: var(--font-family, var(--af-font)); }
+button, input, select, textarea { font: inherit; }
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--lg-accent, #69e8bb);
+  outline-offset: 3px;
+  box-shadow: var(--af-focus-ring);
+}
+
+
+/* ============================================================
+   Liquid Glass global coherence layer — PTCC v100
+   Componentes legados recebem o mesmo material sem depender de
+   uma classe específica em cada página.
+   ============================================================ */
+:where(.recurso_card, .pagina_card, .info_card, .step_card, .form-card,
+.resultado-card, .card-stat, .summary_card, .prefs_card, .vantagens_box,
+.beneficio_card, .item-card, .modulo-card, .hero_fixa_card, .hero_card_fixa,
+.destaque_box, .exemplo_box, .desvantagens_box, .resultado_box, .modal_box,
+.modal_content, .video-box, .video-placeholder, .tipo_card_fixa,
+.tipo_card_variavel, .dica_content, .dica_content_variavel, .feature_card,
+.content-card, .settings_card, .pagina_section, .timeline-container) {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, var(--lg-surface-strong), var(--lg-surface)) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-shadow) !important;
+  -webkit-backdrop-filter: blur(var(--lg-blur)) saturate(165%);
+  backdrop-filter: blur(var(--lg-blur)) saturate(165%);
+}
+:where(.recurso_card, .pagina_card, .info_card, .step_card, .form-card,
+.resultado-card, .card-stat, .summary_card, .prefs_card, .vantagens_box,
+.beneficio_card, .item-card, .modulo-card, .hero_fixa_card, .hero_card_fixa,
+.destaque_box, .exemplo_box, .desvantagens_box, .resultado_box, .modal_box,
+.modal_content, .video-box, .video-placeholder, .tipo_card_fixa,
+.tipo_card_variavel, .dica_content, .dica_content_variavel, .feature_card,
+.content-card, .settings_card, .pagina_section, .timeline-container)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 0%, rgba(255,255,255,.16), transparent 30%), linear-gradient(125deg, rgba(255,255,255,.16), transparent 28%, transparent 70%, rgba(117,175,255,.10));
+  opacity: .72;
+}
+:where(.recurso_card, .pagina_card, .info_card, .step_card, .form-card,
+.resultado-card, .card-stat, .summary_card, .prefs_card, .vantagens_box,
+.beneficio_card, .item-card, .modulo-card, .hero_fixa_card, .hero_card_fixa,
+.destaque_box, .exemplo_box, .desvantagens_box, .resultado_box, .modal_box,
+.modal_content, .video-box, .video-placeholder, .tipo_card_fixa,
+.tipo_card_variavel, .dica_content, .dica_content_variavel, .feature_card,
+.content-card, .settings_card, .pagina_section, .timeline-container) {
+  overflow: hidden;
+  border-radius: clamp(16px, 2vw, 28px);
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease, filter .28s ease;
+}
+:where(.recurso_card, .pagina_card, .info_card, .step_card, .form-card,
+.resultado-card, .card-stat, .summary_card, .prefs_card, .vantagens_box,
+.beneficio_card, .item-card, .modulo-card, .hero_fixa_card, .hero_card_fixa,
+.destaque_box, .exemplo_box, .desvantagens_box, .resultado_box, .modal_box,
+.modal_content, .video-box, .video-placeholder, .tipo_card_fixa,
+.tipo_card_variavel, .dica_content, .dica_content_variavel, .feature_card,
+.content-card, .settings_card, .pagina_section, .timeline-container):hover {
+  border-color: var(--lg-border-strong) !important;
+  box-shadow: 0 28px 80px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.18) !important;
+  filter: saturate(1.06);
+}
+html.claro :where(.recurso_card, .pagina_card, .info_card, .step_card, .form-card,
+.resultado-card, .card-stat, .summary_card, .prefs_card, .vantagens_box,
+.beneficio_card, .item-card, .modulo-card, .hero_fixa_card, .hero_card_fixa,
+.destaque_box, .exemplo_box, .desvantagens_box, .resultado_box, .modal_box,
+.modal_content, .video-box, .video-placeholder, .tipo_card_fixa,
+.tipo_card_variavel, .dica_content, .dica_content_variavel, .feature_card,
+.content-card, .settings_card, .pagina_section, .timeline-container) {
+  background: linear-gradient(145deg, rgba(255,255,255,.76), rgba(255,255,255,.48)) !important;
+}
+/* Tables and dashboard statistics now read as one connected surface. */
+:where(.table-container, .tabela-container, .admin-table, table, .data-table) {
+  border: 1px solid var(--lg-border) !important;
+  border-radius: 18px;
+  box-shadow: var(--lg-shadow);
+  overflow: hidden;
+}
+:where(.table-container, .tabela-container, .admin-table, table, .data-table) tbody tr:hover {
+  background: rgba(105,232,187,.08) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.recurso_card, .pagina_card, .info_card, .step_card, .form-card,
+  .resultado-card, .card-stat, .summary_card, .prefs_card, .vantagens_box,
+  .beneficio_card, .item-card, .modulo-card, .hero_fixa_card, .hero_card_fixa,
+  .destaque_box, .exemplo_box, .desvantagens_box, .resultado_box, .modal_box,
+  .modal_content, .video-box, .video-placeholder, .tipo_card_fixa,
+  .tipo_card_variavel, .dica_content, .dica_content_variavel, .feature_card,
+  .content-card, .settings_card, .pagina_section, .timeline-container) { transition: none; }
+}
