@@ -1,0 +1,4 @@
+# Impede que o .env seja baixado pelo navegador
+<Files ".env">
+    Require all denied
+</Files>
