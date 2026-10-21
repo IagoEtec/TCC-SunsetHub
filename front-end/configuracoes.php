@@ -41,7 +41,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$usuario) {
 
-    session_destroy();
+    encerrar_sessao_segura();
 
     header("Location: ../front-end/login.php");
 
@@ -867,147 +867,7 @@ if (count($partesNome) > 1) {
         </p>
 
 
-        <form
-            action="../back-end/atualizar-notificacoes.php"
-            method="POST"
-            class="modal_form"
-        >
-            <?= csrf_campo() ?>
-
-
-
-            <label class="modal_toggle">
-
-                <div class="modal_toggle_text">
-
-                    <span>
-                        Notificações por e-mail
-                    </span>
-
-                    <small>
-                        Receba resumos e alertas importantes no seu e-mail
-                    </small>
-
-                </div>
-
-
-                <input
-                    type="checkbox"
-                    name="notif_email"
-                    value="1"
-                    checked
-                >
-
-
-                <span class="modal_toggle_slider"></span>
-
-            </label>
-
-
-            <label class="modal_toggle">
-
-                <div class="modal_toggle_text">
-
-                    <span>
-                        Notificações push
-                    </span>
-
-                    <small>
-                        Alertas em tempo real no navegador ou app
-                    </small>
-
-                </div>
-
-
-                <input
-                    type="checkbox"
-                    name="notif_push"
-                    value="1"
-                    checked
-                >
-
-
-                <span class="modal_toggle_slider"></span>
-
-            </label>
-
-
-            <label class="modal_toggle">
-
-                <div class="modal_toggle_text">
-
-                    <span>
-                        Resumo semanal
-                    </span>
-
-                    <small>
-                        Um resumo das suas finanças toda semana
-                    </small>
-
-                </div>
-
-
-                <input
-                    type="checkbox"
-                    name="notif_resumo"
-                    value="1"
-                >
-
-
-                <span class="modal_toggle_slider"></span>
-
-            </label>
-
-
-            <label class="modal_toggle">
-
-                <div class="modal_toggle_text">
-
-                    <span>
-                        Alertas de gastos
-                    </span>
-
-                    <small>
-                        Avisos quando você se aproximar do limite definido
-                    </small>
-
-                </div>
-
-
-                <input
-                    type="checkbox"
-                    name="notif_alertas"
-                    value="1"
-                    checked
-                >
-
-
-                <span class="modal_toggle_slider"></span>
-
-            </label>
-
-
-            <div class="modal_actions">
-
-                <button
-                    type="button"
-                    class="btn_modal_secundario"
-                    data-modal-close
-                >
-                    Cancelar
-                </button>
-
-
-                <button
-                    type="submit"
-                    class="btn_modal_primario"
-                >
-                    Salvar alterações
-                </button>
-
-            </div>
-
-        </form>
+        <div class="modal_text"><p>As preferências de notificações ainda não podem ser salvas nesta versão. Nenhuma alteração será aplicada.</p><button type="button" class="btn_modal_secundario" data-modal-close>Fechar</button></div>
 
     </div>
 

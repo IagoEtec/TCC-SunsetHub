@@ -38,7 +38,7 @@ $usuario = $stmt->fetch(
 
 if (!$usuario) {
 
-    session_destroy();
+    encerrar_sessao_segura();
 
     header('Location: login.php');
 

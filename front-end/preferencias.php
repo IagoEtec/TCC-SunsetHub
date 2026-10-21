@@ -24,7 +24,7 @@ $stmt->execute([$_SESSION['id']]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$usuario) {
-    session_destroy();
+    encerrar_sessao_segura();
     header("Location: ../front-end/login.php");
     exit;
 }

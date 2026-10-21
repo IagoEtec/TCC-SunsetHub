@@ -120,7 +120,7 @@ if (!isset($_SESSION['id'])) {
         <div class="tipos_grid_variavel">
             <div class="tipo_card_variavel">
                 <div class="tipo_icon_variavel">
-                    <img src="img/acoes.png" alt="Ações">
+                    <img src="img/acoes.svg" alt="Ações">
                 </div>
                 <h3>Ações</h3>
                 <p class="tipo_desc_variavel">Frações de empresas negociadas na Bolsa. Você vira sócio.</p>
@@ -134,7 +134,7 @@ if (!isset($_SESSION['id'])) {
 
             <div class="tipo_card_variavel">
                 <div class="tipo_icon_variavel">
-                    <img src="img/fiis.png" alt="FIIs">
+                    <img src="img/fiis.svg" alt="FIIs">
                 </div>
                 <h3>Fundos Imobiliários</h3>
                 <p class="tipo_desc_variavel">Invista em imóveis sem comprar propriedades físicas.</p>
@@ -148,7 +148,7 @@ if (!isset($_SESSION['id'])) {
 
             <div class="tipo_card_variavel">
                 <div class="tipo_icon_variavel">
-                    <img src="img/etfs.png" alt="ETFs">
+                    <img src="img/etfs.svg" alt="ETFs">
                 </div>
                 <h3>ETFs</h3>
                 <p class="tipo_desc_variavel">Fundos que replicam índices como Ibovespa e S&P500.</p>
@@ -162,7 +162,7 @@ if (!isset($_SESSION['id'])) {
 
             <div class="tipo_card_variavel">
                 <div class="tipo_icon_variavel">
-                    <img src="img/bdr.png" alt="BDRs">
+                    <img src="img/bdr.svg" alt="BDRs">
                 </div>
                 <h3>BDRs</h3>
                 <p class="tipo_desc_variavel">Invista em empresas internacionais sem sair do Brasil.</p>

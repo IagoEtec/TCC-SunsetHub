@@ -21,7 +21,7 @@ $planos = [
     'id' => 'premium', 'nome' => 'Premium', 'icone' => '🚀', 'classe' => 'popular', 'tag' => 'Mais popular',
     'desc' => 'Ferramentas completas para investir com mais segurança.',
     'mensal' => 19.90, 'anual' => 15.90,
-    'btn' => 'Assinar Premium', 'link' => 'checkout.php?plano=premium', 'primario' => true,
+    'btn' => 'Assinar Premium', 'link' => '#', 'primario' => true,
     'recursos' => [
       ['Tudo do plano Gratuito', true],
       ['Carteira ilimitada de ativos', true],
@@ -35,7 +35,7 @@ $planos = [
     'id' => 'pro', 'nome' => 'Premium Pro', 'icone' => '👑', 'classe' => 'pro',
     'desc' => 'Para investidores que querem o máximo de análise e controle.',
     'mensal' => 39.90, 'anual' => 31.90,
-    'btn' => 'Assinar Premium Pro', 'link' => 'checkout.php?plano=pro', 'primario' => true,
+    'btn' => 'Assinar Premium Pro', 'link' => '#', 'primario' => true,
     'recursos' => [
       ['Tudo do plano Premium', true],
       ['Múltiplas carteiras', true],
@@ -65,8 +65,9 @@ function preco_partes(float $v): array {
   <link rel="stylesheet" href="../css/style-plano.css">
 </head>
 <body class="planos-page">
+  <?php include_once __DIR__ . "/navbar.php"; ?>
 
-  <?php // include 'includes/navbar.php'; // <- sua navbar padrão ?>
+
 
   <main class="planos-main">
 
@@ -129,7 +130,7 @@ function preco_partes(float $v): array {
         <?php endforeach; ?>
       </section>
 
-      <p class="garantia">Pagamento seguro · Garantia de 7 dias · Cancele quando quiser</p>
+      <p class="garantia">Planos pagos em preparação · Nenhuma cobrança é processada nesta versão</p>
 
       <!-- COMPARATIVO -->
       <section class="secao">
@@ -159,15 +160,15 @@ function preco_partes(float $v): array {
         <div class="faq">
           <details>
             <summary>Posso trocar de plano depois?</summary>
-            <p>Sim. Você pode fazer upgrade ou downgrade a qualquer momento pelo seu perfil, e o valor é ajustado proporcionalmente.</p>
+            <p>Ainda não. A alteração de plano ficará disponível quando o checkout for integrado.</p>
           </details>
           <details>
             <summary>Existe fidelidade ou multa de cancelamento?</summary>
-            <p>Não. Você cancela quando quiser e continua com acesso até o fim do período já pago.</p>
+            <p>Os planos pagos ainda não estão disponíveis para contratação.</p>
           </details>
           <details>
             <summary>Quais formas de pagamento são aceitas?</summary>
-            <p>Cartão de crédito e Pix. Os pagamentos são processados em ambiente seguro.</p>
+            <p>Nenhuma forma de pagamento está habilitada nesta versão.</p>
           </details>
           <details>
             <summary>O que acontece com meus dados se eu voltar ao plano Gratuito?</summary>
@@ -179,132 +180,13 @@ function preco_partes(float $v): array {
     </div>
   </main>
 
-  <!-- MODAL DE COMPRA -->
-  <div class="modal-overlay" id="modalCompra" hidden>
-    <div class="modal-compra" role="dialog" aria-modal="true" aria-labelledby="mcTitulo">
-      <button type="button" class="mc-fechar" aria-label="Fechar">&times;</button>
-
-      <form action="checkout.php" method="post" id="formCompra" autocomplete="off">
-        <input type="hidden" name="plano" id="mcPlano">
-        <input type="hidden" name="ciclo" id="mcCiclo" value="mensal">
-        <input type="hidden" name="metodo" id="mcMetodo" value="cartao">
-
-        <span class="badge">Compra segura</span>
-        <h2 id="mcTitulo">Assinar <span id="mcNome">Premium</span></h2>
-
-        <div class="mc-resumo">
-          <div class="ciclo mc-ciclo" role="group" aria-label="Ciclo de cobrança">
-            <button type="button" class="ativo" data-ciclo="mensal">Mensal</button>
-            <button type="button" data-ciclo="anual">Anual <small>-20%</small></button>
-          </div>
-          <div class="mc-total">
-            <span id="mcPeriodo">Total por mês</span>
-            <strong id="mcValor">R$ 0,00</strong>
-          </div>
-        </div>
-
-        <div class="mc-metodos" role="tablist">
-          <button type="button" class="ativo" data-metodo="cartao">Cartão</button>
-          <button type="button" data-metodo="pix">Pix</button>
-        </div>
-
-        <div class="mc-form-cartao" id="mcCartao">
-          <div class="input-group"><label for="mcNomeCartao">Nome no cartão</label>
-            <input id="mcNomeCartao" name="nome_cartao" placeholder="Como está impresso" required></div>
-          <div class="input-group"><label for="mcNumero">Número do cartão</label>
-            <input id="mcNumero" name="numero" inputmode="numeric" placeholder="0000 0000 0000 0000" maxlength="19" required></div>
-          <div class="mc-linha">
-            <div class="input-group"><label for="mcValidade">Validade</label>
-              <input id="mcValidade" name="validade" inputmode="numeric" placeholder="MM/AA" maxlength="5" required></div>
-            <div class="input-group"><label for="mcCvv">CVV</label>
-              <input id="mcCvv" name="cvv" inputmode="numeric" placeholder="123" maxlength="4" required></div>
-          </div>
-          <div class="input-group"><label for="mcCpf">CPF do titular</label>
-            <input id="mcCpf" name="cpf" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" required></div>
-        </div>
-
-        <div class="mc-pix" id="mcPix" hidden>
-          <p>Ao confirmar, geramos um <strong>QR Code Pix</strong> com o valor do plano. A assinatura é liberada assim que o pagamento é aprovado.</p>
-        </div>
-
-        <button type="submit" class="btn-plano primario mc-confirmar">Confirmar assinatura</button>
-        <p class="mc-nota">Cancele quando quiser · Garantia de 7 dias</p>
-      </form>
-    </div>
-  </div>
-
+  <div class="modal-overlay" id="modalCompra" hidden><div class="modal-compra" role="dialog" aria-modal="true" aria-labelledby="mcTitulo"><button type="button" class="mc-fechar" aria-label="Fechar">&times;</button><span class="badge">Aviso</span><h2 id="mcTitulo">Assinaturas pagas indisponíveis</h2><p>O checkout ainda não está implementado e nenhuma cobrança pode ser processada com segurança. Não informe número de cartão, CVV ou CPF nesta versão.</p><button type="button" class="mc-fechar btn-plano">Entendi</button></div></div>
   <script>
-    var ciclo = 'mensal', planoAtual = null;
-    var brl = function (v) { return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); };
-
-    // Aplica o ciclo (mensal/anual) em toda a página e no modal
-    function setCiclo(c) {
-      ciclo = c;
-      document.querySelectorAll('.ciclo button').forEach(function (b) {
-        var ativo = b.dataset.ciclo === c;
-        b.classList.toggle('ativo', ativo);
-        b.setAttribute('aria-pressed', ativo);
-      });
-      document.querySelectorAll('.plano-card [data-mensal]:not(.btn-assinar)').forEach(function (el) {
-        el.textContent = el.dataset[c];
-      });
-      document.getElementById('mcCiclo').value = c;
-      if (planoAtual) {
-        var v = parseFloat(planoAtual.dataset[c]);
-        document.getElementById('mcValor').textContent = brl(c === 'anual' ? v * 12 : v);
-        document.getElementById('mcPeriodo').textContent = c === 'anual' ? 'Total por ano (12x ' + brl(v) + ')' : 'Total por mês';
-      }
-    }
-    document.querySelectorAll('.ciclo button').forEach(function (b) {
-      b.addEventListener('click', function () { setCiclo(b.dataset.ciclo); });
-    });
-
-    // Modal
-    var modal = document.getElementById('modalCompra');
-    var ultimoFoco = null;
-    function abrirModal(btn) {
-      planoAtual = btn; ultimoFoco = btn;
-      document.getElementById('mcPlano').value = btn.dataset.plano;
-      document.getElementById('mcNome').textContent = btn.dataset.nome;
-      setCiclo(ciclo);
-      modal.hidden = false;
-      document.body.style.overflow = 'hidden';
-      setTimeout(function () { document.getElementById('mcNomeCartao').focus(); }, 50);
-    }
-    function fecharModal() {
-      modal.hidden = true;
-      document.body.style.overflow = '';
-      if (ultimoFoco) ultimoFoco.focus();
-    }
-    document.querySelectorAll('.btn-assinar').forEach(function (b) {
-      b.addEventListener('click', function () { abrirModal(b); });
-    });
-    modal.addEventListener('click', function (e) { if (e.target === modal) fecharModal(); });
-    modal.querySelector('.mc-fechar').addEventListener('click', fecharModal);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) fecharModal(); });
-
-    // Cartão x Pix
-    document.querySelectorAll('.mc-metodos button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        var pix = b.dataset.metodo === 'pix';
-        document.querySelectorAll('.mc-metodos button').forEach(function (x) { x.classList.toggle('ativo', x === b); });
-        document.getElementById('mcMetodo').value = b.dataset.metodo;
-        document.getElementById('mcCartao').hidden = pix;
-        document.getElementById('mcPix').hidden = !pix;
-        document.querySelectorAll('#mcCartao input').forEach(function (i) { i.required = !pix; });
-      });
-    });
-
-    // Máscaras
-    function mascara(id, fn) {
-      document.getElementById(id).addEventListener('input', function (e) { e.target.value = fn(e.target.value.replace(/\D/g, '')); });
-    }
-    mascara('mcNumero', function (v) { return v.slice(0, 16).replace(/(\d{4})(?=\d)/g, '$1 '); });
-    mascara('mcValidade', function (v) { return v.slice(0, 4).replace(/(\d{2})(?=\d)/, '$1/'); });
-    mascara('mcCvv', function (v) { return v.slice(0, 4); });
-    mascara('mcCpf', function (v) {
-      return v.slice(0, 11).replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    });
+    var ciclo='mensal';
+    function setCiclo(c){ciclo=c;document.querySelectorAll('.ciclo button').forEach(function(b){var active=b.dataset.ciclo===c;b.classList.toggle('ativo',active);b.setAttribute('aria-pressed',String(active));});document.querySelectorAll('.plano-card [data-mensal]:not(.btn-assinar)').forEach(function(el){el.textContent=el.dataset[c];});}
+    document.querySelectorAll('.ciclo button').forEach(function(b){b.addEventListener('click',function(){setCiclo(b.dataset.ciclo);});});
+    var modal=document.getElementById('modalCompra');document.querySelectorAll('.btn-assinar').forEach(function(b){b.addEventListener('click',function(){modal.hidden=false;modal.querySelector('.mc-fechar').focus();});});
+    modal.addEventListener('click',function(e){if(e.target===modal||e.target.closest('.mc-fechar'))modal.hidden=true;});document.addEventListener('keydown',function(e){if(e.key==='Escape')modal.hidden=true;});
   </script>
 <script src="../JS/liquid-glass.js?v=100" defer></script>
 </body>

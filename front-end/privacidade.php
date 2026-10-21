@@ -64,10 +64,10 @@ if (!isset($_SESSION['id'])) {
             <h3>Exportar meus dados</h3>
             <p>Baixe uma cópia de todas as suas informações cadastradas e transações registradas no AFDE, em formato CSV.</p>
         </div>
-        <a href="../back-end/exportar-dados.php" class="btn_pagina_secundario">
+        <button type="button" class="btn_pagina_secundario" disabled title="Exportação indisponível nesta versão">
             <span class="material-icons">file_download</span>
             Exportar
-        </a>
+        </button>
     </div>
 
     <div class="pagina_card glass-card">
@@ -90,7 +90,7 @@ if (!isset($_SESSION['id'])) {
                 <p>Ajude a melhorar o AFDE enviando estatísticas de uso sem identificação pessoal.</p>
             </div>
             <label class="toggle_switch">
-                <input type="checkbox" checked>
+                <input type="checkbox" disabled aria-label="Preferência não persistida; controle desativado">
                 <span class="toggle_slider"></span>
             </label>
         </div>
@@ -103,7 +103,7 @@ if (!isset($_SESSION['id'])) {
                 <p>Permita que o AFDE use seu histórico financeiro para sugerir metas e categorias.</p>
             </div>
             <label class="toggle_switch">
-                <input type="checkbox" checked>
+                <input type="checkbox" disabled aria-label="Preferência não persistida; controle desativado">
                 <span class="toggle_slider"></span>
             </label>
         </div>
@@ -120,39 +120,12 @@ if (!isset($_SESSION['id'])) {
             <h3>Excluir minha conta</h3>
             <p>Essa ação é permanente. Todos os seus dados, transações e configurações serão apagados e não poderão ser recuperados.</p>
         </div>
-        <button type="button" class="btn_pagina_perigo" data-modal-target="modal-excluir-conta">
-            <span class="material-icons">delete_outline</span>
-            Excluir conta
-        </button>
+        <button type="button" class="btn_pagina_perigo" disabled aria-disabled="true" title="Exclusão indisponível nesta versão">Excluir conta (indisponível)</button>
     </div>
 
 </main>
 
-<!-- ===================== MODAL: EXCLUIR CONTA ===================== -->
-<div class="modal_overlay" id="modal-excluir-conta" data-modal>
-    <div class="modal_box glass" role="dialog" aria-modal="true" aria-labelledby="modal-excluir-title">
-        <button type="button" class="modal_close" data-modal-close aria-label="Fechar">
-            <span class="material-icons">close</span>
-        </button>
-
-        <div class="modal_icon modal_icon_danger">
-            <span class="material-icons">warning_amber</span>
-        </div>
-
-        <h2 id="modal-excluir-title" class="modal_title">Excluir sua conta?</h2>
-        <p class="modal_text">
-            Essa ação é <strong>irreversível</strong>. Todos os seus dados financeiros,
-            categorias e configurações serão apagados permanentemente. Tem certeza que deseja continuar?
-        </p>
-
-        <div class="modal_actions">
-            <button type="button" class="btn_modal_secundario" data-modal-close>Cancelar</button>
-            <a href="../back-end/excluir-conta.php" class="btn_modal_perigo">Sim, excluir conta</a>
-        </div>
-    </div>
-</div>
-
-<script src="../js/modais.js"></script>
+<p class="pagina_notice" role="status">Exportação e exclusão de conta estão temporariamente indisponíveis até a implementação segura dos serviços correspondentes. Nenhum dado será apagado.</p>
 
 
     <!-- Widget de Acessibilidade — integrado em todas as páginas -->

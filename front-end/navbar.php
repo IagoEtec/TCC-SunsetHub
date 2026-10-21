@@ -65,7 +65,8 @@ if (isset($_SESSION['id'])) {
          NAVBAR
     ========================================== -->
 
-    <nav>
+    <button class="mobile-nav-toggle" id="mobileNavToggle" type="button" aria-expanded="false" aria-controls="portalMainNav" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <nav id="portalMainNav">
 
         <ul>
 
@@ -242,9 +243,9 @@ if (isset($_SESSION['id'])) {
             </li>
 
 
-            <!-- COMUNIDADE SUNSET HUB -->
+            <!-- Comunidade -->
             <li class="community-nav-item">
-                <a href="<?= isset($_SESSION['id']) ? '../community/front-end/index.php' : 'login.php' ?>" aria-label="Abrir comunidade Sunset Hub">
+                <a href="<?= isset($_SESSION['id']) ? 'comunidade.php?terms=1' : 'login.php' ?>" aria-label="Abrir comunidade">
                     Comunidade
                 </a>
             </li>
@@ -268,12 +269,7 @@ if (isset($_SESSION['id'])) {
         </ul>
 
     </nav>
-
-
-    <a class="community-mobile-link" href="<?= isset($_SESSION['id']) ? '../community/front-end/index.php' : 'login.php' ?>">Comunidade</a>
-
-
-    <!-- ==========================================
+<!-- ==========================================
          ÁREA DO USUÁRIO
     ========================================== -->
 
@@ -552,6 +548,15 @@ if (isset($_SESSION['id'])) {
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const portalNav = document.getElementById('portalMainNav');
+    if (mobileToggle && portalNav) {
+        const closeMobile = () => { portalNav.classList.remove('mobile-open'); mobileToggle.setAttribute('aria-expanded', 'false'); mobileToggle.setAttribute('aria-label', 'Abrir menu'); };
+        mobileToggle.addEventListener('click', () => { const open = mobileToggle.getAttribute('aria-expanded') !== 'true'; mobileToggle.setAttribute('aria-expanded', String(open)); mobileToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu'); portalNav.classList.toggle('mobile-open', open); });
+        portalNav.addEventListener('click', e => { if (e.target.closest('a')) closeMobile(); });
+        document.addEventListener('click', e => { if (!portalNav.contains(e.target) && !mobileToggle.contains(e.target)) closeMobile(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMobile(); mobileToggle.focus(); } });
+    }
     const avatarBtn = document.getElementById('avatarBtn');
     const dropdownMenu = document.getElementById('dropdownMenu');
 
