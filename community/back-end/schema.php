@@ -9,6 +9,40 @@ function comunidade_garantir_colunas_anexo(PDO $pdo): void
         $check->execute([$table]);
         if (!(int)$check->fetchColumn()) $pdo->exec("ALTER TABLE {$table} ADD COLUMN anexo_path VARCHAR(255) NULL AFTER corpo");
     }
+    foreach (['comunidade_publicacoes','comunidade_videos','comunidade_posts_visuais','comunidade_stories'] as $table) {
+        $check = $pdo->prepare("SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME=? AND COLUMN_NAME='localizacao'");
+        $check->execute([$table]);
+        if (!(int)$check->fetchColumn()) $pdo->exec("ALTER TABLE {$table} ADD COLUMN localizacao VARCHAR(160) NULL AFTER criado_em");
+    }
+}
+
+function comunidade_garantir_colunas_moderacao(PDO $pdo): void
+{
+    foreach (['comunidade_publicacoes','comunidade_videos','comunidade_posts_visuais','comunidade_stories','comunidade_comentarios_video','comunidade_mensagens_privadas','comunidade_mensagens_grupo','comunidade_grupos','comunidade_abas_grupo'] as $table) {
+        $check=$pdo->prepare("SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME=? AND COLUMN_NAME='moderacao_status'");$check->execute([$table]);
+        if (!(int)$check->fetchColumn()) $pdo->exec("ALTER TABLE {$table} ADD COLUMN moderacao_status ENUM('visible','hidden','removed') NOT NULL DEFAULT 'visible'");
+    }
+    $check=$pdo->query("SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='comunidade_denuncias' AND COLUMN_NAME='status'");
+    if (!(int)$check->fetchColumn()) $pdo->exec("ALTER TABLE comunidade_denuncias ADD COLUMN status ENUM('pending','kept','hidden','removed') NOT NULL DEFAULT 'pending', ADD COLUMN revisado_por INT NULL, ADD COLUMN revisado_em TIMESTAMP NULL DEFAULT NULL, ADD KEY idx_denuncias_status (status)");
+}
+
+const COMUNIDADE_TERMOS_VERSAO = '2026-10-21';
+function comunidade_garantir_tabela_termos(PDO $pdo): void
+{
+    $pdo->exec("CREATE TABLE IF NOT EXISTS comunidade_termos_aceites (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, usuario_id INT NOT NULL, versao VARCHAR(30) NOT NULL,
+      aceito_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, ip_address VARCHAR(45) NOT NULL, user_agent VARCHAR(500) NOT NULL,
+      PRIMARY KEY (id), UNIQUE KEY uq_termos_usuario_versao (usuario_id, versao), KEY idx_termos_usuario (usuario_id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+}
+function comunidade_tem_aceite(PDO $pdo, int $uid): bool
+{
+    $s=$pdo->prepare('SELECT 1 FROM comunidade_termos_aceites WHERE usuario_id=? AND versao=? LIMIT 1');$s->execute([$uid,COMUNIDADE_TERMOS_VERSAO]);return (bool)$s->fetchColumn();
+}
+function comunidade_registrar_aceite(PDO $pdo, int $uid): void
+{
+    $ip=substr((string)($_SERVER['REMOTE_ADDR']??''),0,45);$agent=substr((string)($_SERVER['HTTP_USER_AGENT']??''),0,500);
+    $s=$pdo->prepare('INSERT INTO comunidade_termos_aceites(usuario_id,versao,ip_address,user_agent) VALUES(?,?,?,?) ON DUPLICATE KEY UPDATE aceito_em=CURRENT_TIMESTAMP,ip_address=VALUES(ip_address),user_agent=VALUES(user_agent)');$s->execute([$uid,COMUNIDADE_TERMOS_VERSAO,$ip,$agent]);
 }
 
 /** Cria somente tabelas sociais faltantes; nunca altera nem apaga dados existentes. */
@@ -16,25 +50,46 @@ function comunidade_instalar_schema(PDO $pdo): void
 {
     static $ready = false;
     if ($ready) return;
+    comunidade_garantir_tabela_termos($pdo);
 
     $tables = [
         'comunidade_publicacoes', 'comunidade_videos', 'comunidade_grupos', 'comunidade_membros',
-        'comunidade_amizades', 'comunidade_mensagens_privadas', 'comunidade_reacoes_video',
+        'comunidade_amizades', 'comunidade_seguidores', 'comunidade_mensagens_privadas', 'comunidade_reacoes_video',
         'comunidade_comentarios_video', 'comunidade_posts_visuais', 'comunidade_midias_visuais',
         'comunidade_stories', 'comunidade_presenca', 'comunidade_grupo_imagens',
-        'comunidade_abas_grupo', 'comunidade_mensagens_grupo', 'comunidade_notificacoes',
+        'comunidade_abas_grupo', 'comunidade_mensagens_grupo', 'comunidade_notificacoes', 'comunidade_denuncias', 'comunidade_bloqueios', 'comunidade_termos_aceites',
     ];
     $marks = implode(',', array_fill(0, count($tables), '?'));
     $check = $pdo->prepare("SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME IN ({$marks})");
     $check->execute($tables);
     if ((int)$check->fetchColumn() === count($tables)) {
         comunidade_garantir_colunas_anexo($pdo);
+        comunidade_garantir_colunas_moderacao($pdo);
         $pdo->exec('INSERT IGNORE INTO comunidade_membros (grupo_id, usuario_id) SELECT id, criado_por FROM comunidade_grupos WHERE criado_por IS NOT NULL');
+        $pdo->exec("INSERT IGNORE INTO comunidade_seguidores (seguidor_id, seguido_id) SELECT usuario_a, usuario_b FROM comunidade_amizades WHERE status='accepted' UNION SELECT usuario_b, usuario_a FROM comunidade_amizades WHERE status='accepted'");
         $ready = true;
         return;
     }
 
     $statements = [
+        <<<SQL
+CREATE TABLE IF NOT EXISTS comunidade_seguidores (
+  seguidor_id INT NOT NULL, seguido_id INT NOT NULL, criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (seguidor_id, seguido_id), KEY idx_seguidores_seguido (seguido_id),
+  CONSTRAINT fk_seguidor_usuario FOREIGN KEY (seguidor_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+  CONSTRAINT fk_seguido_usuario FOREIGN KEY (seguido_id) REFERENCES usuarios(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+SQL,
+        <<<SQL
+CREATE TABLE IF NOT EXISTS comunidade_bloqueios (
+  bloqueador_id INT NOT NULL,
+  bloqueado_id INT NOT NULL,
+  criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (bloqueador_id, bloqueado_id), KEY idx_bloqueios_bloqueado (bloqueado_id),
+  CONSTRAINT fk_bloqueio_bloqueador FOREIGN KEY (bloqueador_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+  CONSTRAINT fk_bloqueio_bloqueado FOREIGN KEY (bloqueado_id) REFERENCES usuarios(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+SQL,
         <<<SQL
 CREATE TABLE IF NOT EXISTS comunidade_publicacoes (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -163,9 +218,24 @@ CREATE TABLE IF NOT EXISTS comunidade_stories (
   caminho VARCHAR(255) NOT NULL,
   legenda VARCHAR(500) NOT NULL DEFAULT '',
   criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  expira_em TIMESTAMP NOT NULL,
+  expira_em DATETIME NOT NULL,
   PRIMARY KEY (id), KEY idx_story_expira (expira_em), KEY idx_story_usuario (usuario_id, criado_em),
   CONSTRAINT fk_story_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+SQL,
+        <<<SQL
+CREATE TABLE IF NOT EXISTS comunidade_denuncias (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  usuario_id INT NOT NULL,
+  conteudo_tipo VARCHAR(30) NOT NULL,
+  conteudo_id BIGINT UNSIGNED NOT NULL,
+  motivo VARCHAR(80) NOT NULL,
+  detalhes VARCHAR(1000) NOT NULL,
+  criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_denuncia_usuario_conteudo (usuario_id, conteudo_tipo, conteudo_id),
+  KEY idx_denuncias_conteudo (conteudo_tipo, conteudo_id),
+  CONSTRAINT fk_denuncia_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
 SQL,
         <<<SQL
@@ -232,10 +302,12 @@ SQL,
 
     foreach ($statements as $sql) $pdo->exec($sql);
     comunidade_garantir_colunas_anexo($pdo);
+    comunidade_garantir_colunas_moderacao($pdo);
     $pdo->exec("INSERT IGNORE INTO comunidade_grupos (nome, descricao, categoria, cor) VALUES
         ('Finanças sem mistério', 'Perguntas e conversas para organizar melhor o dinheiro no dia a dia.', 'Organização', '#ff7248'),
         ('Investidores iniciantes', 'Aprenda conceitos e discuta investimentos com responsabilidade.', 'Investimentos', '#a873ff'),
         ('Desafio de economia', 'Compartilhe metas realistas, progresso e pequenas conquistas.', 'Metas', '#ffad52')");
     $pdo->exec('INSERT IGNORE INTO comunidade_membros (grupo_id, usuario_id) SELECT id, criado_por FROM comunidade_grupos WHERE criado_por IS NOT NULL');
+    $pdo->exec("INSERT IGNORE INTO comunidade_seguidores (seguidor_id, seguido_id) SELECT usuario_a, usuario_b FROM comunidade_amizades WHERE status='accepted' UNION SELECT usuario_b, usuario_a FROM comunidade_amizades WHERE status='accepted'");
     $ready = true;
 }

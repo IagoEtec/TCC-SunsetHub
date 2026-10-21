@@ -2,6 +2,7 @@
 require_once __DIR__ . '/seguranca.php';
 iniciar_sessao_segura();
 require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/content_filter.php';
 require_once __DIR__ . '/google-config.php';
 
 $client = new Google_Client();
@@ -35,6 +36,7 @@ try {
     if ($email === '' || $googleId === '' || empty($userInfo->verified_email)) {
         throw new RuntimeException('Conta Google sem e-mail verificado.');
     }
+    $nomeGoogle = sunset_conteudo_exigir((string)$userInfo->name, 'nome do perfil');
 
     $stmt = $pdo->prepare('SELECT * FROM usuarios WHERE email = ?');
     $stmt->execute([$email]);
@@ -42,7 +44,7 @@ try {
 
     if (!$existente) {
         $stmt = $pdo->prepare("INSERT INTO usuarios (oauth_uid, nome, email, foto, provedor) VALUES (?, ?, ?, ?, 'google')");
-        $stmt->execute([$googleId, (string)$userInfo->name, $email, (string)$userInfo->picture]);
+        $stmt->execute([$googleId, $nomeGoogle, $email, (string)$userInfo->picture]);
         $idUsuario = (int)$pdo->lastInsertId();
     } else {
         // Só o mesmo Google subject pode reentrar. Nunca vincular Google a
@@ -73,6 +75,10 @@ try {
     header('Location: ../front-end/home.php');
     exit;
 } catch (Throwable $e) {
+    if ($e instanceof SunsetConteudoException) {
+        http_response_code(422);
+        exit($e->getMessage());
+    }
     tratar_erro_bd($e, 'google-callback');
     http_response_code(400);
     exit('Não foi possível concluir o login com o Google.');

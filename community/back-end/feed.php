@@ -22,7 +22,7 @@ try {
     $data = json_decode((string)file_get_contents('php://input'), true) ?: [];
     $action = (string)($data['action'] ?? 'publish');
     if ($action === 'publish') {
-        $body = trim((string)($data['body'] ?? ''));
+        $body = sunset_conteudo_exigir((string)($data['body'] ?? ''), 'texto da publicação');
         $length = function_exists('mb_strlen') ? mb_strlen($body, 'UTF-8') : strlen($body);
         if ($length < 1 || $length > 1000) comunidade_json(['ok' => false, 'error' => 'Escreva uma publicação de até 1.000 caracteres.'], 422);
         $stmt = $pdo->prepare('INSERT INTO comunidade_publicacoes (usuario_id, corpo) VALUES (?, ?)');
@@ -42,9 +42,9 @@ try {
         comunidade_json(['ok' => true]);
     }
     if ($action === 'create_video') {
-        $title = trim((string)($data['title'] ?? ''));
+        $title = sunset_conteudo_exigir((string)($data['title'] ?? ''), 'título do vídeo');
         $url = trim((string)($data['url'] ?? ''));
-        $description = trim((string)($data['description'] ?? ''));
+        $description = sunset_conteudo_exigir((string)($data['description'] ?? ''), 'descrição do vídeo');
         if (strlen($title) < 3 || strlen($title) > 160 || strlen($description) > 500 || strlen($url) > 500 || !filter_var($url, FILTER_VALIDATE_URL) || !in_array(strtolower((string)parse_url($url, PHP_URL_SCHEME)), ['https', 'http'], true)) {
             comunidade_json(['ok' => false, 'error' => 'Informe um título válido e um link público HTTP ou HTTPS.'], 422);
         }
@@ -53,8 +53,8 @@ try {
         comunidade_json(['ok' => true]);
     }
     if ($action === 'create_community') {
-        $name = trim((string)($data['name'] ?? ''));
-        $description = trim((string)($data['description'] ?? ''));
+        $name = sunset_conteudo_exigir((string)($data['name'] ?? ''), 'nome do grupo');
+        $description = sunset_conteudo_exigir((string)($data['description'] ?? ''), 'descrição do grupo');
         if (strlen($name) < 3 || strlen($name) > 100 || strlen($description) < 5 || strlen($description) > 255) comunidade_json(['ok' => false, 'error' => 'Informe um nome (3–100 caracteres) e uma descrição (5–255 caracteres).'], 422);
         try {
             $stmt = $pdo->prepare('INSERT INTO comunidade_grupos (nome, descricao, categoria, criado_por) VALUES (?, ?, ?, ?)');
@@ -66,6 +66,8 @@ try {
         comunidade_json(['ok' => true]);
     }
     comunidade_json(['ok' => false, 'error' => 'Ação desconhecida.'], 400);
+} catch (SunsetConteudoException $e) {
+    comunidade_json(['ok' => false, 'error' => $e->getMessage()], 422);
 } catch (PDOException $e) {
     tratar_erro_bd($e, 'sunsethub_feed');
     comunidade_json(['ok' => false, 'error' => 'Não foi possível iniciar a comunidade. Verifique se o banco principal existe e se o usuário MySQL pode criar tabelas.'], 500);

@@ -2,6 +2,7 @@
 require_once __DIR__ . '/seguranca.php';
 iniciar_sessao_segura();
 require_once 'conexao.php';
+require_once __DIR__ . '/content_filter.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -29,6 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Solução: repetir as validações essenciais no servidor.
     if ($nome === '' || mb_strlen($nome) > 150) {
         echo "<script>alert('Informe um nome válido.'); window.history.back();</script>";
+        exit;
+    }
+
+    try {
+        $nome = sunset_conteudo_exigir($nome, 'nome do perfil');
+    } catch (SunsetConteudoException $e) {
+        echo '<script>alert(' . json_encode($e->getMessage(), JSON_UNESCAPED_UNICODE) . '); window.history.back();</script>';
         exit;
     }
 

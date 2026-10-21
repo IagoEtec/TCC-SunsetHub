@@ -2,6 +2,7 @@
 require_once __DIR__ . '/seguranca.php';
 iniciar_sessao_segura();
 require_once 'conexao.php';
+require_once __DIR__ . '/content_filter.php';
 
 if (!isset($_SESSION['id'])) {
     header("Location: ../front-end/login.php");
@@ -23,6 +24,13 @@ if (empty($nome) || empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL))
         window.location='../front-end/perfil.php';
     </script>
     ";
+    exit;
+}
+
+try {
+    $nome = sunset_conteudo_exigir($nome, 'nome do perfil');
+} catch (SunsetConteudoException $e) {
+    echo '<script>alert(' . json_encode($e->getMessage(), JSON_UNESCAPED_UNICODE) . '); window.location="../front-end/perfil.php";</script>';
     exit;
 }
 

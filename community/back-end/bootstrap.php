@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../../back-end/seguranca.php';
 iniciar_sessao_segura();
 require_once __DIR__ . '/../../back-end/conexao.php';
+require_once __DIR__ . '/../../back-end/content_filter.php';
 
 function comunidade_json(array $payload, int $status = 200): void
 {
@@ -55,4 +56,9 @@ function comunidade_exigir_csrf(): void
     if ($provided === '' || $expected === '' || !hash_equals($expected, $provided)) {
         comunidade_json(['ok' => false, 'error' => 'Sessão expirada ou token de segurança inválido. Recarregue a página e tente novamente.'], 403);
     }
+}
+
+function comunidade_exigir_termos(PDO $pdo, int $uid): void
+{
+    if (!comunidade_tem_aceite($pdo, $uid)) comunidade_json(['ok'=>false,'error'=>'Aceite os Termos de Uso da Comunidade antes de continuar.','terms_required'=>true],403);
 }
