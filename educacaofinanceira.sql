@@ -356,6 +356,26 @@ INSERT IGNORE INTO comunidade_grupos (nome, descricao, categoria, cor) VALUES
 
 
 -- Recursos sociais do Sunset Hub (mesmo banco do portal)
+CREATE TABLE IF NOT EXISTS comunidade_seguidores (
+  seguidor_id INT NOT NULL,
+  seguido_id INT NOT NULL,
+  criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (seguidor_id, seguido_id),
+  KEY idx_seguidores_seguido (seguido_id),
+  CONSTRAINT fk_seguidor_usuario FOREIGN KEY (seguidor_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+  CONSTRAINT fk_seguido_usuario FOREIGN KEY (seguido_id) REFERENCES usuarios(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS comunidade_bloqueios (
+  bloqueador_id INT NOT NULL,
+  bloqueado_id INT NOT NULL,
+  criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (bloqueador_id, bloqueado_id),
+  KEY idx_bloqueios_bloqueado (bloqueado_id),
+  CONSTRAINT fk_bloqueio_bloqueador FOREIGN KEY (bloqueador_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+  CONSTRAINT fk_bloqueio_bloqueado FOREIGN KEY (bloqueado_id) REFERENCES usuarios(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE IF NOT EXISTS comunidade_amizades (
   usuario_a INT NOT NULL,
   usuario_b INT NOT NULL,
@@ -437,11 +457,25 @@ CREATE TABLE IF NOT EXISTS comunidade_stories (
   caminho VARCHAR(255) NOT NULL,
   legenda VARCHAR(500) NOT NULL DEFAULT '',
   criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  expira_em TIMESTAMP NOT NULL,
+  expira_em DATETIME NOT NULL,
   PRIMARY KEY (id),
   KEY idx_story_expira (expira_em),
   KEY idx_story_usuario (usuario_id, criado_em),
   CONSTRAINT fk_story_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS comunidade_denuncias (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  usuario_id INT NOT NULL,
+  conteudo_tipo VARCHAR(30) NOT NULL,
+  conteudo_id BIGINT UNSIGNED NOT NULL,
+  motivo VARCHAR(80) NOT NULL,
+  detalhes VARCHAR(1000) NOT NULL,
+  criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_denuncia_usuario_conteudo (usuario_id, conteudo_tipo, conteudo_id),
+  KEY idx_denuncias_conteudo (conteudo_tipo, conteudo_id),
+  CONSTRAINT fk_denuncia_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS comunidade_presenca (
@@ -506,4 +540,21 @@ CREATE TABLE IF NOT EXISTS comunidade_notificacoes (
   PRIMARY KEY (id), KEY idx_notificacoes_usuario (usuario_id, lida_em, id),
   CONSTRAINT fk_notificacao_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
   CONSTRAINT fk_notificacao_ator FOREIGN KEY (ator_id) REFERENCES usuarios(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Bloco 5.2: estado de moderação e revisão de denúncias.
+ALTER TABLE comunidade_publicacoes ADD COLUMN moderacao_status ENUM('visible','hidden','removed') NOT NULL DEFAULT 'visible';
+ALTER TABLE comunidade_videos ADD COLUMN moderacao_status ENUM('visible','hidden','removed') NOT NULL DEFAULT 'visible';
+ALTER TABLE comunidade_posts_visuais ADD COLUMN moderacao_status ENUM('visible','hidden','removed') NOT NULL DEFAULT 'visible';
+ALTER TABLE comunidade_stories ADD COLUMN moderacao_status ENUM('visible','hidden','removed') NOT NULL DEFAULT 'visible';
+ALTER TABLE comunidade_comentarios_video ADD COLUMN moderacao_status ENUM('visible','hidden','removed') NOT NULL DEFAULT 'visible';
+ALTER TABLE comunidade_mensagens_privadas ADD COLUMN moderacao_status ENUM('visible','hidden','removed') NOT NULL DEFAULT 'visible';
+ALTER TABLE comunidade_mensagens_grupo ADD COLUMN moderacao_status ENUM('visible','hidden','removed') NOT NULL DEFAULT 'visible';
+ALTER TABLE comunidade_grupos ADD COLUMN moderacao_status ENUM('visible','hidden','removed') NOT NULL DEFAULT 'visible';
+ALTER TABLE comunidade_abas_grupo ADD COLUMN moderacao_status ENUM('visible','hidden','removed') NOT NULL DEFAULT 'visible';
+ALTER TABLE comunidade_denuncias ADD COLUMN status ENUM('pending','kept','hidden','removed') NOT NULL DEFAULT 'pending', ADD COLUMN revisado_por INT NULL, ADD COLUMN revisado_em TIMESTAMP NULL DEFAULT NULL;
+CREATE TABLE IF NOT EXISTS comunidade_termos_aceites (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, usuario_id INT NOT NULL, versao VARCHAR(30) NOT NULL,
+  aceito_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, ip_address VARCHAR(45) NOT NULL, user_agent VARCHAR(500) NOT NULL,
+  PRIMARY KEY (id), UNIQUE KEY uq_termos_usuario_versao (usuario_id, versao), KEY idx_termos_usuario (usuario_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

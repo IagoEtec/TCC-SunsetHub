@@ -1,49 +1,77 @@
 # LEIA-ME PARA ARRUMAR TUDO
 
-## Escopo desta rodada
+## Estado depois desta rodada
 
-Este relatório reúne apenas problemas identificados fora do funcionamento direto do Sunset Hub e que, conforme solicitado, **não foram alterados**. Os itens que afetam a entrada ou o uso da comunidade foram corrigidos no projeto integrado: campo de senha do login, validação de senha do cadastro, destino do botão Google e atalho Sunset Hub no cabeçalho móvel.
+A comunidade foi integrada à experiência visual e à navegação do portal AFDE: acessível pelo item **Comunidade** da navbar e pela rota `front-end/comunidade.php`; a rota antiga redireciona para ela. A tela usa o tema do usuário, os estilos compartilhados e o sistema Liquid Glass. Também foi acrescentado um menu mobile acessível para a navbar principal.
 
-## Problemas confirmados e como corrigir
+Este arquivo preserva os problemas fora da comunidade identificados anteriormente e distingue o que foi corrigido do que foi deliberadamente desativado porque não existia um backend seguro.
 
-### 1. A navegação geral do portal desaparece no celular
+## Problemas tratados
 
-**Onde:** `css/navbar.css`, regra `@media (max-width: 768px)` (a regra `nav { display: none; }`). O cabeçalho não implementa um botão hambúrguer para reabrir esse menu. O atalho móvel **Comunidade** foi adicionado separadamente para preservar o acesso ao Sunset Hub, mas os outros destinos principais continuam ocultos em telas estreitas.
+### 1. Menu principal desaparecia em telas pequenas — corrigido
 
-**Como corrigir:** implementar um botão de menu móvel na navbar, com `aria-expanded`, abertura/fechamento por clique e tecla Escape, foco visível e navegação por teclado. Exibir os links existentes em painel acessível e fechar o painel após a escolha de uma rota. Testar pelo menos em 320 px, 768 px e desktop.
+A navbar tinha `display:none` abaixo de 768 px e não oferecia controle para abrir o menu. Agora há botão com `aria-expanded`, operação por teclado, Escape, clique externo e fechamento ao escolher um link. Testar visualmente em 320 px, 768 px e desktop após instalar no XAMPP.
 
-### 2. O controle de notificações aponta para um endpoint que não existe
+### 2. Preferências de notificações sem endpoint — desativadas com aviso
 
-**Onde:** `front-end/configuracoes.php` aponta para `back-end/atualizar-notificacoes.php`, mas esse arquivo não está presente na cópia do projeto.
+O formulário apontava para `back-end/atualizar-notificacoes.php`, inexistente. Para evitar que pareça salvar opções sem persistência, a submissão foi retirada e a janela explica que nenhuma mudança será aplicada. Implementar persistência autenticada/CSRF no banco antes de reativar.
 
-**Como corrigir:** criar o endpoint autenticado para salvar a preferência no banco, validar o token CSRF da sessão e devolver estado/erro de forma consistente; alternativamente, retirar ou desabilitar o controle até haver persistência implementada. Confirmar que a configuração volta marcada corretamente depois de sair e entrar.
+### 3. Exportação e exclusão de conta — desativadas com aviso
 
-### 3. Exportação e exclusão de conta apontam para rotas ausentes
+As rotas `back-end/exportar-dados.php` e `back-end/excluir-conta.php` não existiam; o script `js/modais.js` também estava ausente. Os botões agora não levam a 404 e a exclusão não pode ser disparada. Para oferecer as funções, implementar exportação isolada por usuário e, para exclusão, fluxo POST autenticado com CSRF, confirmação server-side, política de retenção e limpeza das relações. Não usar GET para excluir dados.
 
-**Onde:** `front-end/privacidade.php` oferece `back-end/exportar-dados.php` e `back-end/excluir-conta.php`, que não estão presentes na cópia verificada. A página referencia `../js/modais.js`, mas esse arquivo não existe; portanto, não há nessa cópia um controlador local confirmado para abrir/fechar o modal. A ação final também aponta para rota inexistente.
+### 4. Ilustrações de renda variável — corrigidas
 
-**Como corrigir:** implementar a exportação autenticada como download CSV, limitada ao usuário da sessão e com cabeçalhos de download seguros. Para exclusão, criar um `POST` autenticado com CSRF e confirmação explícita no servidor; revogar/limpar integrações e aplicar a política de retenção antes de remover dados. Não usar um link `GET` para uma operação destrutiva. Até implementar, não apresentar esses controles como operacionais.
+As imagens PNG dos cards não existiam. Foram adicionadas quatro ilustrações SVG locais em `front-end/img/` e os caminhos da página foram apontados para elas.
 
-### 4. Imagens de investimentos ausentes
+### 5. Checkout de planos pagos — indisponível de forma explícita
 
-**Onde:** `front-end/investimentos_RendaVariavel.php` referencia `front-end/img/acoes.png`, `fiis.png`, `etfs.png` e `bdr.png`, mas esses arquivos não existem nesses caminhos.
+`front-end/checkout.php` não existe. O formulário que pedia número de cartão, CVV e CPF foi removido. Os botões pagos mostram um aviso e não coletam dados nem enviam cobrança. Para vender planos, integrar um provedor real, com preço validado no servidor, CSRF, sandbox, webhook idempotente e fluxo de cancelamento. Não usar dados de cartão de verdade neste projeto enquanto isso não existir.
 
-**Como corrigir:** colocar as quatro imagens no caminho esperado ou ajustar os `src` para arquivos existentes em `img/`, confirmando o caminho relativo à URL da página.
+## Escopo da comunidade verificado estaticamente
 
-### 5. Os planos pagos enviam para uma tela de checkout inexistente
+A interface existente contempla busca e pedidos de amizade, mensagens privadas com imagem, vídeos MP4 e miniatura, visualizações/reações/comentários, carrosséis, vídeos curtos, stories de 24 horas, grupos com chat/imagens, avisos, abas administrativas e lista de presença. Cards de vídeo abrem o visualizador e cards de grupo abrem a sala/modal. Chamadas de vídeo continuam sendo somente um espaço reservado.
 
-**Onde:** `front-end/planos.php` abre o modal dos planos Premium e envia para `front-end/checkout.php`; esse arquivo não existe na cópia verificada. A página também não inclui a navbar compartilhada no HTML atual.
+A mudança de rota foi refletida nas URLs da API e nos caminhos de mídia. A página herda o tema selecionado na conta. A ligação real ao Discord, Instagram e YouTube não foi habilitada: depende de OAuth/API e credenciais externas.
 
-**Como corrigir:** implementar o checkout com o provedor autorizado, validação server-side do plano e preço, proteção CSRF, retorno e webhook idempotentes; nunca confiar no valor enviado pelo navegador. Enquanto não houver checkout real e testado em sandbox, desabilitar a assinatura paga ou indicar que está indisponível. A inclusão da navbar pode ser decidida separadamente para essa página.
+## Limite importante do teste
 
-## Limites e reteste funcional pendente
+Foram feitas verificações estáticas de sintaxe PHP/JavaScript e consistência de rotas/markup. **Não foi possível certificar nesta sessão a execução ponta a ponta no navegador nem a leitura/gravação no MySQL do XAMPP**, pois a instância local em `127.0.0.1:3307` e sockets locais estavam indisponíveis/bloqueados no ambiente de execução. Portanto, não declaro que tudo está “100% funcional” sem o reteste local autenticado.
 
-A auditoria estática desta rodada encontrou **76 arquivos PHP sem erro de sintaxe** e **9 arquivos JavaScript sem erro de sintaxe**. Uma varredura local de rotas e recursos segue registrada nos itens acima; os módulos fora do Sunset Hub não foram alterados.
+## Roteiro de teste no XAMPP
 
-O `C:/xampp/mysql/bin/my.ini` local contém `port=3307`, mas nesta rodada não havia listener acessível na porta. A conexão MySQL e a abertura de sockets locais para o servidor de teste foram bloqueadas por erro de permissão/conectividade 10013; por isso o navegador não conseguiu carregar a cópia local e o MariaDB isolado de QA não pôde iniciar. A sintaxe e a consistência estática foram verificadas, mas **não foi possível certificar login real, leitura/gravação no banco, uploads MP4, cliques em todos os botões ou navegação autenticada completa**. Essa limitação é do ambiente de execução desta sessão, não um resultado de teste funcional bem-sucedido.
-
-Para concluir o reteste em um XAMPP acessível: iniciar Apache e MySQL e confirmar `DB_HOST=127.0.0.1`, `DB_PORT=3307`, `DB_NAME=educacaofinanceira` e as credenciais corretas em `.env` (sem sobrescrever a senha local). O bootstrap importa o dump principal somente quando o banco está vazio; em banco existente com `usuarios`, cria as tabelas Sunset faltantes sem migração separada. A conta precisa poder executar `CREATE`. Depois, executar os fluxos de login, cadastro, rotas, configurações, privacidade, carteira, pagamentos em sandbox e Sunset Hub. Não use dados financeiros reais para esses testes.
+1. Extraia o projeto mantendo sua estrutura e configure o Apache com a pasta do projeto como raiz.
+2. Inicie Apache e MySQL; confirme `DB_HOST=127.0.0.1`, `DB_PORT=3307`, `DB_NAME=educacaofinanceira` e as credenciais locais corretas. Não substitua senhas locais por valores de exemplo.
+3. Use banco de teste ou backup antes de testar. O provisionamento da comunidade exige permissão `CREATE`; o dump principal só é importado automaticamente em banco vazio.
+4. Entre no portal e acesse **Comunidade** pela navbar; confirme tema claro/escuro, refresh, retorno do login e navegação entre as seções.
+5. Teste duas contas de QA: busca/pedido/aceitação de amizade, mensagem de texto/imagem, notificações, criação/participação/administração de grupo, abas, moderação, sala e envio de imagem.
+6. Teste vídeo e carrossel com arquivos de teste pequenos. Para uploads maiores, confira `upload_max_filesize`, `post_max_size`, `upload_tmp_dir` e espaço/permissões na pasta `community/uploads` do PHP/Apache.
+7. Em celular, valide menu global, navbar, tabs da comunidade, salas/modais e rolagem em 320 px e 768 px.
+8. Confirme também que planos pagos, exportação e exclusão ficam claramente indisponíveis — não insira dados financeiros reais.
 
 ## Não ativado
 
-Autenticação e sincronização direta com Discord, Instagram e YouTube continuam fora do escopo: dependem de credenciais OAuth/API e permissões dos serviços. O Sunset Hub integrado oferece amizades, mensagens privadas, vídeos MP4, publicações visuais, stories temporários e grupos; chamadas de vídeo continuam reservadas, sem conexão de câmera/microfone.
+- Checkout e processamento de pagamentos.
+- Exportação de dados e exclusão da conta.
+- Preferências persistentes de notificações do portal.
+- Chamadas de vídeo com câmera/microfone.
+- Conexões diretas com serviços externos Discord, Instagram e YouTube.
+
+
+## Auditoria final de segurança e empacotamento
+
+### Correções aplicadas nesta rodada
+
+- A mídia de conversas privadas e de grupo agora passa por `community/back-end/media.php`, que exige sessão válida e confirma no banco a relação de amizade/conversa ou a participação atual no grupo antes de entregar o arquivo. O arquivo é servido como imagem com `nosniff`, política de cache privada e resposta uniforme para arquivo inexistente/não autorizado. O acesso HTTP direto à pasta `community/uploads/chat/` é negado por `.htaccess`.
+- O helper de API aplica limites de requisição por sessão: por exemplo, busca de usuários (30/min), polling de mensagens (180/min), notificações (90/min), comentários (60/min) e limites específicos para ações de escrita/upload. Os contadores são saneados antes de uso.
+- Uploads da comunidade limitam tamanho, aceitam somente tipos MIME permitidos, verificam imagens, e usam nomes aleatórios gerados no servidor. O handler não aceita métodos diferentes de GET para servir mídia.
+- O encerramento de sessão em oito páginas do portal agora usa `encerrar_sessao_segura()`, que limpa os dados da sessão e expira o cookie, em vez de apenas apagar os dados no servidor.
+- `.htaccess` na raiz impede listagem e nega acesso web a `.env`, arquivos de configuração selecionados, dumps SQL, backups e logs; uploads também não executam scripts PHP.
+
+### Limites e configurações de implantação
+
+- O rate-limit é **por sessão PHP**, não uma proteção global contra abuso distribuído; em produção, complemente com limites no proxy/web server e monitoramento. Os limites também podem exigir ajuste se polling muito intenso ou rede compartilhada bloquear usuários legítimos.
+- As regras `.htaccess` exigem Apache com `mod_rewrite`/`mod_authz_core` e `AllowOverride` habilitado para a pasta do projeto. O XAMPP/Apache é o alvo deste pacote; em Nginx, configure bloqueio equivalente para `community/uploads/chat/` e arquivos sensíveis.
+- A CSP permanece deliberadamente parcial (`frame-ancestors`, `object-src`, `base-uri`): há scripts inline no portal, então uma política mais estrita sem refatoração poderia interromper páginas existentes. Mover scripts inline para arquivos externos ou usar nonces é o próximo passo para reduzir esse risco sem quebrar o portal.
+- Não foi possível executar teste autenticado ponta a ponta contra o MySQL do XAMPP nesta sessão. A checagem final executada encontrou **78 arquivos PHP sem erro de sintaxe e 9 arquivos JavaScript sem erro de sintaxe**, mas isso não substitui teste com duas contas e banco real.
+- O `.env` real não foi incluído no ZIP; somente `.env.example`, com valores de exemplo/placeholders. Crie seu `.env` local a partir dele e nunca publique credenciais reais.
